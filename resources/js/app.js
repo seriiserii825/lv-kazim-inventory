@@ -1,11 +1,23 @@
-require('./bootstrap');
+require("./bootstrap");
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-Vue.use(VueRouter);
+import Element from "element-ui";
+import routes from "./routes";
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VueRouter);
+Vue.use(Element);
+
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
+
+Vue.component("app-component", require("./layouts/App.vue").default);
+
+const router = new VueRouter(routes);
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
+    router,
 });
