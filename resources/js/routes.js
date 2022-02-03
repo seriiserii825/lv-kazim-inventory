@@ -1,6 +1,7 @@
 import Admin from "./pages/Admin.vue";
 import Register from "./pages/Register.vue";
 import Login from "./pages/Login.vue";
+import ForgotPassword from "./pages/ForgotPassword.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = {
@@ -20,6 +21,11 @@ const routes = {
             path: "/login",
             component: Login,
             name: "login",
+        },
+        {
+            path: "/forgot-password",
+            component: ForgotPassword,
+            name: "forgot-password",
         },
         {
             path: "/404",

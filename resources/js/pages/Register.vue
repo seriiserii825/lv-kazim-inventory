@@ -1,6 +1,6 @@
 <template>
   <div class="el-row">
-    <el-col class="el-col" :span="6" :offset="9">
+    <el-col class="el-col" :span="8" :offset="8">
       <div class="form">
         <h3 class="form__title">Register</h3>
         <el-form ref="form" :model="form" label-width="120px">
@@ -19,6 +19,11 @@
           <el-form-item label="Repeat password">
             <el-input v-model="form.repeat_password"></el-input>
           </el-form-item>
+          <div class="el-form-item">
+            <router-link :to="{ name: 'login' }" class="form-link"
+              >You have an account?</router-link
+            >
+          </div>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">Register</el-button>
           </el-form-item>
@@ -59,7 +64,7 @@ export default {
 .el-form-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   &__label {
     font-weight: bold;
     text-align: left;

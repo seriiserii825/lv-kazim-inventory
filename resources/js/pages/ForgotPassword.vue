@@ -2,17 +2,11 @@
   <div class="el-row">
     <el-col class="el-col" :span="8" :offset="8">
       <div class="form">
-        <h3 class="form__title">Login</h3>
+        <h3 class="form__title">Forgot Password</h3>
         <el-form ref="form" :model="form" label-width="120px">
           <el-form-item label="Email">
             <el-input v-model="form.email"></el-input>
           </el-form-item>
-          <el-form-item label="Password">
-            <el-input v-model="form.password"></el-input>
-          </el-form-item>
-          <div class="el-form-item">
-            <el-checkbox v-model="remember_me">Remember me</el-checkbox>
-          </div>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">Login</el-button>
           </el-form-item>
@@ -22,7 +16,7 @@
             >
           </div>
           <div class="el-form-item">
-            <router-link :to="{ name: 'forgot-password' }" class="form__link"
+            <router-link :to="{ name: 'register' }" class="form__link"
               >Forgot password</router-link
             >
           </div>
@@ -37,8 +31,6 @@ export default {
     return {
       form: {
         email: "",
-        password: "",
-        remember_me: false,
       },
     };
   },
@@ -49,11 +41,3 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-.form {
-  &__link {
-    color: darkblue;
-    text-decoration: none;
-  }
-}
-</style>
