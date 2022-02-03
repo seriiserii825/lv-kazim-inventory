@@ -102910,9 +102910,9 @@ var render = function () {
                       "router-link",
                       {
                         staticClass: "form__link",
-                        attrs: { to: { name: "register" } },
+                        attrs: { to: { name: "login" } },
                       },
-                      [_vm._v("Forgot password")]
+                      [_vm._v("Login")]
                     ),
                   ],
                   1
