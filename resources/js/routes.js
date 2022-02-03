@@ -1,5 +1,6 @@
 import Admin from "./pages/Admin.vue";
 import Register from "./pages/Register.vue";
+import Login from "./pages/Login.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = {
@@ -14,6 +15,11 @@ const routes = {
             path: "/register",
             component: Register,
             name: "register",
+        },
+        {
+            path: "/login",
+            component: Login,
+            name: "login",
         },
         {
             path: "/404",
