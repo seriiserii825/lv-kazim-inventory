@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\AuthRegisterRequest;
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -11,8 +10,9 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'signup']]);
+        $this->middleware('JWT', ['except' => ['login', 'signup']]);
     }
+//, ['except' => ['login', 'signup']]
 
     public function login()
     {
@@ -25,26 +25,16 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function signup(Request $request)
+    public function signup(AuthRegisterRequest $request)
     {
-        try {
-            $request->validate([
-                'name' => 'required|max:255|unique:users',
-                'email' => 'required|max:255',
-                'password' => 'required|min:6'
-            ]);
+        $data = [];
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = bcrypt($request->password);
 
-            $data = [];
-            $data['name'] = $request->name;
-            $data['email'] = $request->email;
-            $data['password'] = bcrypt($request->password);
+        DB::table('users')->insert($data);
 
-            DB::table('users')->insert($data);
-
-            return $this->login();
-        } catch (\Exception $exception) {
-            return $exception->getMessage();
-        }
+        return $this->login();
     }
 
     public function me()
@@ -54,9 +44,12 @@ class AuthController extends Controller
 
     public function logout()
     {
-        auth()->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
+        try {
+            auth()->logout();
+            return response()->json(['message' => 'Successfully logged out']);
+        } catch (\Exception $exception) {
+            return response()->json(['message' => $exception->getMessage()]);
+        }
     }
 
     /**
