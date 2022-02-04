@@ -4,6 +4,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Element from "element-ui";
 import routes from "./routes";
+import User from "./helpers/User";
+window.User = User;
 
 Vue.use(VueRouter);
 Vue.use(Element);
