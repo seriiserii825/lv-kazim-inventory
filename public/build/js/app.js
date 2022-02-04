@@ -3907,6 +3907,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3919,7 +3921,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
-      console.log("submit!");
+      var _this = this;
+
+      axios.post('/api/auth/login', this.form).then(function (res) {
+        console.log(res.data, 'res.data');
+
+        _this.$message({
+          message: 'Congrats, you are logged in.',
+          type: 'success'
+        });
+      })["catch"](function (error) {
+        console.log(error.response.data, 'error.response');
+
+        _this.$message({
+          message: error.response.data.error,
+          type: 'error'
+        });
+      });
     }
   }
 });
@@ -79546,7 +79564,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__link {\n  color: darkblue;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Login.vue"],"names":[],"mappings":"AAqDE;EACE,eAAA;EACA,qBAAA;AApDJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.form {\n  &__link {\n    color: darkblue;\n    text-decoration: none;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__link {\n  color: darkblue;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Login.vue"],"names":[],"mappings":"AAoEI;EACI,eAAA;EACA,qBAAA;AAnER","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.form {\n    &__link {\n        color: darkblue;\n        text-decoration: none;\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -103011,11 +103029,11 @@ var render = function () {
                       "el-checkbox",
                       {
                         model: {
-                          value: _vm.remember_me,
+                          value: _vm.form.remember_me,
                           callback: function ($$v) {
-                            _vm.remember_me = $$v
+                            _vm.$set(_vm.form, "remember_me", $$v)
                           },
-                          expression: "remember_me",
+                          expression: "form.remember_me",
                         },
                       },
                       [_vm._v("Remember me")]
@@ -103031,7 +103049,12 @@ var render = function () {
                       "el-button",
                       {
                         attrs: { type: "primary" },
-                        on: { click: _vm.onSubmit },
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.onSubmit.apply(null, arguments)
+                          },
+                        },
                       },
                       [_vm._v("Login")]
                     ),
@@ -103049,7 +103072,7 @@ var render = function () {
                         staticClass: "form__link",
                         attrs: { to: { name: "register" } },
                       },
-                      [_vm._v("Create an account")]
+                      [_vm._v("Create an account\n                    ")]
                     ),
                   ],
                   1
@@ -103065,7 +103088,7 @@ var render = function () {
                         staticClass: "form__link",
                         attrs: { to: { name: "forgot-password" } },
                       },
-                      [_vm._v("Forgot password")]
+                      [_vm._v("Forgot password\n                    ")]
                     ),
                   ],
                   1
