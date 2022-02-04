@@ -6,7 +6,7 @@ class User {
         const user_name = res.data.user_name;
 
         if (Token.isValid(access_token)) {
-            AppStorage.store(access_token, username);
+            AppStorage.store(access_token, user_name);
         }
     }
     hasToken() {
@@ -20,8 +20,16 @@ class User {
     }
     name() {
         if (this.loggedIn()) {
-            return localStorage.getItem("user");
+            return localStorage.getItem("name");
         }
+        return false;
+    }
+    id() {
+        if (this.loggedIn()) {
+            const payload = Token.payload(localStorage.getItem("token"));
+            return payload.sub;
+        }
+        return false;
     }
 }
 

@@ -3923,19 +3923,17 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       var _this = this;
 
-      axios.post('/api/auth/login', this.form).then(function (res) {
-        console.log(res.data, 'res.data');
+      axios.post("/api/auth/login", this.form).then(function (res) {
+        User.responseAfterLogin(res);
 
         _this.$message({
-          message: 'Congrats, you are logged in.',
-          type: 'success'
+          message: "Congrats, you are logged in.",
+          type: "success"
         });
       })["catch"](function (error) {
-        console.log(error.response.data, 'error.response');
-
         _this.$message({
           message: error.response.data.error,
-          type: 'error'
+          type: "error"
         });
       });
     }
@@ -4258,7 +4256,7 @@ var User = /*#__PURE__*/function () {
       var user_name = res.data.user_name;
 
       if (_Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(access_token)) {
-        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username);
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, user_name);
       }
     }
   }, {
@@ -4279,8 +4277,20 @@ var User = /*#__PURE__*/function () {
     key: "name",
     value: function name() {
       if (this.loggedIn()) {
-        return localStorage.getItem("user");
+        return localStorage.getItem("name");
       }
+
+      return false;
+    }
+  }, {
+    key: "id",
+    value: function id() {
+      if (this.loggedIn()) {
+        var payload = _Token__WEBPACK_IMPORTED_MODULE_0__["default"].payload(localStorage.getItem("token"));
+        return payload.sub;
+      }
+
+      return false;
     }
   }]);
 
@@ -79750,7 +79760,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__link {\n  color: darkblue;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Login.vue"],"names":[],"mappings":"AAoEI;EACI,eAAA;EACA,qBAAA;AAnER","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.form {\n    &__link {\n        color: darkblue;\n        text-decoration: none;\n    }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__link {\n  color: darkblue;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Login.vue"],"names":[],"mappings":"AAqEE;EACE,eAAA;EACA,qBAAA;AApEJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.form {\n  &__link {\n    color: darkblue;\n    text-decoration: none;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -103178,6 +103188,7 @@ var render = function () {
                   { attrs: { label: "Email" } },
                   [
                     _c("el-input", {
+                      attrs: { name: "email" },
                       model: {
                         value: _vm.form.email,
                         callback: function ($$v) {
@@ -103195,6 +103206,7 @@ var render = function () {
                   { attrs: { label: "Password" } },
                   [
                     _c("el-input", {
+                      attrs: { name: "password" },
                       model: {
                         value: _vm.form.password,
                         callback: function ($$v) {
@@ -103258,7 +103270,7 @@ var render = function () {
                         staticClass: "form__link",
                         attrs: { to: { name: "register" } },
                       },
-                      [_vm._v("Create an account\n                    ")]
+                      [_vm._v("Create an account\n          ")]
                     ),
                   ],
                   1
@@ -103274,7 +103286,7 @@ var render = function () {
                         staticClass: "form__link",
                         attrs: { to: { name: "forgot-password" } },
                       },
-                      [_vm._v("Forgot password\n                    ")]
+                      [_vm._v("Forgot password\n          ")]
                     ),
                   ],
                   1
