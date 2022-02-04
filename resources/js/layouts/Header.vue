@@ -1,24 +1,33 @@
 <template>
-  <el-header>
-    <el-dropdown>
-      <i class="el-icon-setting" style="margin-right: 15px"></i>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>View</el-dropdown-item>
-        <el-dropdown-item>Add</el-dropdown-item>
-        <el-dropdown-item>Delete</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
-    <span class="el-header__title">Tom</span>
-  </el-header>
+  <el-menu class="el-menu-demo main-menu" mode="horizontal">
+    <el-menu-item index="1">
+      <router-link class="main-menu__link" :to="{ name: 'home' }"
+        >Home</router-link
+      >
+    </el-menu-item>
+    <el-menu-item index="1">
+      <router-link class="main-menu__link" :to="{ name: 'admin.index' }"
+        >Admin</router-link
+      >
+    </el-menu-item>
+    <el-menu-item index="2">
+      <router-link class="main-menu__link" :to="{ name: 'login' }"
+        >Login</router-link
+      >
+    </el-menu-item>
+    <el-menu-item index="1">
+      <router-link class="main-menu__link" :to="{ name: 'register' }"
+        >Register</router-link
+      >
+    </el-menu-item>
+  </el-menu>
 </template>
 <script>
 export default {};
 </script>
 <style lang="scss">
 .el-header {
-  height: 3rem !important;
   text-align: right;
-  border-bottom: 1px solid #ccc;
   &__title {
     font-size: 1.7rem;
   }

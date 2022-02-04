@@ -10,10 +10,13 @@ class User {
         }
     }
     hasToken() {
-        const storeToken = AppStorage.get("token");
+        const storeToken = AppStorage.getToken();
+        console.log(storeToken, "storeToken");
+
         if (storeToken) {
-            return AppStorage.isValid();
+            return Token.isValid(storeToken);
         }
+        return false;
     }
     loggedIn() {
         return this.hasToken();

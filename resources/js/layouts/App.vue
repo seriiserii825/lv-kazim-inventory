@@ -1,15 +1,7 @@
 <template>
-  <el-container>
-    <Aside />
-    <el-container direction="horizontal">
-      <el-main>
-        <Header />
-        <div class="main">
-          <router-view></router-view>
-        </div>
-      </el-main>
-    </el-container>
-  </el-container>
+  <div class="app">
+    <router-view></router-view>
+  </div>
 </template>
 <script>
 import Aside from "./Aside.vue";

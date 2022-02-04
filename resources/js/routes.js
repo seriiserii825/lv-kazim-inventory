@@ -2,6 +2,7 @@ import Admin from "./pages/Admin.vue";
 import Register from "./pages/Register.vue";
 import Login from "./pages/Login.vue";
 import ForgotPassword from "./pages/ForgotPassword.vue";
+import Home from "./pages/Home.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = {
@@ -9,6 +10,11 @@ const routes = {
     routes: [
         {
             path: "/",
+            component: Home,
+            name: "home",
+        },
+        {
+            path: "/admin",
             component: Admin,
             name: "admin.index",
         },

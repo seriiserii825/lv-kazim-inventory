@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <h2>Admin Page</h2>
-  </div>
+  <AdminLayout> <h3>AdminLayout</h3> </AdminLayout>
 </template>
 <script>
-export default {};
+import AdminLayout from "./../layouts/AdminLayout.vue";
+export default {
+  components: {
+    AdminLayout,
+  },
+};
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

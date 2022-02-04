@@ -4,7 +4,7 @@ class Token {
         if (payload) {
             return (payload.iss =
                 "https://localhost:8088/api/auth/login" ||
-                "https://localhost:8088/api/auth/signup");
+                "https://localhost:8088/api/auth/register");
         }
         return false;
     }
