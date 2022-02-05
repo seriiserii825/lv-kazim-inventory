@@ -39,5 +39,9 @@ export default {
   .el-main {
     padding: 0;
   }
+  .main {
+    padding: 4rem;
+    background-color: #d4d4d4;
+  }
 }
 </style>

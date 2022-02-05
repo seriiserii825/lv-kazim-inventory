@@ -14,8 +14,3 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-.main {
-  padding: 4rem 0;
-}
-</style>

@@ -32,6 +32,7 @@ export default {
 .header-menu {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 0 !important;
   background-color: #333;
   border: none !important;
   &__link {
