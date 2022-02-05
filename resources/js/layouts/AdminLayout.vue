@@ -36,6 +36,11 @@ export default {
 .admin-layout {
   min-height: 100vh;
   background-color: #444;
+  &__title {
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
+  }
   .el-main {
     padding: 0;
   }

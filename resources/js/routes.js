@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound.vue";
 import Logout from "./pages/Logout.vue";
 import EmployeeIndex from "./pages/employee/Index.vue";
 import EmployeeCreate from "./pages/employee/Create.vue";
+import EmployeeEdit from "./pages/employee/Edit.vue";
 
 const routes = {
     mode: "history",
@@ -45,6 +46,11 @@ const routes = {
             path: "/admin/employee/create",
             component: EmployeeCreate,
             name: "admin.employee.create",
+        },
+        {
+            path: "/admin/employee/edit/:id",
+            component: EmployeeEdit,
+            name: "admin.employee.edit",
         },
         {
             path: "/admin/employee",

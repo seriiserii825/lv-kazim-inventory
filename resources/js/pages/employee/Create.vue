@@ -1,10 +1,7 @@
 <template>
   <admin-layout>
-    <el-row>
-      <router-link
-        :to="{ name: 'admin.employee' }"
-        style="display: inline-block; margin-bottom: 4rem"
-      >
+    <el-row class="mb-3">
+      <router-link :to="{ name: 'admin.employee' }">
         <el-button type="success">All employee</el-button>
       </router-link>
     </el-row>
@@ -69,24 +66,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Photo">
-            <el-upload
-              class="upload-demo"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :on-preview="handlePreview"
-              :on-remove="handleRemove"
-              :before-remove="beforeRemove"
-              :on-change="photoChange"
-              multiple
-              :auto-upload="false"
-              :limit="1"
-              :on-exceed="handleExceed"
-              :file-list="fileList"
-            >
-              <el-button size="small" type="primary">Click to upload</el-button>
-              <div slot="tip" class="el-upload__tip">
-                jpg/png files with a size less than 500kb
-              </div>
-            </el-upload>
+            <input type="file" @change="choose_file" />
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -131,7 +111,6 @@ export default {
         phone: "",
         photo: null,
       },
-      fileList: [],
       errors: {},
     };
   },
@@ -140,28 +119,25 @@ export default {
     FormComponent,
   },
   methods: {
-    photoChange(file, fileList) {
-      this.form.photo = file;
-    },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      console.log(this.fileList);
-      console.log(file);
-    },
-    handleExceed(files, fileList) {
-      this.$message.warning(
-        `The limit is 1, you selected ${
-          files.length
-        } files this time, add up to ${files.length + fileList.length} totally`
-      );
-    },
-    beforeRemove(file, fileList) {
-      return this.$confirm(`Cancel the transfert of ${file.name} ?`);
+    choose_file() {
+      this.form.photo = event.target.files[0];
     },
     onSubmit() {
-      console.log(this.form.photo, "this.form.photo");
+      let form = new FormData();
+
+      for (let key in this.form) {
+        form.append(key, this.form[key]);
+      }
+
+      axios
+        .post("/api/auth/employee", form)
+        .then((res) => {
+          this.$router.push({ name: "admin.employee" });
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+          // this.form_submitting = false;
+        });
     },
   },
   created() {
