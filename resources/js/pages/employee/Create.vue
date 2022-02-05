@@ -67,6 +67,7 @@
         <el-col :span="6">
           <el-form-item label="Photo">
             <input type="file" @change="choose_file" />
+            <img :src="form.photo" alt="" width="100" height="100" />
           </el-form-item>
         </el-col>
         <el-col :span="6">
@@ -119,8 +120,20 @@ export default {
     FormComponent,
   },
   methods: {
-    choose_file() {
-      this.form.photo = event.target.files[0];
+    choose_file(event) {
+      let file = event.target.files[0];
+      if (file.size > 250000) {
+        this.$notify({
+          type: "error",
+          message: "File less than 2048",
+        });
+      } else {
+        let reader = new FileReader();
+        reader.onload = (event) => {
+          this.form.photo = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
     },
     onSubmit() {
       let form = new FormData();

@@ -4461,6 +4461,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4484,11 +4485,28 @@ __webpack_require__.r(__webpack_exports__);
     FormComponent: _components_FormComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    choose_file: function choose_file() {
-      this.form.photo = event.target.files[0];
+    choose_file: function choose_file(event) {
+      var _this = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 250000) {
+        this.$notify({
+          type: "error",
+          message: "File less than 2048"
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this.form.photo = event.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      }
     },
     onSubmit: function onSubmit() {
-      var _this = this;
+      var _this2 = this;
 
       var form = new FormData();
 
@@ -4497,11 +4515,11 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post("/api/auth/employee", form).then(function (res) {
-        _this.$router.push({
+        _this2.$router.push({
           name: "admin.employee"
         });
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors; // this.form_submitting = false;
+        _this2.errors = error.response.data.errors; // this.form_submitting = false;
       });
     }
   },
@@ -105921,6 +105939,15 @@ var render = function () {
                     _c("input", {
                       attrs: { type: "file" },
                       on: { change: _vm.choose_file },
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src: _vm.form.photo,
+                        alt: "",
+                        width: "100",
+                        height: "100",
+                      },
                     }),
                   ]),
                 ],
