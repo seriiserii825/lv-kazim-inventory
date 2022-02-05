@@ -11,7 +11,7 @@ class User {
     }
     hasToken() {
         const storeToken = AppStorage.getToken();
-        console.log(storeToken, "storeToken");
+        // console.log(storeToken, "storeToken");
 
         if (storeToken) {
             return Token.isValid(storeToken);

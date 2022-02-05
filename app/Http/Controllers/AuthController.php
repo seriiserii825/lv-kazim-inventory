@@ -40,7 +40,7 @@ class AuthController extends Controller
 
         DB::table('users')->insert($data);
 
-        return $this->login();
+        return $this->login($request);
     }
 
     public function me()

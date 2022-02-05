@@ -4262,18 +4262,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       form: {
-        first_name: "",
-        last_name: "",
+        name: "",
         email: "",
-        password: "",
-        repeat_password: ""
-      }
+        password: ""
+      },
+      errors: {}
     };
   },
   components: {
@@ -4282,7 +4286,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
-      console.log("submit!");
+      var _this = this;
+
+      axios.post("/api/auth/signup", this.form).then(function (res) {
+        User.responseAfterLogin(res);
+
+        _this.$notify({
+          title: "Success",
+          message: "Congrats, you are logged in.",
+          type: "success"
+        });
+
+        _this.$router.push("/admin");
+      })["catch"](function (error) {
+        _this.errors = error.response.data.errors;
+      });
+    }
+  },
+  created: function created() {
+    if (User.loggedIn()) {
+      this.$notify({
+        type: "error",
+        message: "You are logged in yet"
+      });
+      this.$router.push("/admin");
     }
   }
 });
@@ -4523,8 +4550,7 @@ var User = /*#__PURE__*/function () {
   }, {
     key: "hasToken",
     value: function hasToken() {
-      var storeToken = _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken();
-      console.log(storeToken, "storeToken");
+      var storeToken = _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(); // console.log(storeToken, "storeToken");
 
       if (storeToken) {
         return _Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(storeToken);
@@ -104409,34 +104435,23 @@ var render = function () {
             [
               _c(
                 "el-form-item",
-                { attrs: { label: "First name" } },
+                { attrs: { label: "Full name" } },
                 [
                   _c("el-input", {
                     model: {
-                      value: _vm.form.first_name,
+                      value: _vm.form.name,
                       callback: function ($$v) {
-                        _vm.$set(_vm.form, "first_name", $$v)
+                        _vm.$set(_vm.form, "name", $$v)
                       },
-                      expression: "form.first_name",
+                      expression: "form.name",
                     },
                   }),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                { attrs: { label: "Last name" } },
-                [
-                  _c("el-input", {
-                    model: {
-                      value: _vm.form.last_name,
-                      callback: function ($$v) {
-                        _vm.$set(_vm.form, "last_name", $$v)
-                      },
-                      expression: "form.last_name",
-                    },
-                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.name
+                    ? _c("small", { staticClass: "form--error" }, [
+                        _vm._v(_vm._s(_vm.errors.name[0])),
+                      ])
+                    : _vm._e(),
                 ],
                 1
               ),
@@ -104454,6 +104469,12 @@ var render = function () {
                       expression: "form.email",
                     },
                   }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.email
+                    ? _c("small", { staticClass: "form--error" }, [
+                        _vm._v(_vm._s(_vm.errors.email[0])),
+                      ])
+                    : _vm._e(),
                 ],
                 1
               ),
@@ -104471,23 +104492,12 @@ var render = function () {
                       expression: "form.password",
                     },
                   }),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                { attrs: { label: "Repeat password" } },
-                [
-                  _c("el-input", {
-                    model: {
-                      value: _vm.form.repeat_password,
-                      callback: function ($$v) {
-                        _vm.$set(_vm.form, "repeat_password", $$v)
-                      },
-                      expression: "form.repeat_password",
-                    },
-                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.password
+                    ? _c("small", { staticClass: "form--error" }, [
+                        _vm._v(_vm._s(_vm.errors.password[0])),
+                      ])
+                    : _vm._e(),
                 ],
                 1
               ),
@@ -104513,7 +104523,15 @@ var render = function () {
                 [
                   _c(
                     "el-button",
-                    { attrs: { type: "primary" }, on: { click: _vm.onSubmit } },
+                    {
+                      attrs: { type: "primary" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.onSubmit.apply(null, arguments)
+                        },
+                      },
+                    },
                     [_vm._v("Register")]
                   ),
                 ],
