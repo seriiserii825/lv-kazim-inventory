@@ -4189,7 +4189,7 @@ __webpack_require__.r(__webpack_exports__);
         message: "You are logged out successfuly"
       });
       this.$router.push({
-        name: "home"
+        name: "login"
       });
     }
   }
