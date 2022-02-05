@@ -5,6 +5,8 @@ import ForgotPassword from "./pages/ForgotPassword.vue";
 import Home from "./pages/Home.vue";
 import NotFound from "./pages/NotFound.vue";
 import Logout from "./pages/Logout.vue";
+import EmployeeIndex from "./pages/employee/Index.vue";
+import EmployeeCreate from "./pages/employee/Create.vue";
 
 const routes = {
     mode: "history",
@@ -38,6 +40,16 @@ const routes = {
             path: "/forgot-password",
             component: ForgotPassword,
             name: "forgot-password",
+        },
+        {
+            path: "/admin/employee/create",
+            component: EmployeeCreate,
+            name: "admin.employee.create",
+        },
+        {
+            path: "/admin/employee",
+            component: EmployeeIndex,
+            name: "admin.employee",
         },
         {
             path: "/404",
