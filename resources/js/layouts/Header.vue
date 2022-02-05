@@ -26,4 +26,9 @@ export default {
     font-size: 1.7rem;
   }
 }
+
+.main-menu {
+  background-color: #333;
+  border: none !important;
+}
 </style>

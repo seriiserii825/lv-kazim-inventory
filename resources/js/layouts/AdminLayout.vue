@@ -4,7 +4,7 @@
       <Aside />
       <el-container direction="horizontal">
         <el-main>
-          <Header />
+          <HeaderAdmin class="admin-header" />
           <div class="main">
             <slot />
           </div>
@@ -15,11 +15,11 @@
 </template>
 <script>
 import Aside from "./Aside.vue";
-import Header from "./Header";
+import HeaderAdmin from "./HeaderAdmin";
 export default {
   components: {
     Aside,
-    Header,
+    HeaderAdmin,
   },
   created() {
     if (!User.loggedIn()) {
@@ -33,4 +33,11 @@ export default {
 };
 </script>
 <style lang="scss">
+.admin-layout {
+  min-height: 100vh;
+  background-color: #444;
+  .el-main {
+    padding: 0;
+  }
+}
 </style>

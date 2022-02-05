@@ -2,26 +2,26 @@
   <div>
     <el-menu
       :default-active="activeIndex"
-      class="el-menu-demo main-menu"
+      class="el-menu-demo front-menu"
       mode="horizontal"
     >
       <el-menu-item index="1" v-if="loggedIn">
-        <router-link class="main-menu__link" :to="{ name: 'admin.index' }"
+        <router-link class="front-menu__link" :to="{ name: 'admin.index' }"
           >Admin</router-link
         >
       </el-menu-item>
       <el-menu-item index="2" v-if="!loggedIn">
-        <router-link class="main-menu__link" :to="{ name: 'login' }"
+        <router-link class="front-menu__link" :to="{ name: 'login' }"
           >Login</router-link
         >
       </el-menu-item>
       <el-menu-item index="1" v-if="!loggedIn">
-        <router-link class="main-menu__link" :to="{ name: 'register' }"
+        <router-link class="front-menu__link" :to="{ name: 'register' }"
           >Register</router-link
         >
       </el-menu-item>
       <el-menu-item index="1" v-if="loggedIn">
-        <router-link class="main-menu__link" :to="{ name: 'logout' }"
+        <router-link class="front-menu__link" :to="{ name: 'logout' }"
           >Logout</router-link
         >
       </el-menu-item>
@@ -54,7 +54,7 @@ export default {
 .el-menu {
   margin-bottom: 5rem;
 }
-.main-menu {
+.front-menu {
   display: flex;
   justify-content: flex-end;
   .el-menu-item {
