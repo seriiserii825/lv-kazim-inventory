@@ -5,19 +5,24 @@
       class="el-menu-demo main-menu"
       mode="horizontal"
     >
-      <el-menu-item index="1">
+      <el-menu-item index="1" v-if="loggedIn">
         <router-link class="main-menu__link" :to="{ name: 'admin.index' }"
           >Admin</router-link
         >
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="2" v-if="!loggedIn">
         <router-link class="main-menu__link" :to="{ name: 'login' }"
           >Login</router-link
         >
       </el-menu-item>
-      <el-menu-item index="1">
+      <el-menu-item index="1" v-if="!loggedIn">
         <router-link class="main-menu__link" :to="{ name: 'register' }"
           >Register</router-link
+        >
+      </el-menu-item>
+      <el-menu-item index="1" v-if="loggedIn">
+        <router-link class="main-menu__link" :to="{ name: 'logout' }"
+          >Logout</router-link
         >
       </el-menu-item>
     </el-menu>
@@ -30,12 +35,18 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
+      loggedIn: false,
     };
   },
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
+  },
+  created() {
+    if (User.loggedIn()) {
+      this.loggedIn = true;
+    }
   },
 };
 </script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRegisterRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -14,8 +15,13 @@ class AuthController extends Controller
     }
     //, ['except' => ['login', 'signup']]
 
-    public function login()
+    public function login(Request $request)
     {
+        $validateData = $request->validate([
+            'email' => 'required|max:155',
+            'password' => 'required|min:8',
+        ]);
+
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {

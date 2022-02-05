@@ -4,6 +4,7 @@ import Login from "./pages/Login.vue";
 import ForgotPassword from "./pages/ForgotPassword.vue";
 import Home from "./pages/Home.vue";
 import NotFound from "./pages/NotFound.vue";
+import Logout from "./pages/Logout.vue";
 
 const routes = {
     mode: "history",
@@ -27,6 +28,11 @@ const routes = {
             path: "/login",
             component: Login,
             name: "login",
+        },
+        {
+            path: "/logout",
+            component: Logout,
+            name: "logout",
         },
         {
             path: "/forgot-password",
