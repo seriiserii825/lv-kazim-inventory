@@ -4462,6 +4462,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4477,6 +4481,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: "",
         photo: null
       },
+      photo_preview: null,
       errors: {}
     };
   },
@@ -4499,7 +4504,8 @@ __webpack_require__.r(__webpack_exports__);
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          _this.form.photo = event.target.result;
+          _this.form.photo = file;
+          _this.photo_preview = event.target.result;
         };
 
         reader.readAsDataURL(file);
@@ -4519,7 +4525,7 @@ __webpack_require__.r(__webpack_exports__);
           name: "admin.employee"
         });
       })["catch"](function (error) {
-        _this2.errors = error.response.data.errors; // this.form_submitting = false;
+        _this2.errors = error.response.data.errors;
       });
     }
   },
@@ -4648,6 +4654,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4663,6 +4673,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: "",
         photo: null
       },
+      photo_preview: null,
       errors: {}
     };
   },
@@ -4671,11 +4682,29 @@ __webpack_require__.r(__webpack_exports__);
     FormComponent: _components_FormComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    choose_file: function choose_file() {
-      this.form.photo = event.target.files[0];
+    choose_file: function choose_file(event) {
+      var _this = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 250000) {
+        this.$notify({
+          type: "error",
+          message: "File less than 2048"
+        });
+      } else {
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          _this.form.photo = file;
+          _this.photo_preview = event.target.result;
+        };
+
+        reader.readAsDataURL(file);
+      }
     },
     onSubmit: function onSubmit() {
-      var _this = this;
+      var _this2 = this;
 
       var form = new FormData();
 
@@ -4683,17 +4712,16 @@ __webpack_require__.r(__webpack_exports__);
         form.append(key, this.form[key]);
       }
 
-      axios.put("/api/auth/employee/" + this.$route.params.id, this.form).then(function (res) {
-        _this.$router.push({
-          name: "admin.employee"
-        });
+      form.append('_method', 'PUT');
+      axios.post("/api/auth/employee/" + this.$route.params.id, form).then(function (res) {
+        console.log(res.data, 'res.data'); // this.$router.push({name: "admin.employee"});
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors; // this.form_submitting = false;
+        _this2.errors = error.response.data.errors;
       });
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     if (!User.loggedIn()) {
       this.$notify({
@@ -4706,9 +4734,10 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     axios.get("/api/auth/employee/" + this.$route.params.id).then(function (res) {
-      _this2.form = res.data.data;
+      _this3.form = res.data.data;
+      _this3.photo_preview = _this3.form.photo;
     })["catch"](function (error) {
-      _this2.$notify({
+      _this3.$notify({
         type: "error",
         message: error.response.data
       });
@@ -105739,6 +105768,7 @@ var render = function () {
                     { attrs: { label: "Full name" } },
                     [
                       _c("el-input", {
+                        attrs: { name: "name" },
                         model: {
                           value: _vm.form.name,
                           callback: function ($$v) {
@@ -105769,6 +105799,7 @@ var render = function () {
                     { attrs: { label: "Email" } },
                     [
                       _c("el-input", {
+                        attrs: { name: "email" },
                         model: {
                           value: _vm.form.email,
                           callback: function ($$v) {
@@ -105806,6 +105837,7 @@ var render = function () {
                     { attrs: { label: "Address" } },
                     [
                       _c("el-input", {
+                        attrs: { name: "address" },
                         model: {
                           value: _vm.form.address,
                           callback: function ($$v) {
@@ -105836,6 +105868,7 @@ var render = function () {
                     { attrs: { label: "Salary" } },
                     [
                       _c("el-input", {
+                        attrs: { name: "salary" },
                         model: {
                           value: _vm.form.salary,
                           callback: function ($$v) {
@@ -105873,6 +105906,7 @@ var render = function () {
                     { attrs: { label: "Phone" } },
                     [
                       _c("el-input", {
+                        attrs: { name: "phone" },
                         model: {
                           value: _vm.form.phone,
                           callback: function ($$v) {
@@ -105903,6 +105937,7 @@ var render = function () {
                     { attrs: { label: "Nid" } },
                     [
                       _c("el-input", {
+                        attrs: { name: "nid" },
                         model: {
                           value: _vm.form.nid,
                           callback: function ($$v) {
@@ -105940,16 +105975,18 @@ var render = function () {
                       attrs: { type: "file" },
                       on: { change: _vm.choose_file },
                     }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: _vm.form.photo,
-                        alt: "",
-                        width: "100",
-                        height: "100",
-                      },
-                    }),
                   ]),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.photo
+                    ? _c("small", { staticClass: "form--error" }, [
+                        _vm._v(_vm._s(_vm.errors.photo[0])),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "mb-4",
+                    attrs: { src: _vm.photo_preview, alt: "", width: "400" },
+                  }),
                 ],
                 1
               ),
@@ -106009,7 +106046,7 @@ var render = function () {
                             },
                           },
                         },
-                        [_vm._v("Create")]
+                        [_vm._v("Create\n                    ")]
                       ),
                     ],
                     1
@@ -106288,10 +106325,26 @@ var render = function () {
                 [
                   _c("el-form-item", { attrs: { label: "Photo" } }, [
                     _c("input", {
+                      ref: "photo",
                       attrs: { type: "file" },
-                      on: { change: _vm.choose_file },
+                      on: {
+                        change: function ($event) {
+                          return _vm.choose_file($event)
+                        },
+                      },
                     }),
                   ]),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.photo
+                    ? _c("small", { staticClass: "form--error" }, [
+                        _vm._v(_vm._s(_vm.errors.photo[0])),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "mb-4",
+                    attrs: { src: _vm.photo_preview, alt: "", width: "400" },
+                  }),
                 ],
                 1
               ),
@@ -106351,7 +106404,7 @@ var render = function () {
                             },
                           },
                         },
-                        [_vm._v("Update")]
+                        [_vm._v("Update\n                    ")]
                       ),
                     ],
                     1

@@ -5,25 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d971a11-782c-4b1e-82a4-fa701c6d20e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/build/js/resources_js_layouts_AdminLayout_vue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/resources_js_layouts_AdminLayout_vue.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/resources_js_layouts_DefalutLayout_vue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/resources_js_layouts_DefalutLayout_vue.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/resources_js_layouts_DefaultLayout_vue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/build/js/resources_js_layouts_DefaultLayout_vue.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/layouts/AdminLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/layouts/DefaultLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/layouts/FrontLayout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/pages/Home.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Repositories/FileUploadRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644133725.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644133913.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644139176.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644139250.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140041.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140185.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140284.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140331.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140381.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140389.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140601.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140739.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140888.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140954.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141073.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141243.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141553.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141675.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141697.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141751.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141817.Selection_001.jpgjpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141845.Selection_002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142178.Selection_001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142310.Selection_001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142315.Selection_001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142549.Selection_001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142600.Selection_001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142835.Selection_001.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lv-kazim-inventory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lv-kazim-inventory.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/StoreEmployeeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/StoreEmployeeRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/helpers/Token.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/helpers/Token.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/layouts/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/layouts/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/employee/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/employee/Create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/employee/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/employee/Edit.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +204,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../localwp/freehouse/app/public/wp-content/themes/bs-freehouse" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -193,7 +211,8 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
