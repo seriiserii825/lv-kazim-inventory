@@ -5195,6 +5195,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5218,8 +5222,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/api/auth/media/" + id).then(function (res) {
           _this.getItems();
+
+          console.log(res, "res");
         })["catch"](function (error) {
-          _this.errors = error.response.data.errors; // this.form_submitting = false;
+          _this.errors = error.response.data.errors;
         });
 
         _this.$notify({
@@ -5238,9 +5244,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/auth/media").then(function (res) {
         _this2.items = res.data.data;
-        console.log(_this2.items, "this.items");
       })["catch"](function (error) {
-        console.log(error, "error");
+        _this2.errors = error.response.data.errors;
       });
     }
   },
@@ -5569,7 +5574,8 @@ var routes = {
     path: "/",
     component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: "home"
-  }, {
+  }, // auth
+  {
     path: "/admin",
     component: _pages_Admin_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     name: "admin.index"
@@ -5589,7 +5595,8 @@ var routes = {
     path: "/forgot-password",
     component: _pages_ForgotPassword_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: "forgot-password"
-  }, {
+  }, // employee
+  {
     path: "/admin/employee/create",
     component: _pages_employee_Create_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
     name: "admin.employee.create"
@@ -5601,7 +5608,8 @@ var routes = {
     path: "/admin/employee",
     component: _pages_employee_Index_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
     name: "admin.employee"
-  }, {
+  }, // media
+  {
     path: "/admin/media/create",
     component: _pages_media_Create_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
     name: "admin.media.create"
@@ -5613,7 +5621,8 @@ var routes = {
     path: "/admin/media",
     component: _pages_media_Index_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
     name: "admin.media"
-  }, {
+  }, //404
+  {
     path: "/404",
     name: "404",
     component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -81195,7 +81204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-list {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n}\n.media-list li {\n  position: relative;\n  margin-bottom: 2rem;\n  width: 18%;\n  height: 20rem;\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n}\n.media-list li img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/media/Index.vue"],"names":[],"mappings":"AA2EA;EACE,aAAA;EACA,8BAAA;EACA,eAAA;EACA,SAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;AA1EF;AA2EE;EACE,kBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,sBAAA;EACA,0CAAA;AAzEJ;AA0EI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;AAxEN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-list {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n  li {\n    position: relative;\n    margin-bottom: 2rem;\n    width: 18%;\n    height: 20rem;\n    background-color: white;\n    border: 1px solid #ccc;\n    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-list {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n}\n.media-list li {\n  position: relative;\n  margin-bottom: 2rem;\n  width: 18%;\n  height: 20rem;\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n}\n.media-list li:hover .media-list__delete {\n  opacity: 1;\n}\n.media-list li img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-list__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-list__delete {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 6rem;\n  color: red;\n  background-color: rgba(255, 255, 255, 0.5);\n  z-index: 3;\n  opacity: 0;\n  transition: all 0.4s;\n}\n.media-list__delete i {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: inline-block;\n  width: 25%;\n  height: 30%;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/media/Index.vue"],"names":[],"mappings":"AA8EA;EACE,aAAA;EACA,8BAAA;EACA,eAAA;EACA,SAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;AA7EF;AA8EE;EACE,kBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,sBAAA;EACA,0CAAA;AA5EJ;AA8EM;EACE,UAAA;AA5ER;AA+EI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AA7EN;AAgFE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AA9EJ;AAgFE;EACE,kBAAA;EACA,MAAA;EACA,QAAA;EACA,WAAA;EACA,YAAA;EACA,eAAA;EACA,UAAA;EACA,0CAAA;EACA,UAAA;EACA,UAAA;EACA,oBAAA;AA9EJ;AA+EI;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,qBAAA;EACA,UAAA;EACA,WAAA;AA7EN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-list {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n  li {\n    position: relative;\n    margin-bottom: 2rem;\n    width: 18%;\n    height: 20rem;\n    background-color: white;\n    border: 1px solid #ccc;\n    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n    &:hover {\n      .media-list__delete {\n        opacity: 1;\n      }\n    }\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      z-index: 1;\n    }\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  &__delete {\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    font-size: 6rem;\n    color: red;\n    background-color: rgba(255, 255, 255, 0.5);\n    z-index: 3;\n    opacity: 0;\n    transition: all 0.4s;\n    i {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      display: inline-block;\n      width: 25%;\n      height: 30%;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -107839,6 +107848,25 @@ var render = function () {
         _vm._l(_vm.items, function (item) {
           return _c("li", { key: item.id }, [
             _c("img", { attrs: { src: item.path, alt: "" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-list__title" }, [
+              _vm._v(_vm._s(item.title)),
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "media-list__delete",
+                attrs: { href: "#" },
+                on: {
+                  click: function ($event) {
+                    $event.preventDefault()
+                    return _vm.remove(item.id)
+                  },
+                },
+              },
+              [_c("i", { staticClass: "el-icon-error" })]
+            ),
           ])
         }),
         0

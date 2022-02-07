@@ -17,15 +17,18 @@ class MediaController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile("files")) {
-            $pictures = [];
             foreach ($request->file('files') as $file) {
                 $upload_path = public_path('uploads/');
                 $file_name = $file->getClientOriginalName();
                 $file->move($upload_path, $file_name);
-                Media::create(["path" => "/uploads/" . $file_name]);
-                $pictures[] = $file_name;
+                Media::create([
+                    "title" =>  $file_name,
+                    "path" => "/uploads/" . $file_name
+                ]);
             }
-            return response()->json(["pictures" => $pictures]);
+            return response()->json([
+                "message" => "messages was uploaded"
+            ]);
         }
     }
 
@@ -41,6 +44,14 @@ class MediaController extends Controller
 
     public function destroy($id)
     {
-        //
+        $media = Media::findOrFail($id);
+        $file_name = $media->title;
+        if ($file_name) {
+            unlink("uploads/" . $file_name);
+            $media->delete();
+        }
+        return response()->json([
+            "message" => $id
+        ]);
     }
 }

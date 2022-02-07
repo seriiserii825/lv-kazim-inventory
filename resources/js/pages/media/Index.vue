@@ -9,6 +9,10 @@
     <ul class="media-list">
       <li v-for="item in items" :key="item.id">
         <img :src="item.path" alt="" />
+        <div class="media-list__title">{{ item.title }}</div>
+        <a class="media-list__delete" href="#" @click.prevent="remove(item.id)"
+          ><i class="el-icon-error"></i>
+        </a>
       </li>
     </ul>
   </admin-layout>
@@ -38,10 +42,10 @@ export default {
             .delete("/api/auth/media/" + id)
             .then((res) => {
               this.getItems();
+              console.log(res, "res");
             })
             .catch((error) => {
               this.errors = error.response.data.errors;
-              // this.form_submitting = false;
             });
           this.$notify({
             type: "success",
@@ -60,10 +64,9 @@ export default {
         .get("/api/auth/media")
         .then((res) => {
           this.items = res.data.data;
-          console.log(this.items, "this.items");
         })
         .catch((error) => {
-          console.log(error, "error");
+          this.errors = error.response.data.errors;
         });
     },
   },
@@ -89,6 +92,11 @@ export default {
     background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);
+    &:hover {
+      .media-list__delete {
+        opacity: 1;
+      }
+    }
     img {
       position: absolute;
       top: 0;
@@ -96,6 +104,45 @@ export default {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      z-index: 1;
+    }
+  }
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    width: 100%;
+    height: 4rem;
+    font-size: 1.4rem;
+    text-align: center;
+    color: black;
+    background-color: white;
+    z-index: 2;
+  }
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 6rem;
+    color: red;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.4s;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      width: 25%;
+      height: 30%;
     }
   }
 }

@@ -19,7 +19,7 @@ const routes = {
             path: "/",
             component: Home,
             name: "home",
-        },
+        }, // auth
         {
             path: "/admin",
             component: Admin,
@@ -44,7 +44,7 @@ const routes = {
             path: "/forgot-password",
             component: ForgotPassword,
             name: "forgot-password",
-        },
+        }, // employee
         {
             path: "/admin/employee/create",
             component: EmployeeCreate,
@@ -59,7 +59,7 @@ const routes = {
             path: "/admin/employee",
             component: EmployeeIndex,
             name: "admin.employee",
-        },
+        }, // media
         {
             path: "/admin/media/create",
             component: MediaCreate,
@@ -74,7 +74,7 @@ const routes = {
             path: "/admin/media",
             component: MediaIndex,
             name: "admin.media",
-        },
+        }, //404
         {
             path: "/404",
             name: "404",
