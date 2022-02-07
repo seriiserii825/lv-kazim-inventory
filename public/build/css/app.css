@@ -92,6 +92,15 @@ input[type=submit]:disabled {
   margin-bottom: 6rem;
 }
 
+.el-loading-mask.is-fullscreen {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.el-loading-mask.is-fullscreen .el-loading-spinner .circular {
+  width: 5rem;
+  height: 5rem;
+}
+
 .btn {
   font-size: 1.8rem;
 }

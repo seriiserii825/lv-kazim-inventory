@@ -56,6 +56,7 @@ export default {
   data() {
     return {
       items: [],
+      fullscreenLoading: false,
     };
   },
   components: {

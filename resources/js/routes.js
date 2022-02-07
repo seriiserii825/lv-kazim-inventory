@@ -8,6 +8,9 @@ import Logout from "./pages/Logout.vue";
 import EmployeeIndex from "./pages/employee/Index.vue";
 import EmployeeCreate from "./pages/employee/Create.vue";
 import EmployeeEdit from "./pages/employee/Edit.vue";
+import MediaIndex from "./pages/media/Index.vue";
+import MediaCreate from "./pages/media/Create.vue";
+import MediaEdit from "./pages/media/Edit.vue";
 
 const routes = {
     mode: "history",
@@ -56,6 +59,21 @@ const routes = {
             path: "/admin/employee",
             component: EmployeeIndex,
             name: "admin.employee",
+        },
+        {
+            path: "/admin/media/create",
+            component: MediaCreate,
+            name: "admin.media.create",
+        },
+        {
+            path: "/admin/media/edit/:id",
+            component: MediaEdit,
+            name: "admin.media.edit",
+        },
+        {
+            path: "/admin/media",
+            component: MediaIndex,
+            name: "admin.media",
         },
         {
             path: "/404",

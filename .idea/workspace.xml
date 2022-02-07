@@ -4,46 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d971a11-782c-4b1e-82a4-fa701c6d20e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Repositories/FileUploadRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644133725.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644133913.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644139176.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644139250.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140041.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140185.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140284.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140331.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140381.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140389.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140601.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140739.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140888.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644140954.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141073.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141243.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141553.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141675.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141697.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141751.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141817.Selection_001.jpgjpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644141845.Selection_002.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142178.Selection_001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142310.Selection_001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142315.Selection_001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142549.Selection_001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142600.Selection_001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/employees/1644142835.Selection_001.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lv-kazim-inventory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lv-kazim-inventory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/StoreEmployeeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/StoreEmployeeRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/employee/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/employee/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/employee/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/employee/Edit.vue" afterDir="false" />
-    </list>
+    <list default="true" id="6d971a11-782c-4b1e-82a4-fa701c6d20e9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -34,7 +34,7 @@ export default {
 </script>
 <style lang="scss">
 .admin-layout {
-  min-height: 100vh;
+  min-height: 300vh;
   background-color: #444;
   &__title {
     margin-bottom: 3rem;
