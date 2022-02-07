@@ -31,7 +31,7 @@ class StoreEmployeeRequest extends FormRequest
             'salary' => 'required',
             'join_date' => 'required',
             'nid' => 'nullable',
-            'photo' => 'required|mimes:jpg,jpeg|max:22500'
+            'photo' => 'required'
         ];
     }
 }

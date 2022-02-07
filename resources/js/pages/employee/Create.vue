@@ -5,7 +5,7 @@
         <el-button type="success">All employee</el-button>
       </router-link>
     </el-row>
-    <h3 class="form__title">Create employee</h3>
+    <h3 class="form__title">Edit employee</h3>
     <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -69,16 +69,11 @@
             <el-button type="primary" @click="showMediaGrid = true"
               >Add image</el-button
             >
-            <ul>
-              <li v-for="(image, index) in form.images" :key="index">
-                {{ image }}
-              </li>
-            </ul>
+            <images-thumbs :images="form.images"></images-thumbs>
           </el-form-item>
           <small class="form--error" v-if="errors && errors.photo">{{
             errors.photo[0]
           }}</small>
-          <img :src="photo_preview" alt="" width="400" class="mb-4" />
         </el-col>
         <el-col :span="6">
           <el-form-item label="Join date">
@@ -95,9 +90,9 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="6">
+        <el-col :span="6" :offset="18">
           <el-form-item>
-            <el-button type="primary" @click.prevent="onSubmit"
+            <el-button type="success" @click.prevent="onSubmit"
               >Create
             </el-button>
           </el-form-item>
@@ -115,6 +110,7 @@
 import AdminLayout from "../../layouts/AdminLayout.vue";
 import FormComponent from "../../components/FormComponent.vue";
 import MediaGrid from "../../components/MediaGrid.vue";
+import ImagesThumbs from "../../components/ImagesThumbs.vue";
 
 export default {
   data() {
@@ -130,7 +126,6 @@ export default {
         photo: null,
         images: [],
       },
-      photo_preview: null,
       errors: {},
       showMediaGrid: false,
     };
@@ -139,31 +134,28 @@ export default {
     AdminLayout,
     FormComponent,
     MediaGrid,
+    ImagesThumbs,
   },
   methods: {
     emit_images(images) {
       this.form.images = images;
       console.log(this.form.images, "this.form.images");
+      this.form.photo = [0];
     },
     onSubmit() {
       axios
         .post("/api/auth/employee", this.form)
         .then((res) => {
           this.$router.push({ name: "admin.employee" });
+          this.$notify({
+            type: "success",
+            message: "Post was created",
+          });
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
     },
-  },
-  created() {
-    if (!User.loggedIn()) {
-      this.$notify({
-        type: "error",
-        message: "You are not logged in yet",
-      });
-      this.$router.push({ name: "login" });
-    }
   },
 };
 </script>

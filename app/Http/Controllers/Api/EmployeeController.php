@@ -20,10 +20,7 @@ class EmployeeController extends Controller
 
     public function store(StoreEmployeeRequest $request)
     {
-        $fileUpload = new FileUploadRepository($request, 'photo', 'employees');
-        $data = $request->validated();
-        $data['photo'] = $fileUpload->getPath();
-        $employee = Employee::create($data);
+        $employee = Employee::create($request->validated());
         return new EmployeeResource($employee);
     }
 

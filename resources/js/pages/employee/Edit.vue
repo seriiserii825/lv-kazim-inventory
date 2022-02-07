@@ -5,12 +5,12 @@
         <el-button type="success">All employee</el-button>
       </router-link>
     </el-row>
-    <h3 class="form__title">Edit employee</h3>
-    <el-form label-width="120px">
+    <h3 class="form__title">Create employee</h3>
+    <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Full name">
-            <el-input v-model="form.name"></el-input>
+            <el-input name="name" v-model="form.name"></el-input>
             <small class="form--error" v-if="errors && errors.name">{{
               errors.name[0]
             }}</small>
@@ -18,7 +18,7 @@
         </el-col>
         <el-col :span="6">
           <el-form-item label="Email">
-            <el-input v-model="form.email"></el-input>
+            <el-input name="email" v-model="form.email"></el-input>
             <small class="form--error" v-if="errors && errors.email">{{
               errors.email[0]
             }}</small>
@@ -28,7 +28,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Address">
-            <el-input v-model="form.address"></el-input>
+            <el-input name="address" v-model="form.address"></el-input>
             <small class="form--error" v-if="errors && errors.address">{{
               errors.address[0]
             }}</small>
@@ -37,7 +37,7 @@
 
         <el-col :span="6">
           <el-form-item label="Salary">
-            <el-input v-model="form.salary"></el-input>
+            <el-input name="salary" v-model="form.salary"></el-input>
             <small class="form--error" v-if="errors && errors.salary">{{
               errors.salary[0]
             }}</small>
@@ -47,7 +47,7 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Phone">
-            <el-input v-model="form.phone"></el-input>
+            <el-input name="phone" v-model="form.phone"></el-input>
             <small class="form--error" v-if="errors && errors.phone">{{
               errors.phone[0]
             }}</small>
@@ -55,17 +55,22 @@
         </el-col>
         <el-col :span="6">
           <el-form-item label="Nid">
-            <el-input v-model="form.nid"></el-input>
+            <el-input name="nid" v-model="form.nid"></el-input>
             <small class="form--error" v-if="errors && errors.nid">{{
               errors.nid[0]
             }}</small>
           </el-form-item>
         </el-col>
       </el-row>
+
       <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Photo">
-            <input ref="photo" type="file" @change="choose_file($event)" />
+            <el-button type="primary" @click="showMediaGrid = true"
+              >Add image</el-button
+            >
+            <images-thumbs :images="form.images"></images-thumbs>
+            <img :src="form.photo" alt="" />
           </el-form-item>
           <small class="form--error" v-if="errors && errors.photo">{{
             errors.photo[0]
@@ -89,18 +94,25 @@
       <el-row>
         <el-col :span="6">
           <el-form-item>
-            <el-button type="primary" @click.prevent="onSubmit"
-              >Update
+            <el-button type="success" @click.prevent="onSubmit"
+              >Edit
             </el-button>
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
+    <media-grid
+      @emit_images="emit_images"
+      @handler="showMediaGrid = false"
+      v-if="showMediaGrid"
+    />
   </admin-layout>
 </template>
 <script>
 import AdminLayout from "../../layouts/AdminLayout.vue";
 import FormComponent from "../../components/FormComponent.vue";
+import MediaGrid from "../../components/MediaGrid.vue";
+import ImagesThumbs from "../../components/ImagesThumbs.vue";
 
 export default {
   data() {
@@ -114,69 +126,48 @@ export default {
         nid: "",
         phone: "",
         photo: null,
+        images: [],
       },
       photo_preview: null,
       errors: {},
+      showMediaGrid: false,
     };
   },
   components: {
     AdminLayout,
     FormComponent,
+    MediaGrid,
+    ImagesThumbs,
   },
   methods: {
-    choose_file(event) {
-      let file = event.target.files[0];
-      if (file.size > 250000) {
-        this.$notify({
-          type: "error",
-          message: "File less than 2048",
-        });
-      } else {
-        let reader = new FileReader();
-        reader.onload = (event) => {
-          this.form.photo = file;
-          this.photo_preview = event.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
+    emit_images(images) {
+      this.form.images = images;
+      this.form.photo = images[0];
     },
     onSubmit() {
-      let form = new FormData();
-
-      for (let key in this.form) {
-        form.append(key, this.form[key]);
-      }
-      form.append("_method", "PUT");
-
       axios
-        .post("/api/auth/employee/" + this.$route.params.id, form)
+        .put("/api/auth/employee/" + this.$route.params.id, this.form)
         .then((res) => {
           this.$router.push({ name: "admin.employee" });
+          this.$notify({
+            type: "success",
+            message: "Post was edited",
+          });
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
     },
   },
-  created() {
-    if (!User.loggedIn()) {
-      this.$notify({
-        type: "error",
-        message: "You are not logged in yet",
-      });
-      this.$router.push({ name: "login" });
-    }
+  mounted() {
     axios
       .get("/api/auth/employee/" + this.$route.params.id)
       .then((res) => {
+        console.log(res.data.data, "res.data.data");
         this.form = res.data.data;
-        this.photo_preview = this.form.photo;
       })
       .catch((error) => {
-        this.$notify({
-          type: "error",
-          message: error.response.data,
-        });
+        this.errors = error.response.data.errors;
       });
   },
 };
