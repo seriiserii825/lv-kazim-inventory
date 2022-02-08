@@ -7,19 +7,39 @@
           <span>Dashboard</span>
         </router-link>
       </el-menu-item>
-      <el-submenu index="3">
+      <el-submenu index="2">
         <template slot="title"
           ><i class="el-icon-s-check"></i>Employee</template
         >
         <el-menu-item-group>
-          <el-menu-item index="1-1">
+          <el-menu-item index="2-1">
             <router-link :to="{ name: 'admin.employee.create' }">
               <i class="el-icon-document-add"></i>
               <span>Create</span>
             </router-link>
           </el-menu-item>
-          <el-menu-item index="1-2">
+          <el-menu-item index="2-2">
             <router-link :to="{ name: 'admin.employee' }" exact>
+              <i class="el-icon-tickets"></i>
+              <span>List</span>
+            </router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+
+      <el-submenu index="3">
+        <template slot="title"
+          ><i class="el-icon-s-goods"></i>Suppliers</template
+        >
+        <el-menu-item-group>
+          <el-menu-item index="3-1">
+            <router-link :to="{ name: 'admin.suppliers.create' }">
+              <i class="el-icon-document-add"></i>
+              <span>Create</span>
+            </router-link>
+          </el-menu-item>
+          <el-menu-item index="3-2">
+            <router-link :to="{ name: 'admin.suppliers' }" exact>
               <i class="el-icon-tickets"></i>
               <span>List</span>
             </router-link>

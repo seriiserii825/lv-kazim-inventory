@@ -82002,7 +82002,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".el-aside {\n  min-height: 300vh;\n  background-color: #333;\n}\n.el-aside .el-menu {\n  background-color: #333;\n  border: none;\n}\n.el-aside .el-menu li {\n  padding: 0 !important;\n  transition: all 0.4s;\n  background-color: #003546;\n}\n.el-aside .el-menu li:hover {\n  background-color: #005c79;\n}\n.el-aside .el-menu li a {\n  display: block;\n  padding: 0 2rem;\n  text-decoration: none;\n  color: white;\n}\n.el-aside .el-menu li a.router-link-exact-active {\n  background-color: #a1a100;\n}\n.el-aside .el-menu li .el-submenu__title {\n  color: white;\n}\n.el-aside .el-menu li .el-submenu__title:hover {\n  background: inherit;\n}\n.el-aside .el-menu li ul li {\n  background-color: #00222d;\n}\n.el-aside .el-menu .el-submenu.is-opened .el-submenu__title {\n  background-color: #a1a100;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/Aside.vue"],"names":[],"mappings":"AAgCA;EACE,iBAAA;EACA,sBAAA;AA/BF;AAgCE;EACE,sBAAA;EACA,YAAA;AA9BJ;AA+BI;EACE,qBAAA;EACA,oBAAA;EACA,yBAAA;AA7BN;AA8BM;EACE,yBAAA;AA5BR;AA8BM;EACE,cAAA;EACA,eAAA;EACA,qBAAA;EACA,YAAA;AA5BR;AA6BQ;EACE,yBAAA;AA3BV;AA8BM;EACE,YAAA;AA5BR;AA6BQ;EACE,mBAAA;AA3BV;AA+BQ;EACE,yBAAA;AA7BV;AAmCM;EACE,yBAAA;AAjCR","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-aside {\n  min-height: 300vh;\n  background-color: #333;\n  .el-menu {\n    background-color: #333;\n    border: none;\n    li {\n      padding: 0 !important;\n      transition: all 0.4s;\n      background-color: #003546;\n      &:hover {\n        background-color: lighten(#003546, 10%);\n      }\n      a {\n        display: block;\n        padding: 0 2rem;\n        text-decoration: none;\n        color: white;\n        &.router-link-exact-active {\n          background-color: #a1a100;\n        }\n      }\n      .el-submenu__title {\n        color: white;\n        &:hover {\n          background: inherit;\n        }\n      }\n      ul {\n        li {\n          background-color: darken(#003546, 5%);\n        }\n      }\n    }\n\n    .el-submenu.is-opened {\n      .el-submenu__title {\n        background-color: #a1a100;\n      }\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".el-aside {\n  min-height: 300vh;\n  background-color: #333;\n}\n.el-aside .el-menu {\n  background-color: #333;\n  border: none;\n}\n.el-aside .el-menu li {\n  padding: 0 !important;\n  transition: all 0.4s;\n  background-color: #003546;\n}\n.el-aside .el-menu li:hover {\n  background-color: #005c79;\n}\n.el-aside .el-menu li a {\n  display: block;\n  padding: 0 2rem;\n  text-decoration: none;\n  color: white;\n}\n.el-aside .el-menu li a.router-link-exact-active {\n  background-color: #a1a100;\n}\n.el-aside .el-menu li .el-submenu__title {\n  color: white;\n}\n.el-aside .el-menu li .el-submenu__title:hover {\n  background: inherit;\n}\n.el-aside .el-menu li ul li {\n  background-color: #00222d;\n}\n.el-aside .el-menu .el-submenu.is-opened .el-submenu__title {\n  background-color: #a1a100;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/Aside.vue"],"names":[],"mappings":"AAoDA;EACE,iBAAA;EACA,sBAAA;AAnDF;AAoDE;EACE,sBAAA;EACA,YAAA;AAlDJ;AAmDI;EACE,qBAAA;EACA,oBAAA;EACA,yBAAA;AAjDN;AAkDM;EACE,yBAAA;AAhDR;AAkDM;EACE,cAAA;EACA,eAAA;EACA,qBAAA;EACA,YAAA;AAhDR;AAiDQ;EACE,yBAAA;AA/CV;AAkDM;EACE,YAAA;AAhDR;AAiDQ;EACE,mBAAA;AA/CV;AAmDQ;EACE,yBAAA;AAjDV;AAuDM;EACE,yBAAA;AArDR","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-aside {\n  min-height: 300vh;\n  background-color: #333;\n  .el-menu {\n    background-color: #333;\n    border: none;\n    li {\n      padding: 0 !important;\n      transition: all 0.4s;\n      background-color: #003546;\n      &:hover {\n        background-color: lighten(#003546, 10%);\n      }\n      a {\n        display: block;\n        padding: 0 2rem;\n        text-decoration: none;\n        color: white;\n        &.router-link-exact-active {\n          background-color: #a1a100;\n        }\n      }\n      .el-submenu__title {\n        color: white;\n        &:hover {\n          background: inherit;\n        }\n      }\n      ul {\n        li {\n          background-color: darken(#003546, 5%);\n        }\n      }\n    }\n\n    .el-submenu.is-opened {\n      .el-submenu__title {\n        background-color: #a1a100;\n      }\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -107540,7 +107540,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "el-submenu",
-            { attrs: { index: "3" } },
+            { attrs: { index: "2" } },
             [
               _c("template", { slot: "title" }, [
                 _c("i", { staticClass: "el-icon-s-check" }),
@@ -107552,7 +107552,7 @@ var render = function () {
                 [
                   _c(
                     "el-menu-item",
-                    { attrs: { index: "1-1" } },
+                    { attrs: { index: "2-1" } },
                     [
                       _c(
                         "router-link",
@@ -107569,12 +107569,66 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "el-menu-item",
-                    { attrs: { index: "1-2" } },
+                    { attrs: { index: "2-2" } },
                     [
                       _c(
                         "router-link",
                         {
                           attrs: { to: { name: "admin.employee" }, exact: "" },
+                        },
+                        [
+                          _c("i", { staticClass: "el-icon-tickets" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("List")]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "el-submenu",
+            { attrs: { index: "3" } },
+            [
+              _c("template", { slot: "title" }, [
+                _c("i", { staticClass: "el-icon-s-goods" }),
+                _vm._v("Suppliers"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "el-menu-item-group",
+                [
+                  _c(
+                    "el-menu-item",
+                    { attrs: { index: "3-1" } },
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: { name: "admin.suppliers.create" } } },
+                        [
+                          _c("i", { staticClass: "el-icon-document-add" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Create")]),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-menu-item",
+                    { attrs: { index: "3-2" } },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: { to: { name: "admin.suppliers" }, exact: "" },
                         },
                         [
                           _c("i", { staticClass: "el-icon-tickets" }),
