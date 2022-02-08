@@ -103,6 +103,7 @@
       @emit_images="emit_images"
       @handler="showMediaGrid = false"
       v-if="showMediaGrid"
+      :single="false"
     />
   </admin-layout>
 </template>

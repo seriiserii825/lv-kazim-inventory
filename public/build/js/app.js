@@ -4683,6 +4683,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -107734,6 +107735,7 @@ var render = function () {
       _vm._v(" "),
       _vm.showMediaGrid
         ? _c("media-grid", {
+            attrs: { single: false },
             on: {
               emit_images: _vm.emit_images,
               handler: function ($event) {
