@@ -67,8 +67,8 @@
         <el-col :span="6">
           <el-form-item label="Photo">
             <el-button type="primary" @click="showMediaGrid = true"
-              >Add image</el-button
-            >
+              >Add image
+            </el-button>
             <images-thumbs
               v-if="form.images && form.images.length"
               :images="form.images"
@@ -156,7 +156,13 @@ export default {
     },
     onSubmit() {
       axios
-        .put("/api/auth/employee/" + this.$route.params.id, this.form)
+        .put(
+          "/api/auth/employee/" +
+            this.$route.params.id +
+            "?api_token=" +
+            this.$store.getters.getToken,
+          this.form
+        )
         .then((res) => {
           this.$router.push({ name: "admin.employee" });
           this.$notify({
@@ -171,7 +177,12 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/auth/employee/" + this.$route.params.id)
+      .get(
+        "/api/auth/employee/" +
+          this.$route.params.id +
+          "?api_token=" +
+          this.$store.getters.getToken
+      )
       .then((res) => {
         console.log(res.data.data, "res.data.data");
         this.form = res.data.data;

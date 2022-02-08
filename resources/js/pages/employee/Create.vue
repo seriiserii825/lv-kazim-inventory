@@ -144,7 +144,10 @@ export default {
     },
     onSubmit() {
       axios
-        .post("/api/auth/employee", this.form)
+        .post(
+          "/api/auth/employee?api_token=" + this.$store.getters.getToken,
+          this.form
+        )
         .then((res) => {
           this.$router.push({ name: "admin.employee" });
           this.$notify({

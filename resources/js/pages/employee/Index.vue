@@ -69,7 +69,12 @@ export default {
       })
         .then(() => {
           axios
-            .delete("/api/auth/employee/" + id)
+            .delete(
+              "/api/auth/employee/" +
+                id +
+                "?api_token=" +
+                this.$store.getters.getToken
+            )
             .then((res) => {
               this.getItems();
             })
@@ -91,7 +96,7 @@ export default {
     },
     getItems() {
       axios
-        .get("/api/auth/employee")
+        .get("/api/auth/employee?api_token=" + this.$store.getters.getToken)
         .then((res) => {
           this.items = res.data.data;
         })

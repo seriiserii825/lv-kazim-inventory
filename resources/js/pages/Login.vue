@@ -44,6 +44,7 @@
 <script>
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import FormComponent from "../components/FormComponent.vue";
+
 export default {
   data() {
     return {
@@ -62,7 +63,10 @@ export default {
   methods: {
     onSubmit() {
       axios
-        .post("/api/auth/login", this.form)
+        .post(
+          "/api/auth/login?api_token=" + this.$store.getters.getToken,
+          this.form
+        )
         .then((res) => {
           User.responseAfterLogin(res);
           this.$notify({
@@ -76,7 +80,7 @@ export default {
           this.errors = error.response.data.errors;
 
           this.$message({
-            message: error.response.data.error,
+            message: error.response.data.message,
             type: "error",
           });
         });

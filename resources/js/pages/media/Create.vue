@@ -59,7 +59,10 @@ export default {
       }
 
       axios
-        .post("/api/auth/media", formData)
+        .post(
+          "/api/auth/media?api_token=" + this.$store.getters.getToken,
+          formData
+        )
         .then((res) => {
           this.images = [];
           this.$refs.files.value = "";

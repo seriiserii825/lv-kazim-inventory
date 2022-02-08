@@ -76,7 +76,7 @@ export default {
     },
     getItems() {
       axios
-        .get("/api/auth/media")
+        .get("/api/auth/media?api_token=" + this.$store.getters.getToken)
         .then((res) => {
           this.items = res.data.data;
           this.searchedItems = this.items;

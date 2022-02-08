@@ -68,7 +68,12 @@ export default {
       })
         .then(() => {
           axios
-            .delete("/api/auth/media/" + id)
+            .delete(
+              "/api/auth/media/" +
+                id +
+                "?api_token=" +
+                this.$store.getters.getToken
+            )
             .then((res) => {
               this.getItems();
               console.log(res, "res");
@@ -90,7 +95,7 @@ export default {
     },
     getItems() {
       axios
-        .get("/api/auth/media")
+        .get("/api/auth/media?api_token=" + this.$store.getters.getToken)
         .then((res) => {
           this.items = res.data.data;
           this.searchedItems = this.items;
