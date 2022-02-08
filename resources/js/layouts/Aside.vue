@@ -7,25 +7,6 @@
           <span>Dashboard</span>
         </router-link>
       </el-menu-item>
-
-      <el-submenu index="2">
-        <template slot="title"><i class="el-icon-s-check"></i>Media</template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">
-            <router-link :to="{ name: 'admin.media.create' }">
-              <i class="el-icon-document-add"></i>
-              <span>Add</span>
-            </router-link>
-          </el-menu-item>
-          <el-menu-item index="1-2">
-            <router-link :to="{ name: 'admin.media' }" exact>
-              <i class="el-icon-tickets"></i>
-              <span>List</span>
-            </router-link>
-          </el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-
       <el-submenu index="3">
         <template slot="title"
           ><i class="el-icon-s-check"></i>Employee</template
