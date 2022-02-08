@@ -139,8 +139,7 @@ export default {
   methods: {
     emit_images(images) {
       this.form.images = images;
-      console.log(this.form.images, "this.form.images");
-      this.form.photo = [0];
+      this.form.photo = this.form.images[0];
     },
     onSubmit() {
       axios

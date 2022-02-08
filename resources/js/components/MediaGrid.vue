@@ -1,7 +1,13 @@
 <template>
   <div class="media-grid">
     <header class="media-grid__header">
-      <input v-model="search" @input="searchInput" type="text" />
+      <input
+        class="media-grid__search"
+        v-model="search"
+        @input="searchInput"
+        type="text"
+        placeholder="Search media...."
+      />
       <div @click="closeMediaGrid" class="el-icon-circle-close"></div>
     </header>
     <div class="media-grid__wrap">
@@ -24,6 +30,12 @@
 <script>
 import MediaGridItem from "./MediaGridItem.vue";
 export default {
+  props: {
+    single: {
+      type: Boolean,
+      default: true,
+    },
+  },
   components: { MediaGridItem },
   data() {
     return {
@@ -44,7 +56,11 @@ export default {
       }
     },
     emit_images() {
-      this.$emit("emit_images", this.images);
+      if (this.single) {
+        this.$emit("emit_images", [this.images[0]]);
+      } else {
+        this.$emit("emit_images", this.images);
+      }
       this.closeMediaGrid();
     },
     add_image(value) {
@@ -95,6 +111,12 @@ export default {
       color: red;
       cursor: pointer;
     }
+  }
+  &__search {
+    width: 30rem;
+    height: 3rem;
+    background-color: #eee;
+    border: 1px solid #ccc;
   }
   &__wrap {
     display: flex;

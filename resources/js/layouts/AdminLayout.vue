@@ -36,6 +36,12 @@ export default {
 .admin-layout {
   min-height: 300vh;
   background-color: #444;
+  &__search {
+    width: 30rem;
+    height: 4rem;
+    background-color: #eee;
+    border: 1px solid #ccc;
+  }
   &__title {
     margin-bottom: 3rem;
     font-size: 3rem;

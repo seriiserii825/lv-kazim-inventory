@@ -5,7 +5,7 @@
         <el-button type="success">All employee</el-button>
       </router-link>
     </el-row>
-    <h3 class="form__title">Create employee</h3>
+    <h3 class="form__title">Edit employee</h3>
     <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -69,13 +69,22 @@
             <el-button type="primary" @click="showMediaGrid = true"
               >Add image</el-button
             >
-            <images-thumbs :images="form.images"></images-thumbs>
-            <img :src="form.photo" alt="" />
+            <images-thumbs
+              v-if="form.images && form.images.length"
+              :images="form.images"
+            ></images-thumbs>
+            <img
+              class="mt-1 db"
+              width="100"
+              height="50"
+              v-else
+              :src="form.photo"
+              alt=""
+            />
           </el-form-item>
           <small class="form--error" v-if="errors && errors.photo">{{
             errors.photo[0]
           }}</small>
-          <img :src="photo_preview" alt="" width="400" class="mb-4" />
         </el-col>
         <el-col :span="6">
           <el-form-item label="Join date">
@@ -128,7 +137,6 @@ export default {
         photo: null,
         images: [],
       },
-      photo_preview: null,
       errors: {},
       showMediaGrid: false,
     };
@@ -143,6 +151,8 @@ export default {
     emit_images(images) {
       this.form.images = images;
       this.form.photo = images[0];
+      console.log(this.form.images, "this.form.images");
+      console.log(this.form.photo, "this.form.photo");
     },
     onSubmit() {
       axios

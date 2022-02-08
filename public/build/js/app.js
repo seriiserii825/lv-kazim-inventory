@@ -3802,8 +3802,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    single: {
+      type: Boolean,
+      "default": true
+    }
+  },
   components: {
     MediaGridItem: _MediaGridItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -3828,7 +3840,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     emit_images: function emit_images() {
-      this.$emit("emit_images", this.images);
+      if (this.single) {
+        this.$emit("emit_images", [this.images[0]]);
+      } else {
+        this.$emit("emit_images", this.images);
+      }
+
       this.closeMediaGrid();
     },
     add_image: function add_image(value) {
@@ -4697,8 +4714,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     emit_images: function emit_images(images) {
       this.form.images = images;
-      console.log(this.form.images, "this.form.images");
-      this.form.photo = [0];
+      this.form.photo = this.form.images[0];
     },
     onSubmit: function onSubmit() {
       var _this = this;
@@ -4846,6 +4862,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4864,7 +4889,6 @@ __webpack_require__.r(__webpack_exports__);
         photo: null,
         images: []
       },
-      photo_preview: null,
       errors: {},
       showMediaGrid: false
     };
@@ -4879,6 +4903,8 @@ __webpack_require__.r(__webpack_exports__);
     emit_images: function emit_images(images) {
       this.form.images = images;
       this.form.photo = images[0];
+      console.log(this.form.images, "this.form.images");
+      console.log(this.form.photo, "this.form.photo");
     },
     onSubmit: function onSubmit() {
       var _this = this;
@@ -5362,19 +5388,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       items: [],
-      fullscreenLoading: false
+      fullscreenLoading: false,
+      search: "",
+      searchedItems: []
     };
   },
   components: {
     AdminLayout: _layouts_AdminLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    searchInput: function searchInput() {
+      var _this = this;
+
+      if (this.search.length > 0) {
+        this.searchedItems = this.searchedItems.filter(function (item) {
+          return item.title.includes(_this.search);
+        });
+      } else {
+        this.searchedItems = this.items;
+      }
+    },
     shortTitle: function shortTitle(title) {
       if (title.length > 20) {
         title = title.slice(0, 20) + "..." + title.slice(-4);
@@ -5384,7 +5434,7 @@ __webpack_require__.r(__webpack_exports__);
       return title;
     },
     remove: function remove(id) {
-      var _this = this;
+      var _this2 = this;
 
       this.$confirm("This will permanently delete. Continue?", "Warning", {
         confirmButtonText: "OK",
@@ -5392,31 +5442,32 @@ __webpack_require__.r(__webpack_exports__);
         type: "warning"
       }).then(function () {
         axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/api/auth/media/" + id).then(function (res) {
-          _this.getItems();
+          _this2.getItems();
 
           console.log(res, "res");
         })["catch"](function (error) {
-          _this.errors = error.response.data.errors;
+          _this2.errors = error.response.data.errors;
         });
 
-        _this.$notify({
+        _this2.$notify({
           type: "success",
           message: "Delete completed"
         });
       })["catch"](function () {
-        _this.$notify({
+        _this2.$notify({
           type: "info",
           message: "Delete canceled"
         });
       });
     },
     getItems: function getItems() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/auth/media").then(function (res) {
-        _this2.items = res.data.data;
+        _this3.items = res.data.data;
+        _this3.searchedItems = _this3.items;
       })["catch"](function (error) {
-        _this2.errors = error.response.data.errors;
+        _this3.errors = error.response.data.errors;
       });
     }
   },
@@ -81213,7 +81264,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n}\n.media-grid__header {\n  margin-bottom: 5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.media-grid__header .el-icon-circle-close {\n  font-size: 4rem;\n  color: red;\n  cursor: pointer;\n}\n.media-grid__wrap {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-bottom: 2rem;\n  padding: 3rem;\n  background-color: #ddd;\n}\n.media-grid__item {\n  position: relative;\n  margin-right: 2rem;\n  margin-bottom: 2rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGrid.vue"],"names":[],"mappings":"AA8EA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,yBAAA;EACA,cAAA;AA7EF;AA8EE;EACE,mBAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AA5EJ;AA6EI;EACE,eAAA;EACA,UAAA;EACA,eAAA;AA3EN;AA8EE;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,sBAAA;AA5EJ;AA8EE;EACE,kBAAA;EACA,kBAAA;EACA,mBAAA;AA5EJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n  &__header {\n    margin-bottom: 5rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    .el-icon-circle-close {\n      font-size: 4rem;\n      color: red;\n      cursor: pointer;\n    }\n  }\n  &__wrap {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: wrap;\n    margin-bottom: 2rem;\n    padding: 3rem;\n    background-color: #ddd;\n  }\n  &__item {\n    position: relative;\n    margin-right: 2rem;\n    margin-bottom: 2rem;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n}\n.media-grid__header {\n  margin-bottom: 5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.media-grid__header .el-icon-circle-close {\n  font-size: 4rem;\n  color: red;\n  cursor: pointer;\n}\n.media-grid__search {\n  width: 30rem;\n  height: 3rem;\n  background-color: #eee;\n  border: 1px solid #ccc;\n}\n.media-grid__wrap {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-bottom: 2rem;\n  padding: 3rem;\n  background-color: #ddd;\n}\n.media-grid__item {\n  position: relative;\n  margin-right: 2rem;\n  margin-bottom: 2rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGrid.vue"],"names":[],"mappings":"AA8FA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,yBAAA;EACA,cAAA;AA7FF;AA8FE;EACE,mBAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AA5FJ;AA6FI;EACE,eAAA;EACA,UAAA;EACA,eAAA;AA3FN;AA8FE;EACE,YAAA;EACA,YAAA;EACA,sBAAA;EACA,sBAAA;AA5FJ;AA8FE;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,sBAAA;AA5FJ;AA8FE;EACE,kBAAA;EACA,kBAAA;EACA,mBAAA;AA5FJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n  &__header {\n    margin-bottom: 5rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    .el-icon-circle-close {\n      font-size: 4rem;\n      color: red;\n      cursor: pointer;\n    }\n  }\n  &__search {\n    width: 30rem;\n    height: 3rem;\n    background-color: #eee;\n    border: 1px solid #ccc;\n  }\n  &__wrap {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: wrap;\n    margin-bottom: 2rem;\n    padding: 3rem;\n    background-color: #ddd;\n  }\n  &__item {\n    position: relative;\n    margin-right: 2rem;\n    margin-bottom: 2rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81267,7 +81318,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-layout {\n  min-height: 300vh;\n  background-color: #444;\n}\n.admin-layout__title {\n  margin-bottom: 3rem;\n  font-size: 3rem;\n  font-weight: bold;\n}\n.admin-layout .el-main {\n  padding: 0;\n}\n.admin-layout .main {\n  padding: 4rem;\n  background-color: #d4d4d4;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/AdminLayout.vue"],"names":[],"mappings":"AAmCA;EACE,iBAAA;EACA,sBAAA;AAlCF;AAmCE;EACE,mBAAA;EACA,eAAA;EACA,iBAAA;AAjCJ;AAmCE;EACE,UAAA;AAjCJ;AAmCE;EACE,aAAA;EACA,yBAAA;AAjCJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-layout {\n  min-height: 300vh;\n  background-color: #444;\n  &__title {\n    margin-bottom: 3rem;\n    font-size: 3rem;\n    font-weight: bold;\n  }\n  .el-main {\n    padding: 0;\n  }\n  .main {\n    padding: 4rem;\n    background-color: #d4d4d4;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-layout {\n  min-height: 300vh;\n  background-color: #444;\n}\n.admin-layout__search {\n  width: 30rem;\n  height: 4rem;\n  background-color: #eee;\n  border: 1px solid #ccc;\n}\n.admin-layout__title {\n  margin-bottom: 3rem;\n  font-size: 3rem;\n  font-weight: bold;\n}\n.admin-layout .el-main {\n  padding: 0;\n}\n.admin-layout .main {\n  padding: 4rem;\n  background-color: #d4d4d4;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/AdminLayout.vue"],"names":[],"mappings":"AAmCA;EACE,iBAAA;EACA,sBAAA;AAlCF;AAmCE;EACE,YAAA;EACA,YAAA;EACA,sBAAA;EACA,sBAAA;AAjCJ;AAmCE;EACE,mBAAA;EACA,eAAA;EACA,iBAAA;AAjCJ;AAmCE;EACE,UAAA;AAjCJ;AAmCE;EACE,aAAA;EACA,yBAAA;AAjCJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-layout {\n  min-height: 300vh;\n  background-color: #444;\n  &__search {\n    width: 30rem;\n    height: 4rem;\n    background-color: #eee;\n    border: 1px solid #ccc;\n  }\n  &__title {\n    margin-bottom: 3rem;\n    font-size: 3rem;\n    font-weight: bold;\n  }\n  .el-main {\n    padding: 0;\n  }\n  .main {\n    padding: 4rem;\n    background-color: #d4d4d4;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81429,7 +81480,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.admin-table th,\n.admin-table td {\n  padding: 1rem;\n  border: 1px solid #444;\n}\n.admin-table th {\n  color: white;\n  background-color: #444;\n}\n.admin-table tr:nth-of-type(even) {\n  background-color: #bbb;\n}\n.admin-table__actions {\n  display: flex;\n  align-items: center;\n}\n.admin-table__actions a {\n  margin-right: 1rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/employee/Index.vue"],"names":[],"mappings":"AA8GA;EACE,WAAA;EACA,yBAAA;AA7GF;AA8GE;;EAEE,aAAA;EACA,sBAAA;AA5GJ;AA8GE;EACE,YAAA;EACA,sBAAA;AA5GJ;AA8GE;EACE,sBAAA;AA5GJ;AA8GE;EACE,aAAA;EACA,mBAAA;AA5GJ;AA6GI;EACE,kBAAA;AA3GN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-table {\n  width: 100%;\n  border-collapse: collapse;\n  th,\n  td {\n    padding: 1rem;\n    border: 1px solid #444;\n  }\n  th {\n    color: white;\n    background-color: #444;\n  }\n  tr:nth-of-type(even) {\n    background-color: #bbb;\n  }\n  &__actions {\n    display: flex;\n    align-items: center;\n    a {\n      margin-right: 1rem;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-table {\n  width: 900px;\n  border-collapse: collapse;\n}\n.admin-table th,\n.admin-table td {\n  padding: 1rem;\n  border: 1px solid #444;\n}\n.admin-table th:nth-of-type(7),\n.admin-table td:nth-of-type(7) {\n  width: 7rem;\n}\n.admin-table th {\n  color: white;\n  background-color: #444;\n}\n.admin-table tr:nth-of-type(even) {\n  background-color: #bbb;\n}\n.admin-table__actions {\n  display: flex;\n  align-items: center;\n}\n.admin-table__actions a {\n  margin-right: 1rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/employee/Index.vue"],"names":[],"mappings":"AA8GA;EACE,YAAA;EACA,yBAAA;AA7GF;AA8GE;;EAEE,aAAA;EACA,sBAAA;AA5GJ;AA6GI;;EACE,WAAA;AA1GN;AA6GE;EACE,YAAA;EACA,sBAAA;AA3GJ;AA6GE;EACE,sBAAA;AA3GJ;AA6GE;EACE,aAAA;EACA,mBAAA;AA3GJ;AA4GI;EACE,kBAAA;AA1GN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-table {\n  width: 900px;\n  border-collapse: collapse;\n  th,\n  td {\n    padding: 1rem;\n    border: 1px solid #444;\n    &:nth-of-type(7) {\n      width: 7rem;\n    }\n  }\n  th {\n    color: white;\n    background-color: #444;\n  }\n  tr:nth-of-type(even) {\n    background-color: #bbb;\n  }\n  &__actions {\n    display: flex;\n    align-items: center;\n    a {\n      margin-right: 1rem;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81456,7 +81507,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-list {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n}\n.media-list li {\n  position: relative;\n  margin-bottom: 2rem;\n  margin-right: 2rem;\n  width: 18rem;\n  height: 12rem;\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n}\n.media-list li:hover .media-list__delete {\n  opacity: 1;\n}\n.media-list li img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-list__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-list__delete {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 6rem;\n  color: red;\n  background-color: rgba(255, 255, 255, 0.5);\n  z-index: 3;\n  opacity: 0;\n  transition: all 0.4s;\n}\n.media-list__delete i {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: inline-block;\n  width: 25%;\n  height: 30%;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/media/Index.vue"],"names":[],"mappings":"AAqFA;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,SAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;AApFF;AAqFE;EACE,kBAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,sBAAA;EACA,0CAAA;AAnFJ;AAqFM;EACE,UAAA;AAnFR;AAsFI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AApFN;AAuFE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AArFJ;AAuFE;EACE,kBAAA;EACA,MAAA;EACA,QAAA;EACA,WAAA;EACA,YAAA;EACA,eAAA;EACA,UAAA;EACA,0CAAA;EACA,UAAA;EACA,UAAA;EACA,oBAAA;AArFJ;AAsFI;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,qBAAA;EACA,UAAA;EACA,WAAA;AApFN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-list {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n  li {\n    position: relative;\n    margin-bottom: 2rem;\n    margin-right: 2rem;\n    width: 18rem;\n    height: 12rem;\n    background-color: white;\n    border: 1px solid #ccc;\n    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n    &:hover {\n      .media-list__delete {\n        opacity: 1;\n      }\n    }\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      z-index: 1;\n    }\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  &__delete {\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    font-size: 6rem;\n    color: red;\n    background-color: rgba(255, 255, 255, 0.5);\n    z-index: 3;\n    opacity: 0;\n    transition: all 0.4s;\n    i {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      display: inline-block;\n      width: 25%;\n      height: 30%;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-list {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n}\n.media-list li {\n  position: relative;\n  margin-bottom: 2rem;\n  margin-right: 2rem;\n  width: 18rem;\n  height: 12rem;\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n}\n.media-list li:hover .media-list__delete {\n  opacity: 1;\n}\n.media-list li img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-list__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-list__delete {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 6rem;\n  color: red;\n  background-color: rgba(255, 255, 255, 0.5);\n  z-index: 3;\n  opacity: 0;\n  transition: all 0.4s;\n}\n.media-list__delete i {\n  position: absolute;\n  top: 25%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: inline-block;\n  width: 25%;\n  height: 30%;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/media/Index.vue"],"names":[],"mappings":"AA4GA;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,SAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;AA3GF;AA4GE;EACE,kBAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,sBAAA;EACA,0CAAA;AA1GJ;AA4GM;EACE,UAAA;AA1GR;AA6GI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AA3GN;AA8GE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AA5GJ;AA8GE;EACE,kBAAA;EACA,MAAA;EACA,QAAA;EACA,WAAA;EACA,YAAA;EACA,eAAA;EACA,UAAA;EACA,0CAAA;EACA,UAAA;EACA,UAAA;EACA,oBAAA;AA5GJ;AA6GI;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,qBAAA;EACA,UAAA;EACA,WAAA;AA3GN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-list {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n  li {\n    position: relative;\n    margin-bottom: 2rem;\n    margin-right: 2rem;\n    width: 18rem;\n    height: 12rem;\n    background-color: white;\n    border: 1px solid #ccc;\n    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n    &:hover {\n      .media-list__delete {\n        opacity: 1;\n      }\n    }\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      z-index: 1;\n    }\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  &__delete {\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    font-size: 6rem;\n    color: red;\n    background-color: rgba(255, 255, 255, 0.5);\n    z-index: 3;\n    opacity: 0;\n    transition: all 0.4s;\n    i {\n      position: absolute;\n      top: 25%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      display: inline-block;\n      width: 25%;\n      height: 30%;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -106075,7 +106126,8 @@ var render = function () {
               expression: "search",
             },
           ],
-          attrs: { type: "text" },
+          staticClass: "media-grid__search",
+          attrs: { type: "text", placeholder: "Search media...." },
           domProps: { value: _vm.search },
           on: {
             input: [
@@ -107738,7 +107790,7 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("h3", { staticClass: "form__title" }, [_vm._v("Create employee")]),
+      _c("h3", { staticClass: "form__title" }, [_vm._v("Edit employee")]),
       _vm._v(" "),
       _c(
         "el-form",
@@ -107976,11 +108028,19 @@ var render = function () {
                         [_vm._v("Add image")]
                       ),
                       _vm._v(" "),
-                      _c("images-thumbs", {
-                        attrs: { images: _vm.form.images },
-                      }),
-                      _vm._v(" "),
-                      _c("img", { attrs: { src: _vm.form.photo, alt: "" } }),
+                      _vm.form.images && _vm.form.images.length
+                        ? _c("images-thumbs", {
+                            attrs: { images: _vm.form.images },
+                          })
+                        : _c("img", {
+                            staticClass: "mt-1 db",
+                            attrs: {
+                              width: "100",
+                              height: "50",
+                              src: _vm.form.photo,
+                              alt: "",
+                            },
+                          }),
                     ],
                     1
                   ),
@@ -107990,11 +108050,6 @@ var render = function () {
                         _vm._v(_vm._s(_vm.errors.photo[0])),
                       ])
                     : _vm._e(),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "mb-4",
-                    attrs: { src: _vm.photo_preview, alt: "", width: "400" },
-                  }),
                 ],
                 1
               ),
@@ -108134,25 +108189,25 @@ var render = function () {
       _c("table", { staticClass: "admin-table" }, [
         _c("thead", [
           _c("tr", [
-            _c("th", [_vm._v("Id")]),
+            _c("th", { staticStyle: { width: "3%" } }, [_vm._v("Id")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Nid")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Nid")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Name")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Name")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Email")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Email")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Phone")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Phone")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Address")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Address")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Photo")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Photo")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Salary")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Salary")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Join Date")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Join Date")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Actions")]),
+            _c("th", { staticStyle: { width: "8%" } }, [_vm._v("Actions")]),
           ]),
         ]),
         _vm._v(" "),
@@ -108736,15 +108791,49 @@ var render = function () {
         { staticClass: "mb-3" },
         [
           _c(
-            "router-link",
-            { attrs: { to: { name: "admin.media.create" } } },
+            "el-col",
+            { attrs: { span: 4 } },
             [
-              _c("el-button", { attrs: { type: "success" } }, [
-                _vm._v("Create"),
-              ]),
+              _c(
+                "router-link",
+                { attrs: { to: { name: "admin.media.create" } } },
+                [
+                  _c("el-button", { attrs: { type: "success" } }, [
+                    _vm._v("Create"),
+                  ]),
+                ],
+                1
+              ),
             ],
             1
           ),
+          _vm._v(" "),
+          _c("el-col", { attrs: { span: 4 } }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search",
+                },
+              ],
+              staticClass: "admin-layout__search",
+              attrs: { type: "text", placeholder: "Search media...." },
+              domProps: { value: _vm.search },
+              on: {
+                input: [
+                  function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search = $event.target.value
+                  },
+                  _vm.searchInput,
+                ],
+              },
+            }),
+          ]),
         ],
         1
       ),
@@ -108754,7 +108843,7 @@ var render = function () {
       _c(
         "ul",
         { staticClass: "media-list" },
-        _vm._l(_vm.items, function (item) {
+        _vm._l(_vm.searchedItems, function (item) {
           return _c("li", { key: item.id }, [
             _c("img", { attrs: { src: item.path, alt: "" } }),
             _vm._v(" "),

@@ -1,13 +1,24 @@
 <template>
   <admin-layout>
     <el-row class="mb-3">
-      <router-link :to="{ name: 'admin.media.create' }">
-        <el-button type="success">Create</el-button>
-      </router-link>
+      <el-col :span="4">
+        <router-link :to="{ name: 'admin.media.create' }">
+          <el-button type="success">Create</el-button>
+        </router-link>
+      </el-col>
+      <el-col :span="4">
+        <input
+          class="admin-layout__search"
+          v-model="search"
+          @input="searchInput"
+          type="text"
+          placeholder="Search media...."
+        />
+      </el-col>
     </el-row>
     <h2 class="admin-layout__title">List media</h2>
     <ul class="media-list">
-      <li v-for="item in items" :key="item.id">
+      <li v-for="item in searchedItems" :key="item.id">
         <img :src="item.path" alt="" />
         <h3 class="media-list__title">{{ shortTitle(item.title) }}</h3>
         <a class="media-list__delete" href="#" @click.prevent="remove(item.id)"
@@ -25,12 +36,23 @@ export default {
     return {
       items: [],
       fullscreenLoading: false,
+      search: "",
+      searchedItems: [],
     };
   },
   components: {
     AdminLayout,
   },
   methods: {
+    searchInput() {
+      if (this.search.length > 0) {
+        this.searchedItems = this.searchedItems.filter((item) => {
+          return item.title.includes(this.search);
+        });
+      } else {
+        this.searchedItems = this.items;
+      }
+    },
     shortTitle(title) {
       if (title.length > 20) {
         title = title.slice(0, 20) + "..." + title.slice(-4);
@@ -71,6 +93,7 @@ export default {
         .get("/api/auth/media")
         .then((res) => {
           this.items = res.data.data;
+          this.searchedItems = this.items;
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
@@ -145,7 +168,7 @@ export default {
     transition: all 0.4s;
     i {
       position: absolute;
-      top: 50%;
+      top: 25%;
       left: 50%;
       transform: translate(-50%, -50%);
       display: inline-block;

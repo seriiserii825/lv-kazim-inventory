@@ -32,11 +32,7 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
 
-        $fileUpload = new FileUploadRepository($request, 'photo', 'employees');
-        $data = $request->validated();
-        $data['photo'] = $fileUpload->getPath();
-
-        $employee->update($data);
+        $employee->update($request->validated());
         return new EmployeeResource($employee);
     }
 

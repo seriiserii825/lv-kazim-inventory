@@ -9,16 +9,16 @@
     <table class="admin-table">
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Nid</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Photo</th>
-          <th>Salary</th>
-          <th>Join Date</th>
-          <th>Actions</th>
+          <th style="width: 3%">Id</th>
+          <th style="width: 8%">Nid</th>
+          <th style="width: 8%">Name</th>
+          <th style="width: 8%">Email</th>
+          <th style="width: 8%">Phone</th>
+          <th style="width: 8%">Address</th>
+          <th style="width: 8%">Photo</th>
+          <th style="width: 8%">Salary</th>
+          <th style="width: 8%">Join Date</th>
+          <th style="width: 8%">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -109,12 +109,15 @@ export default {
 </script>
 <style lang="scss">
 .admin-table {
-  width: 100%;
+  width: 900px;
   border-collapse: collapse;
   th,
   td {
     padding: 1rem;
     border: 1px solid #444;
+    &:nth-of-type(7) {
+      width: 7rem;
+    }
   }
   th {
     color: white;
