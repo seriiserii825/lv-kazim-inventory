@@ -9,7 +9,7 @@
     <ul class="media-list">
       <li v-for="item in items" :key="item.id">
         <img :src="item.path" alt="" />
-        <div class="media-list__title">{{ item.title }}</div>
+        <h3 class="media-list__title">{{ shortTitle(item.title) }}</h3>
         <a class="media-list__delete" href="#" @click.prevent="remove(item.id)"
           ><i class="el-icon-error"></i>
         </a>
@@ -31,6 +31,13 @@ export default {
     AdminLayout,
   },
   methods: {
+    shortTitle(title) {
+      if (title.length > 20) {
+        title = title.slice(0, 20) + "..." + title.slice(-4);
+        return title;
+      }
+      return title;
+    },
     remove(id) {
       this.$confirm("This will permanently delete. Continue?", "Warning", {
         confirmButtonText: "OK",
@@ -78,7 +85,7 @@ export default {
 <style lang="scss">
 .media-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
@@ -87,8 +94,9 @@ export default {
   li {
     position: relative;
     margin-bottom: 2rem;
-    width: 18%;
-    height: 20rem;
+    margin-right: 2rem;
+    width: 18rem;
+    height: 12rem;
     background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);

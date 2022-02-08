@@ -7,6 +7,7 @@
     <div class="media-grid__wrap">
       <div class="media-grid__item" v-for="item in items" :key="item.id">
         <media-grid-item
+          :title="item.title"
           :path="item.path"
           @add-image="add_image"
           @remove-image="remove_image"
@@ -81,7 +82,7 @@ export default {
   }
   &__wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-bottom: 2rem;
     padding: 3rem;
@@ -89,17 +90,8 @@ export default {
   }
   &__item {
     position: relative;
-    margin-bottom: 3rem;
-    width: 14rem;
-    height: 10rem;
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    margin-right: 2rem;
+    margin-bottom: 2rem;
   }
 }
 </style>

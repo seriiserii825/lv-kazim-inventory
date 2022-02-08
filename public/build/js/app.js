@@ -3797,6 +3797,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3858,7 +3859,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    title: String,
+    path: String
+  },
   data: function data() {
     return {
       active: false,
@@ -3866,6 +3872,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    shortTitle: function shortTitle(title) {
+      if (title.length > 20) {
+        title = title.slice(0, 20) + "..." + title.slice(-4);
+        return title;
+      }
+
+      return title;
+    },
     toggleImage: function toggleImage() {
       this.active = !this.active;
 
@@ -3877,9 +3891,6 @@ __webpack_require__.r(__webpack_exports__);
         this.$emit("remove-image", this.path);
       }
     }
-  },
-  props: {
-    path: String
   }
 });
 
@@ -4073,6 +4084,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -4092,6 +4105,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5327,6 +5356,14 @@ __webpack_require__.r(__webpack_exports__);
     AdminLayout: _layouts_AdminLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    shortTitle: function shortTitle(title) {
+      if (title.length > 20) {
+        title = title.slice(0, 20) + "..." + title.slice(-4);
+        return title;
+      }
+
+      return title;
+    },
     remove: function remove(id) {
       var _this = this;
 
@@ -81157,7 +81194,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n}\n.media-grid__header {\n  margin-bottom: 5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.media-grid__header .el-icon-circle-close {\n  font-size: 4rem;\n  color: red;\n  cursor: pointer;\n}\n.media-grid__wrap {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin-bottom: 2rem;\n  padding: 3rem;\n  background-color: #ddd;\n}\n.media-grid__item {\n  position: relative;\n  margin-bottom: 3rem;\n  width: 14rem;\n  height: 10rem;\n}\n.media-grid__item img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGrid.vue"],"names":[],"mappings":"AA6DA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,yBAAA;EACA,cAAA;AA5DF;AA6DE;EACE,mBAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AA3DJ;AA4DI;EACE,eAAA;EACA,UAAA;EACA,eAAA;AA1DN;AA6DE;EACE,aAAA;EACA,8BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,sBAAA;AA3DJ;AA6DE;EACE,kBAAA;EACA,mBAAA;EACA,YAAA;EACA,aAAA;AA3DJ;AA4DI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;AA1DN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n  &__header {\n    margin-bottom: 5rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    .el-icon-circle-close {\n      font-size: 4rem;\n      color: red;\n      cursor: pointer;\n    }\n  }\n  &__wrap {\n    display: flex;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    margin-bottom: 2rem;\n    padding: 3rem;\n    background-color: #ddd;\n  }\n  &__item {\n    position: relative;\n    margin-bottom: 3rem;\n    width: 14rem;\n    height: 10rem;\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n}\n.media-grid__header {\n  margin-bottom: 5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.media-grid__header .el-icon-circle-close {\n  font-size: 4rem;\n  color: red;\n  cursor: pointer;\n}\n.media-grid__wrap {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-bottom: 2rem;\n  padding: 3rem;\n  background-color: #ddd;\n}\n.media-grid__item {\n  position: relative;\n  margin-right: 2rem;\n  margin-bottom: 2rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGrid.vue"],"names":[],"mappings":"AA8DA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,yBAAA;EACA,cAAA;AA7DF;AA8DE;EACE,mBAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AA5DJ;AA6DI;EACE,eAAA;EACA,UAAA;EACA,eAAA;AA3DN;AA8DE;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,sBAAA;AA5DJ;AA8DE;EACE,kBAAA;EACA,kBAAA;EACA,mBAAA;AA5DJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n  &__header {\n    margin-bottom: 5rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    .el-icon-circle-close {\n      font-size: 4rem;\n      color: red;\n      cursor: pointer;\n    }\n  }\n  &__wrap {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: wrap;\n    margin-bottom: 2rem;\n    padding: 3rem;\n    background-color: #ddd;\n  }\n  &__item {\n    position: relative;\n    margin-right: 2rem;\n    margin-bottom: 2rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81184,7 +81221,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-grid-item {\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n}\n.media-grid-item.active {\n  opacity: 1;\n}\n.media-grid-item .el-checkbox {\n  position: relative;\n  top: -0.4rem;\n  left: 0;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGridItem.vue"],"names":[],"mappings":"AAgCA;EACE,YAAA;EACA,oBAAA;EACA,eAAA;AA/BF;AAgCE;EACE,UAAA;AA9BJ;AAgCE;EACE,kBAAA;EACA,YAAA;EACA,OAAA;AA9BJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid-item {\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n  &.active {\n    opacity: 1;\n  }\n  .el-checkbox {\n    position: relative;\n    top: -0.4rem;\n    left: 0;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-grid-item {\n  position: relative;\n  width: 18rem;\n  height: 12rem;\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n}\n.media-grid-item img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-grid-item.active {\n  opacity: 1;\n}\n.media-grid-item__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-grid-item .el-checkbox {\n  position: relative;\n  top: -0.4rem;\n  left: 0;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGridItem.vue"],"names":[],"mappings":"AAyCA;EACE,kBAAA;EACA,YAAA;EACA,aAAA;EACA,YAAA;EACA,oBAAA;EACA,eAAA;AAxCF;AAyCE;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AAvCJ;AAyCE;EACE,UAAA;AAvCJ;AAyCE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AAvCJ;AAyCE;EACE,kBAAA;EACA,YAAA;EACA,OAAA;AAvCJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid-item {\n  position: relative;\n  width: 18rem;\n  height: 12rem;\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n  img {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    z-index: 1;\n  }\n  &.active {\n    opacity: 1;\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  .el-checkbox {\n    position: relative;\n    top: -0.4rem;\n    left: 0;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81319,7 +81356,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".el-header {\n  text-align: right;\n}\n.el-header__title {\n  font-size: 1.7rem;\n}\n.main-menu {\n  background-color: #333;\n  border: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/Header.vue"],"names":[],"mappings":"AAsBA;EACE,iBAAA;AArBF;AAsBE;EACE,iBAAA;AApBJ;AAwBA;EACE,sBAAA;EACA,uBAAA;AArBF","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-header {\n  text-align: right;\n  &__title {\n    font-size: 1.7rem;\n  }\n}\n\n.main-menu {\n  background-color: #333;\n  border: none !important;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".el-header {\n  text-align: right;\n}\n.el-header__title {\n  font-size: 1.7rem;\n}\n.main-menu {\n  background-color: #333;\n  border: none !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/Header.vue"],"names":[],"mappings":"AAwBA;EACE,iBAAA;AAvBF;AAwBE;EACE,iBAAA;AAtBJ;AA0BA;EACE,sBAAA;EACA,uBAAA;AAvBF","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-header {\n  text-align: right;\n  &__title {\n    font-size: 1.7rem;\n  }\n}\n\n.main-menu {\n  background-color: #333;\n  border: none !important;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81346,7 +81383,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".el-header {\n  text-align: right;\n}\n.el-header__title {\n  font-size: 1.7rem;\n}\n.header-menu {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n}\n.header-menu__link {\n  display: flex;\n  align-items: center;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/HeaderAdmin.vue"],"names":[],"mappings":"AAwBA;EACE,iBAAA;AAvBF;AAwBE;EACE,iBAAA;AAtBJ;AA0BA;EACE,aAAA;EACA,yBAAA;EACA,2BAAA;EACA,sBAAA;EACA,uBAAA;AAvBF;AAwBE;EACE,aAAA;EACA,mBAAA;EACA,qBAAA;AAtBJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-header {\n  text-align: right;\n  &__title {\n    font-size: 1.7rem;\n  }\n}\n\n.header-menu {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n  &__link {\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".el-header {\n  text-align: right;\n}\n.el-header__title {\n  font-size: 1.7rem;\n}\n.header-menu {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n}\n.header-menu__link {\n  display: flex;\n  align-items: center;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/HeaderAdmin.vue"],"names":[],"mappings":"AAwCA;EACE,iBAAA;AAvCF;AAwCE;EACE,iBAAA;AAtCJ;AA0CA;EACE,aAAA;EACA,yBAAA;EACA,2BAAA;EACA,sBAAA;EACA,uBAAA;AAvCF;AAwCE;EACE,aAAA;EACA,mBAAA;EACA,qBAAA;AAtCJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-header {\n  text-align: right;\n  &__title {\n    font-size: 1.7rem;\n  }\n}\n\n.header-menu {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n  &__link {\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81400,7 +81437,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-list {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n}\n.media-list li {\n  position: relative;\n  margin-bottom: 2rem;\n  width: 18%;\n  height: 20rem;\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n}\n.media-list li:hover .media-list__delete {\n  opacity: 1;\n}\n.media-list li img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-list__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-list__delete {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 6rem;\n  color: red;\n  background-color: rgba(255, 255, 255, 0.5);\n  z-index: 3;\n  opacity: 0;\n  transition: all 0.4s;\n}\n.media-list__delete i {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: inline-block;\n  width: 25%;\n  height: 30%;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/media/Index.vue"],"names":[],"mappings":"AA8EA;EACE,aAAA;EACA,8BAAA;EACA,eAAA;EACA,SAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;AA7EF;AA8EE;EACE,kBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,uBAAA;EACA,sBAAA;EACA,0CAAA;AA5EJ;AA8EM;EACE,UAAA;AA5ER;AA+EI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AA7EN;AAgFE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AA9EJ;AAgFE;EACE,kBAAA;EACA,MAAA;EACA,QAAA;EACA,WAAA;EACA,YAAA;EACA,eAAA;EACA,UAAA;EACA,0CAAA;EACA,UAAA;EACA,UAAA;EACA,oBAAA;AA9EJ;AA+EI;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,qBAAA;EACA,UAAA;EACA,WAAA;AA7EN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-list {\n  display: flex;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n  li {\n    position: relative;\n    margin-bottom: 2rem;\n    width: 18%;\n    height: 20rem;\n    background-color: white;\n    border: 1px solid #ccc;\n    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n    &:hover {\n      .media-list__delete {\n        opacity: 1;\n      }\n    }\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      z-index: 1;\n    }\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  &__delete {\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    font-size: 6rem;\n    color: red;\n    background-color: rgba(255, 255, 255, 0.5);\n    z-index: 3;\n    opacity: 0;\n    transition: all 0.4s;\n    i {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      display: inline-block;\n      width: 25%;\n      height: 30%;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-list {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n}\n.media-list li {\n  position: relative;\n  margin-bottom: 2rem;\n  margin-right: 2rem;\n  width: 18rem;\n  height: 12rem;\n  background-color: white;\n  border: 1px solid #ccc;\n  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n}\n.media-list li:hover .media-list__delete {\n  opacity: 1;\n}\n.media-list li img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-list__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-list__delete {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n  font-size: 6rem;\n  color: red;\n  background-color: rgba(255, 255, 255, 0.5);\n  z-index: 3;\n  opacity: 0;\n  transition: all 0.4s;\n}\n.media-list__delete i {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  display: inline-block;\n  width: 25%;\n  height: 30%;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/media/Index.vue"],"names":[],"mappings":"AAqFA;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,SAAA;EACA,UAAA;EACA,WAAA;EACA,qBAAA;AApFF;AAqFE;EACE,kBAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,sBAAA;EACA,0CAAA;AAnFJ;AAqFM;EACE,UAAA;AAnFR;AAsFI;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AApFN;AAuFE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AArFJ;AAuFE;EACE,kBAAA;EACA,MAAA;EACA,QAAA;EACA,WAAA;EACA,YAAA;EACA,eAAA;EACA,UAAA;EACA,0CAAA;EACA,UAAA;EACA,UAAA;EACA,oBAAA;AArFJ;AAsFI;EACE,kBAAA;EACA,QAAA;EACA,SAAA;EACA,gCAAA;EACA,qBAAA;EACA,UAAA;EACA,WAAA;AApFN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-list {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  list-style-type: none;\n  li {\n    position: relative;\n    margin-bottom: 2rem;\n    margin-right: 2rem;\n    width: 18rem;\n    height: 12rem;\n    background-color: white;\n    border: 1px solid #ccc;\n    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);\n    &:hover {\n      .media-list__delete {\n        opacity: 1;\n      }\n    }\n    img {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      z-index: 1;\n    }\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  &__delete {\n    position: absolute;\n    top: 0;\n    right: 0;\n    width: 100%;\n    height: 100%;\n    font-size: 6rem;\n    color: red;\n    background-color: rgba(255, 255, 255, 0.5);\n    z-index: 3;\n    opacity: 0;\n    transition: all 0.4s;\n    i {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      display: inline-block;\n      width: 25%;\n      height: 30%;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -106027,7 +106064,7 @@ var render = function () {
             { key: item.id, staticClass: "media-grid__item" },
             [
               _c("media-grid-item", {
-                attrs: { path: item.path },
+                attrs: { title: item.title, path: item.path },
                 on: {
                   "add-image": _vm.add_image,
                   "remove-image": _vm.remove_image,
@@ -106093,6 +106130,10 @@ var render = function () {
         },
         [_vm._v("Option")]
       ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "media-grid-item__title" }, [
+        _vm._v(_vm._s(_vm.shortTitle(_vm.title))),
+      ]),
       _vm._v(" "),
       _c("img", { attrs: { src: _vm.path, alt: "" } }),
     ],
@@ -106501,33 +106542,46 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "el-menu",
-    { staticClass: "el-menu-demo main-menu", attrs: { mode: "horizontal" } },
+    "div",
+    { staticClass: "header" },
     [
       _c(
-        "el-menu-item",
-        { attrs: { index: "1" } },
+        "el-menu",
+        {
+          staticClass: "el-menu-demo main-menu",
+          attrs: { mode: "horizontal" },
+        },
         [
           _c(
-            "router-link",
-            { staticClass: "main-menu__link", attrs: { to: { name: "home" } } },
-            [_vm._v("Home")]
+            "el-menu-item",
+            { attrs: { index: "1" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "main-menu__link",
+                  attrs: { to: { name: "home" } },
+                },
+                [_vm._v("Home")]
+              ),
+            ],
+            1
           ),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "el-menu-item",
-        { attrs: { index: "2" } },
-        [
+          _vm._v(" "),
           _c(
-            "router-link",
-            {
-              staticClass: "main-menu__link",
-              attrs: { to: { name: "logout" } },
-            },
-            [_vm._v("Logout")]
+            "el-menu-item",
+            { attrs: { index: "2" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "main-menu__link",
+                  attrs: { to: { name: "logout" } },
+                },
+                [_vm._v("Logout")]
+              ),
+            ],
+            1
           ),
         ],
         1
@@ -106560,44 +106614,96 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "el-menu",
-    { staticClass: "el-menu-demo header-menu", attrs: { mode: "horizontal" } },
+    "div",
+    { staticClass: "header-admin" },
     [
       _c(
-        "el-menu-item",
-        { attrs: { index: "1" } },
+        "el-menu",
+        {
+          staticClass: "el-menu-demo main-menu",
+          attrs: { mode: "horizontal" },
+        },
         [
           _c(
-            "router-link",
-            {
-              staticClass: "header-menu__link",
-              attrs: { to: { name: "home" } },
-            },
+            "el-menu-item",
+            { attrs: { index: "1" } },
             [
-              _c("i", { staticClass: "el-icon-s-home" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("Home")]),
-            ]
+              _c(
+                "router-link",
+                {
+                  staticClass: "main-menu__link",
+                  attrs: { to: { name: "admin.media" } },
+                },
+                [_vm._v("List media")]
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-menu-item",
+            { attrs: { index: "2" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "main-menu__link",
+                  attrs: { to: { name: "admin.media.create" } },
+                },
+                [_vm._v("Add media")]
+              ),
+            ],
+            1
           ),
         ],
         1
       ),
       _vm._v(" "),
       _c(
-        "el-menu-item",
-        { attrs: { index: "2" } },
+        "el-menu",
+        {
+          staticClass: "el-menu-demo header-menu",
+          attrs: { mode: "horizontal" },
+        },
         [
           _c(
-            "router-link",
-            {
-              staticClass: "header-menu__link",
-              attrs: { to: { name: "logout" } },
-            },
+            "el-menu-item",
+            { attrs: { index: "1" } },
             [
-              _c("i", { staticClass: "el-icon-platform-eleme" }),
-              _vm._v(" "),
-              _c("span", [_vm._v("Logout")]),
-            ]
+              _c(
+                "router-link",
+                {
+                  staticClass: "header-menu__link",
+                  attrs: { to: { name: "home" } },
+                },
+                [
+                  _c("i", { staticClass: "el-icon-s-home" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Home")]),
+                ]
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-menu-item",
+            { attrs: { index: "2" } },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "header-menu__link",
+                  attrs: { to: { name: "logout" } },
+                },
+                [
+                  _c("i", { staticClass: "el-icon-platform-eleme" }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Logout")]),
+                ]
+              ),
+            ],
+            1
           ),
         ],
         1
@@ -108601,8 +108707,8 @@ var render = function () {
           return _c("li", { key: item.id }, [
             _c("img", { attrs: { src: item.path, alt: "" } }),
             _vm._v(" "),
-            _c("div", { staticClass: "media-list__title" }, [
-              _vm._v(_vm._s(item.title)),
+            _c("h3", { staticClass: "media-list__title" }, [
+              _vm._v(_vm._s(_vm.shortTitle(item.title))),
             ]),
             _vm._v(" "),
             _c(
