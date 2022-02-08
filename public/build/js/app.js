@@ -3748,7 +3748,11 @@ __webpack_require__.r(__webpack_exports__);
     icon: String,
     bg: String,
     count: String,
-    title: String
+    title: String,
+    url: Object
+  },
+  mounted: function mounted() {
+    console.log(this.url, "this.url");
   }
 });
 
@@ -4247,6 +4251,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Admin_AdminCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Admin/AdminCard.vue */ "./resources/js/components/Admin/AdminCard.vue");
 /* harmony import */ var _layouts_AdminLayout_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../layouts/AdminLayout.vue */ "./resources/js/layouts/AdminLayout.vue");
+//
+//
 //
 //
 //
@@ -81334,7 +81340,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-card {\n  padding: 3rem 5rem 3rem 3rem;\n  border-radius: 2rem;\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n}\n.admin-card__icon {\n  width: 3rem;\n  height: 3rem;\n  font-size: 5rem;\n  color: white;\n}\n.admin-card__title {\n  margin-bottom: 2rem;\n  font-size: 2.5rem;\n  font-weight: bold;\n  color: white;\n}\n.admin-card__count {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 4rem;\n  height: 4rem;\n  background-color: white;\n  border-radius: 50%;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/Admin/AdminCard.vue"],"names":[],"mappings":"AAoBA;EACE,4BAAA;EACA,mBAAA;EACA,aAAA;EACA,uBAAA;EACA,8BAAA;AAnBF;AAoBE;EACE,WAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;AAlBJ;AAoBE;EACE,mBAAA;EACA,iBAAA;EACA,iBAAA;EACA,YAAA;AAlBJ;AAoBE;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,WAAA;EACA,YAAA;EACA,uBAAA;EACA,kBAAA;AAlBJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-card {\n  padding: 3rem 5rem 3rem 3rem;\n  border-radius: 2rem;\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  &__icon {\n    width: 3rem;\n    height: 3rem;\n    font-size: 5rem;\n    color: white;\n  }\n  &__title {\n    margin-bottom: 2rem;\n    font-size: 2.5rem;\n    font-weight: bold;\n    color: white;\n  }\n  &__count {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 4rem;\n    height: 4rem;\n    background-color: white;\n    border-radius: 50%;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-card {\n  display: block;\n  padding: 3rem 5rem 3rem 3rem;\n  border-radius: 2rem;\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  text-decoration: none;\n}\n.admin-card__icon {\n  width: 3rem;\n  height: 3rem;\n  font-size: 5rem;\n  color: white;\n}\n.admin-card__title {\n  margin-bottom: 2rem;\n  font-size: 2.5rem;\n  font-weight: bold;\n  color: white;\n}\n.admin-card__count {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 4rem;\n  height: 4rem;\n  background-color: white;\n  border-radius: 50%;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/Admin/AdminCard.vue"],"names":[],"mappings":"AAwBA;EACE,cAAA;EACA,4BAAA;EACA,mBAAA;EACA,aAAA;EACA,uBAAA;EACA,8BAAA;EACA,qBAAA;AAvBF;AAwBE;EACE,WAAA;EACA,YAAA;EACA,eAAA;EACA,YAAA;AAtBJ;AAwBE;EACE,mBAAA;EACA,iBAAA;EACA,iBAAA;EACA,YAAA;AAtBJ;AAwBE;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,WAAA;EACA,YAAA;EACA,uBAAA;EACA,kBAAA;AAtBJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-card {\n  display: block;\n  padding: 3rem 5rem 3rem 3rem;\n  border-radius: 2rem;\n  display: flex;\n  align-items: flex-start;\n  justify-content: space-between;\n  text-decoration: none;\n  &__icon {\n    width: 3rem;\n    height: 3rem;\n    font-size: 5rem;\n    color: white;\n  }\n  &__title {\n    margin-bottom: 2rem;\n    font-size: 2.5rem;\n    font-weight: bold;\n    color: white;\n  }\n  &__count {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 4rem;\n    height: 4rem;\n    background-color: white;\n    border-radius: 50%;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81658,7 +81664,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n}\n.admin-cards__item {\n  margin-right: 4rem;\n  margin-bottom: 4rem;\n  width: 25rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Admin.vue"],"names":[],"mappings":"AAqDA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;AApDF;AAqDE;EACE,kBAAA;EACA,mBAAA;EACA,YAAA;AAnDJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n  &__item {\n    margin-right: 4rem;\n    margin-bottom: 4rem;\n    width: 25rem;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n}\n.admin-cards__item {\n  margin-right: 4rem;\n  margin-bottom: 4rem;\n  width: 25rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Admin.vue"],"names":[],"mappings":"AAuDA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;AAtDF;AAuDE;EACE,kBAAA;EACA,mBAAA;EACA,YAAA;AArDJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n  &__item {\n    margin-right: 4rem;\n    margin-bottom: 4rem;\n    width: 25rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -106413,8 +106419,12 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "admin-card", style: { background: _vm.bg } },
+    "router-link",
+    {
+      staticClass: "admin-card",
+      style: { background: _vm.bg },
+      attrs: { to: _vm.url },
+    },
     [
       _c("div", { staticClass: "admin-card__content" }, [
         _c("h3", { staticClass: "admin-card__title" }, [
@@ -107272,6 +107282,7 @@ var render = function () {
         [
           _c("admin-card", {
             attrs: {
+              url: { name: "admin.media" },
               icon: "el-icon-picture",
               count: String(_vm.mediaCount),
               title: "Media",
@@ -107288,6 +107299,7 @@ var render = function () {
         [
           _c("admin-card", {
             attrs: {
+              url: { name: "admin.employee" },
               icon: "el-icon-s-custom",
               count: String(_vm.employeeCount),
               title: "Employee",

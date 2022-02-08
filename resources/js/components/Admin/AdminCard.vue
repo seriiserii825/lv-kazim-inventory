@@ -1,11 +1,11 @@
 <template>
-  <div class="admin-card" :style="{ background: bg }">
+  <router-link :to="url" class="admin-card" :style="{ background: bg }">
     <div class="admin-card__content">
       <h3 class="admin-card__title">{{ title }}</h3>
       <div class="admin-card__count">{{ count }}</div>
     </div>
     <div class="admin-card__icon" :class="icon"></div>
-  </div>
+  </router-link>
 </template>
 <script>
 export default {
@@ -14,16 +14,22 @@ export default {
     bg: String,
     count: String,
     title: String,
+    url: Object,
+  },
+  mounted() {
+    console.log(this.url, "this.url");
   },
 };
 </script>
 <style lang="scss">
 .admin-card {
+  display: block;
   padding: 3rem 5rem 3rem 3rem;
   border-radius: 2rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  text-decoration: none;
   &__icon {
     width: 3rem;
     height: 3rem;

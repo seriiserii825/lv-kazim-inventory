@@ -3,6 +3,7 @@
     <div class="admin-cards">
       <div class="admin-cards__item">
         <admin-card
+          :url="{ name: 'admin.media' }"
           icon="el-icon-picture"
           :count="String(mediaCount)"
           title="Media"
@@ -11,6 +12,7 @@
       </div>
       <div class="admin-cards__item">
         <admin-card
+          :url="{ name: 'admin.employee' }"
           icon="el-icon-s-custom"
           :count="String(employeeCount)"
           title="Employee"
