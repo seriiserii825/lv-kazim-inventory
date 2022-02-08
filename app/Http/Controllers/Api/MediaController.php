@@ -42,6 +42,12 @@ class MediaController extends Controller
         //
     }
 
+    public function count()
+    {
+        $count = Media::query()->get()->count();
+        return response()->json(["count" => $count]);
+    }
+
     public function destroy($id)
     {
         $media = Media::findOrFail($id);

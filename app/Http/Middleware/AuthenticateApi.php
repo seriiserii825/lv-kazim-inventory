@@ -13,8 +13,5 @@ class AuthenticateApi extends Middleware
             return;
         }
         $this->unauthenticated($request, $guards);
-        return response()->json([
-            "message" => "Invalid api token"
-        ]);
     }
 }

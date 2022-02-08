@@ -41,4 +41,10 @@ class EmployeeController extends Controller
         $employee->delete();
         return response()->noContent();
     }
+
+    public function count()
+    {
+        $count = Employee::query()->get()->count();
+        return response()->json(["count" => $count]);
+    }
 }
