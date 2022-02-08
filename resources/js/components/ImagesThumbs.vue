@@ -22,7 +22,7 @@ export default {
     margin-bottom: 2rem;
     margin-right: 2rem;
     width: 10rem;
-    height: 10rem;
+    height: 5rem;
   }
 }
 </style>

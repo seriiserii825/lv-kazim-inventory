@@ -101,6 +101,12 @@ input[type=submit]:disabled {
   height: 5rem;
 }
 
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
+.el-menu--horizontal > .el-submenu .el-submenu__title:hover {
+  background-color: transparent;
+}
+
 .btn {
   font-size: 1.8rem;
 }

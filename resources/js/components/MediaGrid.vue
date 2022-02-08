@@ -1,11 +1,15 @@
 <template>
   <div class="media-grid">
     <header class="media-grid__header">
-      <input type="text" />
+      <input v-model="search" @input="searchInput" type="text" />
       <div @click="closeMediaGrid" class="el-icon-circle-close"></div>
     </header>
     <div class="media-grid__wrap">
-      <div class="media-grid__item" v-for="item in items" :key="item.id">
+      <div
+        class="media-grid__item"
+        v-for="item in searchedItems"
+        :key="item.id"
+      >
         <media-grid-item
           :title="item.title"
           :path="item.path"
@@ -25,9 +29,20 @@ export default {
     return {
       items: [],
       images: [],
+      search: "",
+      searchedItems: [],
     };
   },
   methods: {
+    searchInput() {
+      if (this.search.length > 0) {
+        this.searchedItems = this.searchedItems.filter((item) => {
+          return item.title.includes(this.search);
+        });
+      } else {
+        this.searchedItems = this.items;
+      }
+    },
     emit_images() {
       this.$emit("emit_images", this.images);
       this.closeMediaGrid();
@@ -48,6 +63,7 @@ export default {
         .get("/api/auth/media")
         .then((res) => {
           this.items = res.data.data;
+          this.searchedItems = this.items;
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

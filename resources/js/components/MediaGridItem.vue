@@ -78,6 +78,10 @@ export default {
     position: relative;
     top: -0.4rem;
     left: 0;
+    z-index: 2;
+    .el-checkbox__label {
+      display: none;
+    }
   }
 }
 </style>

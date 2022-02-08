@@ -3798,6 +3798,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3806,10 +3810,23 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [],
-      images: []
+      images: [],
+      search: "",
+      searchedItems: []
     };
   },
   methods: {
+    searchInput: function searchInput() {
+      var _this = this;
+
+      if (this.search.length > 0) {
+        this.searchedItems = this.searchedItems.filter(function (item) {
+          return item.title.includes(_this.search);
+        });
+      } else {
+        this.searchedItems = this.items;
+      }
+    },
     emit_images: function emit_images() {
       this.$emit("emit_images", this.images);
       this.closeMediaGrid();
@@ -3826,12 +3843,13 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit("handler");
     },
     getItems: function getItems() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/auth/media").then(function (res) {
-        _this.items = res.data.data;
+        _this2.items = res.data.data;
+        _this2.searchedItems = _this2.items;
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
+        _this2.errors = error.response.data.errors;
       });
     }
   },
@@ -4105,6 +4123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -81167,7 +81186,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".images-thumbs {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-top: 3rem;\n}\n.images-thumbs__item {\n  margin-bottom: 2rem;\n  margin-right: 2rem;\n  width: 10rem;\n  height: 10rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/ImagesThumbs.vue"],"names":[],"mappings":"AAeA;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,gBAAA;AAdF;AAeE;EACE,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,aAAA;AAbJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.images-thumbs {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-top: 3rem;\n  &__item {\n    margin-bottom: 2rem;\n    margin-right: 2rem;\n    width: 10rem;\n    height: 10rem;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".images-thumbs {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-top: 3rem;\n}\n.images-thumbs__item {\n  margin-bottom: 2rem;\n  margin-right: 2rem;\n  width: 10rem;\n  height: 5rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/ImagesThumbs.vue"],"names":[],"mappings":"AAeA;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,gBAAA;AAdF;AAeE;EACE,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAAA;AAbJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.images-thumbs {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-top: 3rem;\n  &__item {\n    margin-bottom: 2rem;\n    margin-right: 2rem;\n    width: 10rem;\n    height: 5rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81194,7 +81213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n}\n.media-grid__header {\n  margin-bottom: 5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.media-grid__header .el-icon-circle-close {\n  font-size: 4rem;\n  color: red;\n  cursor: pointer;\n}\n.media-grid__wrap {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-bottom: 2rem;\n  padding: 3rem;\n  background-color: #ddd;\n}\n.media-grid__item {\n  position: relative;\n  margin-right: 2rem;\n  margin-bottom: 2rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGrid.vue"],"names":[],"mappings":"AA8DA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,yBAAA;EACA,cAAA;AA7DF;AA8DE;EACE,mBAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AA5DJ;AA6DI;EACE,eAAA;EACA,UAAA;EACA,eAAA;AA3DN;AA8DE;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,sBAAA;AA5DJ;AA8DE;EACE,kBAAA;EACA,kBAAA;EACA,mBAAA;AA5DJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n  &__header {\n    margin-bottom: 5rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    .el-icon-circle-close {\n      font-size: 4rem;\n      color: red;\n      cursor: pointer;\n    }\n  }\n  &__wrap {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: wrap;\n    margin-bottom: 2rem;\n    padding: 3rem;\n    background-color: #ddd;\n  }\n  &__item {\n    position: relative;\n    margin-right: 2rem;\n    margin-bottom: 2rem;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n}\n.media-grid__header {\n  margin-bottom: 5rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.media-grid__header .el-icon-circle-close {\n  font-size: 4rem;\n  color: red;\n  cursor: pointer;\n}\n.media-grid__wrap {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n  margin-bottom: 2rem;\n  padding: 3rem;\n  background-color: #ddd;\n}\n.media-grid__item {\n  position: relative;\n  margin-right: 2rem;\n  margin-bottom: 2rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGrid.vue"],"names":[],"mappings":"AA8EA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,aAAA;EACA,WAAA;EACA,YAAA;EACA,yBAAA;EACA,cAAA;AA7EF;AA8EE;EACE,mBAAA;EACA,aAAA;EACA,8BAAA;EACA,mBAAA;AA5EJ;AA6EI;EACE,eAAA;EACA,UAAA;EACA,eAAA;AA3EN;AA8EE;EACE,aAAA;EACA,2BAAA;EACA,eAAA;EACA,mBAAA;EACA,aAAA;EACA,sBAAA;AA5EJ;AA8EE;EACE,kBAAA;EACA,kBAAA;EACA,mBAAA;AA5EJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid {\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding: 4rem;\n  width: 100%;\n  height: 100%;\n  background-color: #f4f4f4;\n  z-index: 10000;\n  &__header {\n    margin-bottom: 5rem;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    .el-icon-circle-close {\n      font-size: 4rem;\n      color: red;\n      cursor: pointer;\n    }\n  }\n  &__wrap {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: wrap;\n    margin-bottom: 2rem;\n    padding: 3rem;\n    background-color: #ddd;\n  }\n  &__item {\n    position: relative;\n    margin-right: 2rem;\n    margin-bottom: 2rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81221,7 +81240,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".media-grid-item {\n  position: relative;\n  width: 18rem;\n  height: 12rem;\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n}\n.media-grid-item img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-grid-item.active {\n  opacity: 1;\n}\n.media-grid-item__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-grid-item .el-checkbox {\n  position: relative;\n  top: -0.4rem;\n  left: 0;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGridItem.vue"],"names":[],"mappings":"AAyCA;EACE,kBAAA;EACA,YAAA;EACA,aAAA;EACA,YAAA;EACA,oBAAA;EACA,eAAA;AAxCF;AAyCE;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AAvCJ;AAyCE;EACE,UAAA;AAvCJ;AAyCE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AAvCJ;AAyCE;EACE,kBAAA;EACA,YAAA;EACA,OAAA;AAvCJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid-item {\n  position: relative;\n  width: 18rem;\n  height: 12rem;\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n  img {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    z-index: 1;\n  }\n  &.active {\n    opacity: 1;\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  .el-checkbox {\n    position: relative;\n    top: -0.4rem;\n    left: 0;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".media-grid-item {\n  position: relative;\n  width: 18rem;\n  height: 12rem;\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n}\n.media-grid-item img {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  z-index: 1;\n}\n.media-grid-item.active {\n  opacity: 1;\n}\n.media-grid-item__title {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0 2rem;\n  width: 100%;\n  height: 4rem;\n  font-size: 1.4rem;\n  text-align: center;\n  color: black;\n  background-color: white;\n  z-index: 2;\n}\n.media-grid-item .el-checkbox {\n  position: relative;\n  top: -0.4rem;\n  left: 0;\n  z-index: 2;\n}\n.media-grid-item .el-checkbox .el-checkbox__label {\n  display: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/MediaGridItem.vue"],"names":[],"mappings":"AAyCA;EACE,kBAAA;EACA,YAAA;EACA,aAAA;EACA,YAAA;EACA,oBAAA;EACA,eAAA;AAxCF;AAyCE;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,YAAA;EACA,oBAAA;KAAA,iBAAA;EACA,UAAA;AAvCJ;AAyCE;EACE,UAAA;AAvCJ;AAyCE;EACE,kBAAA;EACA,SAAA;EACA,OAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,kBAAA;EACA,YAAA;EACA,uBAAA;EACA,UAAA;AAvCJ;AAyCE;EACE,kBAAA;EACA,YAAA;EACA,OAAA;EACA,UAAA;AAvCJ;AAwCI;EACE,aAAA;AAtCN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.media-grid-item {\n  position: relative;\n  width: 18rem;\n  height: 12rem;\n  opacity: 0.7;\n  transition: all 0.4s;\n  cursor: pointer;\n  img {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    z-index: 1;\n  }\n  &.active {\n    opacity: 1;\n  }\n  &__title {\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0 2rem;\n    width: 100%;\n    height: 4rem;\n    font-size: 1.4rem;\n    text-align: center;\n    color: black;\n    background-color: white;\n    z-index: 2;\n  }\n  .el-checkbox {\n    position: relative;\n    top: -0.4rem;\n    left: 0;\n    z-index: 2;\n    .el-checkbox__label {\n      display: none;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81383,7 +81402,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".el-header {\n  text-align: right;\n}\n.el-header__title {\n  font-size: 1.7rem;\n}\n.header-menu {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n}\n.header-menu__link {\n  display: flex;\n  align-items: center;\n  text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/HeaderAdmin.vue"],"names":[],"mappings":"AAwCA;EACE,iBAAA;AAvCF;AAwCE;EACE,iBAAA;AAtCJ;AA0CA;EACE,aAAA;EACA,yBAAA;EACA,2BAAA;EACA,sBAAA;EACA,uBAAA;AAvCF;AAwCE;EACE,aAAA;EACA,mBAAA;EACA,qBAAA;AAtCJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-header {\n  text-align: right;\n  &__title {\n    font-size: 1.7rem;\n  }\n}\n\n.header-menu {\n  display: flex;\n  justify-content: flex-end;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n  &__link {\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".el-header {\n  text-align: right;\n}\n.el-header__title {\n  font-size: 1.7rem;\n}\n.header-admin {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n}\n.header-admin .el-menu {\n  margin-bottom: 0;\n}\n.header-admin__link {\n  display: flex;\n  align-items: center;\n  text-decoration: none;\n}\n.header-admin__link:hover {\n  text-decoration: none;\n  color: #ccc !important;\n}", "",{"version":3,"sources":["webpack://./resources/js/layouts/HeaderAdmin.vue"],"names":[],"mappings":"AAyCA;EACE,iBAAA;AAxCF;AAyCE;EACE,iBAAA;AAvCJ;AA2CA;EACE,aAAA;EACA,8BAAA;EACA,2BAAA;EACA,sBAAA;EACA,uBAAA;AAxCF;AAyCE;EACE,gBAAA;AAvCJ;AAyCE;EACE,aAAA;EACA,mBAAA;EACA,qBAAA;AAvCJ;AAwCI;EACE,qBAAA;EACA,sBAAA;AAtCN","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.el-header {\n  text-align: right;\n  &__title {\n    font-size: 1.7rem;\n  }\n}\n\n.header-admin {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 0 !important;\n  background-color: #333;\n  border: none !important;\n  .el-menu {\n    margin-bottom: 0;\n  }\n  &__link {\n    display: flex;\n    align-items: center;\n    text-decoration: none;\n    &:hover {\n      text-decoration: none;\n      color: #ccc !important;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -106047,7 +106066,29 @@ var render = function () {
     { staticClass: "media-grid" },
     [
       _c("header", { staticClass: "media-grid__header" }, [
-        _c("input", { attrs: { type: "text" } }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search",
+            },
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.search },
+          on: {
+            input: [
+              function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.search = $event.target.value
+              },
+              _vm.searchInput,
+            ],
+          },
+        }),
         _vm._v(" "),
         _c("div", {
           staticClass: "el-icon-circle-close",
@@ -106058,7 +106099,7 @@ var render = function () {
       _c(
         "div",
         { staticClass: "media-grid__wrap" },
-        _vm._l(_vm.items, function (item) {
+        _vm._l(_vm.searchedItems, function (item) {
           return _c(
             "div",
             { key: item.id, staticClass: "media-grid__item" },
@@ -106634,7 +106675,12 @@ var render = function () {
                   staticClass: "main-menu__link",
                   attrs: { to: { name: "admin.media" } },
                 },
-                [_vm._v("List media")]
+                [
+                  _c("el-button", { attrs: { type: "success" } }, [
+                    _vm._v("List media"),
+                  ]),
+                ],
+                1
               ),
             ],
             1
@@ -106650,7 +106696,12 @@ var render = function () {
                   staticClass: "main-menu__link",
                   attrs: { to: { name: "admin.media.create" } },
                 },
-                [_vm._v("Add media")]
+                [
+                  _c("el-button", { attrs: { type: "primary" } }, [
+                    _vm._v("Add media"),
+                  ]),
+                ],
+                1
               ),
             ],
             1
@@ -106662,7 +106713,7 @@ var render = function () {
       _c(
         "el-menu",
         {
-          staticClass: "el-menu-demo header-menu",
+          staticClass: "el-menu-demo main-menu",
           attrs: { mode: "horizontal" },
         },
         [
@@ -106673,7 +106724,7 @@ var render = function () {
               _c(
                 "router-link",
                 {
-                  staticClass: "header-menu__link",
+                  staticClass: "header-admin__link",
                   attrs: { to: { name: "home" } },
                 },
                 [
@@ -106693,7 +106744,7 @@ var render = function () {
               _c(
                 "router-link",
                 {
-                  staticClass: "header-menu__link",
+                  staticClass: "header-admin__link",
                   attrs: { to: { name: "logout" } },
                 },
                 [
