@@ -8,6 +8,9 @@ import Logout from "./pages/Logout.vue";
 import EmployeeIndex from "./pages/employee/Index.vue";
 import EmployeeCreate from "./pages/employee/Create.vue";
 import EmployeeEdit from "./pages/employee/Edit.vue";
+import SuppliersIndex from "./pages/suppliers/Index.vue";
+import SuppliersCreate from "./pages/suppliers/Create.vue";
+import SuppliersEdit from "./pages/suppliers/Edit.vue";
 import MediaIndex from "./pages/media/Index.vue";
 import MediaCreate from "./pages/media/Create.vue";
 import MediaEdit from "./pages/media/Edit.vue";
@@ -59,6 +62,21 @@ const routes = {
             path: "/admin/employee",
             component: EmployeeIndex,
             name: "admin.employee",
+        }, // suppliers
+        {
+            path: "/admin/suppliers/create",
+            component: SuppliersCreate,
+            name: "admin.suppliers.create",
+        },
+        {
+            path: "/admin/suppliers/edit/:id",
+            component: SuppliersEdit,
+            name: "admin.suppliers.edit",
+        },
+        {
+            path: "/admin/suppliers",
+            component: SuppliersIndex,
+            name: "admin.suppliers",
         }, // media
         {
             path: "/admin/media/create",

@@ -14,7 +14,9 @@ Route::group([
     Route::apiResources([
         'employee' => 'Api\EmployeeController',
         'media' => 'Api\MediaController',
+        'suppliers' => 'Api\SupplierController',
     ]);
     Route::get('media-count', 'Api\MediaController@count');
     Route::get('employee-count', 'Api\EmployeeController@count');
+    Route::get('suppliers-count', 'Api\SupplierController@count');
 });

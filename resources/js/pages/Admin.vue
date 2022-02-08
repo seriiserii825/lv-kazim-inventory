@@ -19,6 +19,15 @@
           bg="blue"
         ></admin-card>
       </div>
+      <div class="admin-cards__item">
+        <admin-card
+          :url="{ name: 'admin.suppliers' }"
+          icon="el-icon-s-custom"
+          :count="String(suppliersCount)"
+          title="Suppliers"
+          bg="green"
+        ></admin-card>
+      </div>
     </div>
   </AdminLayout>
 </template>
@@ -31,6 +40,7 @@ export default {
     return {
       mediaCount: 0,
       employeeCount: 0,
+      suppliersCount: 0,
     };
   },
   components: {
@@ -48,6 +58,13 @@ export default {
       .get("/api/auth/employee-count?api_token=" + this.$store.getters.getToken)
       .then((res) => {
         this.employeeCount = res.data.count;
+      });
+    axios
+      .get(
+        "/api/auth/suppliers-count?api_token=" + this.$store.getters.getToken
+      )
+      .then((res) => {
+        this.suppliersCount = res.data.count;
       });
   },
 };

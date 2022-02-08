@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Employee;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\FileUploadRepository;
 use App\Http\Requests\Api\StoreEmployeeRequest;
 use App\Http\Requests\Api\UpdateEmployeeRequest;
-use Illuminate\Http\Request;
 use App\Http\Resources\EmployeeResource;
-use function PHPUnit\Framework\returnArgument;
 
 class EmployeeController extends Controller
 {
