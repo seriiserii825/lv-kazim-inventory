@@ -11,9 +11,9 @@
         <thead>
           <tr>
             <th>Id</th>
+            <th>Photo</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Photo</th>
             <th>Salary</th>
             <th>Join Date</th>
             <th>Actions</th>
@@ -22,9 +22,9 @@
         <tbody>
           <tr v-for="item in items" :key="item.id">
             <td>{{ item.id }}</td>
+            <td><img width="100" height="75" :src="item.photo" alt="" /></td>
             <td>{{ item.email }}</td>
             <td>{{ item.phone }}</td>
-            <td>{{ item.photo }}</td>
             <td>{{ item.salary }}</td>
             <td>{{ item.join_date }}</td>
             <td>

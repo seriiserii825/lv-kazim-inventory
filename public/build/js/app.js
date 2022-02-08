@@ -81840,7 +81840,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.admin-table th,\n.admin-table td {\n  padding: 1rem;\n  border: 1px solid #444;\n}\n.admin-table th:nth-of-type(7),\n.admin-table td:nth-of-type(7) {\n  width: 7rem;\n}\n.admin-table th {\n  color: white;\n  background-color: #444;\n}\n.admin-table tr:nth-of-type(even) {\n  background-color: #bbb;\n}\n.admin-table__actions {\n  display: flex;\n  align-items: center;\n}\n.admin-table__actions a {\n  margin-right: 1rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/Admin/AdminTable.vue"],"names":[],"mappings":"AAUE;EACE,WAAA;EACA,yBAAA;AATJ;AAWE;;EAEE,aAAA;EACA,sBAAA;AATJ;AAUI;;EACE,WAAA;AAPN;AAUE;EACE,YAAA;EACA,sBAAA;AARJ;AAUE;EACE,sBAAA;AARJ;AAUE;EACE,aAAA;EACA,mBAAA;AARJ;AASI;EACE,kBAAA;AAPN","sourcesContent":["\n\n\n\n\n\n\n\n\n.admin-table {\n  table {\n    width: 100%;\n    border-collapse: collapse;\n  }\n  th,\n  td {\n    padding: 1rem;\n    border: 1px solid #444;\n    &:nth-of-type(7) {\n      width: 7rem;\n    }\n  }\n  th {\n    color: white;\n    background-color: #444;\n  }\n  tr:nth-of-type(even) {\n    background-color: #bbb;\n  }\n  &__actions {\n    display: flex;\n    align-items: center;\n    a {\n      margin-right: 1rem;\n    }\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-table table {\n  width: 100%;\n  border-collapse: collapse;\n}\n.admin-table th,\n.admin-table td {\n  padding: 1rem;\n  border: 1px solid #444;\n}\n.admin-table th:nth-of-type(7),\n.admin-table td:nth-of-type(7) {\n  width: 7rem;\n}\n.admin-table th {\n  color: white;\n  background-color: #444;\n}\n.admin-table tr:nth-of-type(even) {\n  background-color: #bbb;\n}\n.admin-table td img {\n  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);\n}\n.admin-table__actions {\n  display: flex;\n  align-items: center;\n}\n.admin-table__actions a {\n  margin-right: 1rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/components/Admin/AdminTable.vue"],"names":[],"mappings":"AAUE;EACE,WAAA;EACA,yBAAA;AATJ;AAWE;;EAEE,aAAA;EACA,sBAAA;AATJ;AAUI;;EACE,WAAA;AAPN;AAUE;EACE,YAAA;EACA,sBAAA;AARJ;AAUE;EACE,sBAAA;AARJ;AAWI;EACE,0CAAA;AATN;AAYE;EACE,aAAA;EACA,mBAAA;AAVJ;AAWI;EACE,kBAAA;AATN","sourcesContent":["\n\n\n\n\n\n\n\n\n.admin-table {\n  table {\n    width: 100%;\n    border-collapse: collapse;\n  }\n  th,\n  td {\n    padding: 1rem;\n    border: 1px solid #444;\n    &:nth-of-type(7) {\n      width: 7rem;\n    }\n  }\n  th {\n    color: white;\n    background-color: #444;\n  }\n  tr:nth-of-type(even) {\n    background-color: #bbb;\n  }\n  td {\n    img {\n      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);\n    }\n  }\n  &__actions {\n    display: flex;\n    align-items: center;\n    a {\n      margin-right: 1rem;\n    }\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -109371,11 +109371,11 @@ var render = function () {
             _c("tr", [
               _c("th", [_vm._v("Id")]),
               _vm._v(" "),
+              _c("th", [_vm._v("Photo")]),
+              _vm._v(" "),
               _c("th", [_vm._v("Email")]),
               _vm._v(" "),
               _c("th", [_vm._v("Phone")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Photo")]),
               _vm._v(" "),
               _c("th", [_vm._v("Salary")]),
               _vm._v(" "),
@@ -109391,11 +109391,20 @@ var render = function () {
               return _c("tr", { key: item.id }, [
                 _c("td", [_vm._v(_vm._s(item.id))]),
                 _vm._v(" "),
+                _c("td", [
+                  _c("img", {
+                    attrs: {
+                      width: "100",
+                      height: "75",
+                      src: item.photo,
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.email))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.phone))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.photo))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.salary))]),
                 _vm._v(" "),
@@ -110733,11 +110742,11 @@ var render = function () {
             _c("tr", [
               _c("th", [_vm._v("Id")]),
               _vm._v(" "),
+              _c("th", [_vm._v("Photo")]),
+              _vm._v(" "),
               _c("th", [_vm._v("Email")]),
               _vm._v(" "),
               _c("th", [_vm._v("Phone")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Photo")]),
               _vm._v(" "),
               _c("th", [_vm._v("Actions")]),
             ]),
@@ -110749,10 +110758,6 @@ var render = function () {
               return _c("tr", { key: item.id }, [
                 _c("td", [_vm._v(_vm._s(item.id))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.email))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.phone))]),
-                _vm._v(" "),
                 _c("td", [
                   _c("img", {
                     attrs: {
@@ -110763,6 +110768,10 @@ var render = function () {
                     },
                   }),
                 ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.phone))]),
                 _vm._v(" "),
                 _c("td", [
                   _c(

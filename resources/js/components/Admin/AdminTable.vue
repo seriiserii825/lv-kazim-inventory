@@ -27,6 +27,11 @@ export default {};
   tr:nth-of-type(even) {
     background-color: #bbb;
   }
+  td {
+    img {
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+    }
+  }
   &__actions {
     display: flex;
     align-items: center;
