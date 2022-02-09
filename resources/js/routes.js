@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound.vue";
 import suppliersRoutes from "./routes/suppliersRoutes";
 import categoriesRoutes from "./routes/categoriesRoutes";
 import mediaRoutes from "./routes/mediaRoutes";
+import productRoutes from "./routes/productsRoutes";
 
 const routes = {
     mode: "history",
@@ -13,6 +14,7 @@ const routes = {
         ...suppliersRoutes,
         ...categoriesRoutes,
         ...mediaRoutes,
+        ...productRoutes,
         { path: "/404", name: "404", component: NotFound },
         { path: "*", redirect: "/404" },
     ],
