@@ -46,6 +46,25 @@
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+      <el-submenu index="4">
+        <template slot="title"
+          ><i class="el-icon-s-goods"></i>Categories</template
+        >
+        <el-menu-item-group>
+          <el-menu-item index="4-1">
+            <router-link :to="{ name: 'admin.categories.create' }">
+              <i class="el-icon-document-add"></i>
+              <span>Create</span>
+            </router-link>
+          </el-menu-item>
+          <el-menu-item index="4-2">
+            <router-link :to="{ name: 'admin.categories' }" exact>
+              <i class="el-icon-tickets"></i>
+              <span>List</span>
+            </router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
   </el-aside>
 </template>
