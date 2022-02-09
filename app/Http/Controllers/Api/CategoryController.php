@@ -37,4 +37,10 @@ class CategoryController extends Controller
         $category->delete();
         return response()->noContent();
     }
+
+    public function count()
+    {
+        $count = Category::query()->get()->count();
+        return response()->json(["count" => $count]);
+    }
 }

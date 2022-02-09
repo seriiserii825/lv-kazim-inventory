@@ -28,6 +28,15 @@
           bg="green"
         ></admin-card>
       </div>
+      <div class="admin-cards__item">
+        <admin-card
+          :url="{ name: 'admin.categories' }"
+          icon="el-icon-s-custom"
+          :count="String(categoriesCount)"
+          title="Categories"
+          bg="maroon"
+        ></admin-card>
+      </div>
     </div>
   </AdminLayout>
 </template>
@@ -41,6 +50,7 @@ export default {
       mediaCount: 0,
       employeeCount: 0,
       suppliersCount: 0,
+      categoriesCount: 0,
     };
   },
   components: {
@@ -65,6 +75,13 @@ export default {
       )
       .then((res) => {
         this.suppliersCount = res.data.count;
+      });
+    axios
+      .get(
+        "/api/auth/categories-count?api_token=" + this.$store.getters.getToken
+      )
+      .then((res) => {
+        this.categoriesCount = res.data.count;
       });
   },
 };

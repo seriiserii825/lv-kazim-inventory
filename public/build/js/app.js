@@ -4284,6 +4284,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4292,7 +4301,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       mediaCount: 0,
       employeeCount: 0,
-      suppliersCount: 0
+      suppliersCount: 0,
+      categoriesCount: 0
     };
   },
   components: {
@@ -4310,6 +4320,9 @@ __webpack_require__.r(__webpack_exports__);
     });
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/auth/suppliers-count?api_token=" + this.$store.getters.getToken).then(function (res) {
       _this.suppliersCount = res.data.count;
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/auth/categories-count?api_token=" + this.$store.getters.getToken).then(function (res) {
+      _this.categoriesCount = res.data.count;
     });
   }
 });
@@ -82539,7 +82552,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n}\n.admin-cards__item {\n  margin-right: 4rem;\n  margin-bottom: 4rem;\n  width: 25rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Admin.vue"],"names":[],"mappings":"AAwEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;AAvEF;AAwEE;EACE,kBAAA;EACA,mBAAA;EACA,YAAA;AAtEJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n  &__item {\n    margin-right: 4rem;\n    margin-bottom: 4rem;\n    width: 25rem;\n  }\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n}\n.admin-cards__item {\n  margin-right: 4rem;\n  margin-bottom: 4rem;\n  width: 25rem;\n}", "",{"version":3,"sources":["webpack://./resources/js/pages/Admin.vue"],"names":[],"mappings":"AAyFA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;AAxFF;AAyFE;EACE,kBAAA;EACA,mBAAA;EACA,YAAA;AAvFJ","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.admin-cards {\n  display: flex;\n  align-items: flex-start;\n  margin-bottom: 4rem;\n  margin-right: 4rem;\n  &__item {\n    margin-right: 4rem;\n    margin-bottom: 4rem;\n    width: 25rem;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -108739,6 +108752,23 @@ var render = function () {
               count: String(_vm.suppliersCount),
               title: "Suppliers",
               bg: "green",
+            },
+          }),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "admin-cards__item" },
+        [
+          _c("admin-card", {
+            attrs: {
+              url: { name: "admin.categories" },
+              icon: "el-icon-s-custom",
+              count: String(_vm.categoriesCount),
+              title: "Categories",
+              bg: "maroon",
             },
           }),
         ],
