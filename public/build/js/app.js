@@ -6437,6 +6437,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -6481,6 +6485,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/auth/products?api_token=" + this.$store.getters.getToken).then(function (res) {
         _this2.items = res.data.data;
+
+        _this2.items.forEach(function (elem) {
+          return console.log(elem, "elem");
+        });
       })["catch"](function (error) {
         console.log(error, "error");
       });
@@ -113076,6 +113084,10 @@ var render = function () {
               _vm._v(" "),
               _c("th", [_vm._v("Buying date")]),
               _vm._v(" "),
+              _c("th", [_vm._v("Category")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Supplier")]),
+              _vm._v(" "),
               _c("th", [_vm._v("Actions")]),
             ]),
           ]),
@@ -113104,6 +113116,10 @@ var render = function () {
                 _c("td", [_vm._v(_vm._s(item.buying_price))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.buying_date))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.category_title))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.supplier_title))]),
                 _vm._v(" "),
                 _c("td", [
                   _c(

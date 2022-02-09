@@ -16,6 +16,8 @@
             <th>Product quantity</th>
             <th>Buying price</th>
             <th>Buying date</th>
+            <th>Category</th>
+            <th>Supplier</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -27,6 +29,8 @@
             <td>{{ item.product_quantity }}</td>
             <td>{{ item.buying_price }}</td>
             <td>{{ item.buying_date }}</td>
+            <td>{{ item.category_title }}</td>
+            <td>{{ item.supplier_title }}</td>
             <td>
               <div class="admin-table__actions">
                 <router-link
@@ -97,6 +101,7 @@ export default {
         .get("/api/auth/products?api_token=" + this.$store.getters.getToken)
         .then((res) => {
           this.items = res.data.data;
+          this.items.forEach((elem) => console.log(elem, "elem"));
         })
         .catch((error) => {
           console.log(error, "error");
