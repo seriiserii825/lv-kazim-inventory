@@ -49,4 +49,10 @@ class ProductController extends Controller
         $product->delete();
         return response()->noContent();
     }
+
+    public function count()
+    {
+        $count = Product::query()->get()->count();
+        return response()->json(["count" => $count]);
+    }
 }

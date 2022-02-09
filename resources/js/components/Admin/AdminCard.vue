@@ -17,7 +17,7 @@ export default {
     url: Object,
   },
   mounted() {
-    console.log(this.url, "this.url");
+    // console.log(this.url, "this.url");
   },
 };
 </script>
