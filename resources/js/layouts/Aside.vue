@@ -9,7 +9,7 @@
       </el-menu-item>
       <el-submenu index="2">
         <template slot="title"
-          ><i class="el-icon-s-check"></i>Employee</template
+          ><i class="el-icon-s-check"></i>Employee(Worker)</template
         >
         <el-menu-item-group>
           <el-menu-item index="2-1">
@@ -29,7 +29,7 @@
 
       <el-submenu index="3">
         <template slot="title"
-          ><i class="el-icon-s-goods"></i>Suppliers</template
+          ><i class="el-icon-s-goods"></i>Suppliers(Provider)</template
         >
         <el-menu-item-group>
           <el-menu-item index="3-1">

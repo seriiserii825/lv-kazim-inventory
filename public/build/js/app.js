@@ -108175,7 +108175,7 @@ var render = function () {
             [
               _c("template", { slot: "title" }, [
                 _c("i", { staticClass: "el-icon-s-check" }),
-                _vm._v("Employee"),
+                _vm._v("Employee(Worker)"),
               ]),
               _vm._v(" "),
               _c(
@@ -108229,7 +108229,7 @@ var render = function () {
             [
               _c("template", { slot: "title" }, [
                 _c("i", { staticClass: "el-icon-s-goods" }),
-                _vm._v("Suppliers"),
+                _vm._v("Suppliers(Provider)"),
               ]),
               _vm._v(" "),
               _c(
