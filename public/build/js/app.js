@@ -6058,6 +6058,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6147,6 +6159,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_FormComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/FormComponent.vue */ "./resources/js/components/FormComponent.vue");
 /* harmony import */ var _components_MediaGrid_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/MediaGrid.vue */ "./resources/js/components/MediaGrid.vue");
 /* harmony import */ var _components_ImagesThumbs_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ImagesThumbs.vue */ "./resources/js/components/ImagesThumbs.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -6839,6 +6855,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _layouts_AdminLayout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../layouts/AdminLayout.vue */ "./resources/js/layouts/AdminLayout.vue");
 /* harmony import */ var _components_Admin_AdminTable_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Admin/AdminTable.vue */ "./resources/js/components/Admin/AdminTable.vue");
+//
+//
 //
 //
 //
@@ -110282,7 +110300,7 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("h3", { staticClass: "form__title" }, [_vm._v("Edit category")]),
+      _c("h3", { staticClass: "form__title" }, [_vm._v("Create category")]),
       _vm._v(" "),
       _c(
         "el-form",
@@ -111355,7 +111373,7 @@ var render = function () {
                             },
                           },
                         },
-                        [_vm._v("Edit\n          ")]
+                        [_vm._v("Update\n          ")]
                       ),
                     ],
                     1
@@ -111438,6 +111456,8 @@ var render = function () {
             _c("tr", [
               _c("th", [_vm._v("Id")]),
               _vm._v(" "),
+              _c("th", [_vm._v("Name")]),
+              _vm._v(" "),
               _c("th", [_vm._v("Photo")]),
               _vm._v(" "),
               _c("th", [_vm._v("Email")]),
@@ -111445,8 +111465,6 @@ var render = function () {
               _c("th", [_vm._v("Phone")]),
               _vm._v(" "),
               _c("th", [_vm._v("Salary")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Join Date")]),
               _vm._v(" "),
               _c("th", [_vm._v("Actions")]),
             ]),
@@ -111457,6 +111475,8 @@ var render = function () {
             _vm._l(_vm.items, function (item) {
               return _c("tr", { key: item.id }, [
                 _c("td", [_vm._v(_vm._s(item.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.name))]),
                 _vm._v(" "),
                 _c("td", [
                   _c("img", {
@@ -111474,8 +111494,6 @@ var render = function () {
                 _c("td", [_vm._v(_vm._s(item.phone))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.salary))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.join_date))]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -112385,6 +112403,95 @@ var render = function () {
                 [
                   _c(
                     "el-form-item",
+                    { attrs: { label: "Category" } },
+                    [
+                      _c(
+                        "el-select",
+                        {
+                          attrs: { placeholder: "Category" },
+                          model: {
+                            value: _vm.form.category_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "category_id", $$v)
+                            },
+                            expression: "form.category_id",
+                          },
+                        },
+                        _vm._l(_vm.categories, function (item) {
+                          return _c("el-option", {
+                            key: item.id,
+                            attrs: { label: item.title, value: item.id },
+                          })
+                        }),
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.category_id
+                        ? _c("small", { staticClass: "form--error" }, [
+                            _vm._v(_vm._s(_vm.errors.category_id[0])),
+                          ])
+                        : _vm._e(),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { attrs: { span: 6 } },
+                [
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Supplier" } },
+                    [
+                      _c(
+                        "el-select",
+                        {
+                          attrs: { placeholder: "Supplier" },
+                          model: {
+                            value: _vm.form.supplier_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "supplier_id", $$v)
+                            },
+                            expression: "form.supplier_id",
+                          },
+                        },
+                        _vm._l(_vm.suppliers, function (item) {
+                          return _c("el-option", {
+                            key: item.id,
+                            attrs: { label: item.name, value: item.id },
+                          })
+                        }),
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.supplier_id
+                        ? _c("small", { staticClass: "form--error" }, [
+                            _vm._v(_vm._s(_vm.errors.supplier_id[0])),
+                          ])
+                        : _vm._e(),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-row",
+            { attrs: { gutter: 20 } },
+            [
+              _c(
+                "el-col",
+                { attrs: { span: 6 } },
+                [
+                  _c(
+                    "el-form-item",
                     { attrs: { label: "Root" } },
                     [
                       _c("el-input", {
@@ -112443,69 +112550,6 @@ var render = function () {
                         _vm._v(_vm._s(_vm.errors.image[0])),
                       ])
                     : _vm._e(),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-row",
-            { attrs: { gutter: 20 } },
-            [
-              _c(
-                "el-col",
-                { attrs: { span: 6 } },
-                [
-                  _c(
-                    "el-select",
-                    {
-                      attrs: { placeholder: "Category" },
-                      model: {
-                        value: _vm.form.category_id,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "category_id", $$v)
-                        },
-                        expression: "form.category_id",
-                      },
-                    },
-                    _vm._l(_vm.categories, function (item) {
-                      return _c("el-option", {
-                        key: item.id,
-                        attrs: { label: item.title, value: item.id },
-                      })
-                    }),
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-col",
-                { attrs: { span: 6 } },
-                [
-                  _c(
-                    "el-select",
-                    {
-                      attrs: { placeholder: "Supplier" },
-                      model: {
-                        value: _vm.form.supplier_id,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "supplier_id", $$v)
-                        },
-                        expression: "form.supplier_id",
-                      },
-                    },
-                    _vm._l(_vm.suppliers, function (item) {
-                      return _c("el-option", {
-                        key: item.id,
-                        attrs: { label: item.name, value: item.id },
-                      })
-                    }),
-                    1
-                  ),
                 ],
                 1
               ),
@@ -112608,7 +112652,7 @@ var render = function () {
         1
       ),
       _vm._v(" "),
-      _c("h3", { staticClass: "form__title" }, [_vm._v("Create product")]),
+      _c("h3", { staticClass: "form__title" }, [_vm._v("Edit product")]),
       _vm._v(" "),
       _c(
         "el-form",
@@ -112831,6 +112875,83 @@ var render = function () {
                 [
                   _c(
                     "el-form-item",
+                    { attrs: { label: "Category" } },
+                    [
+                      _c(
+                        "el-select",
+                        {
+                          attrs: { placeholder: "Category" },
+                          model: {
+                            value: _vm.form.category_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "category_id", $$v)
+                            },
+                            expression: "form.category_id",
+                          },
+                        },
+                        _vm._l(_vm.categories, function (item) {
+                          return _c("el-option", {
+                            key: item.id,
+                            attrs: { label: item.title, value: item.id },
+                          })
+                        }),
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { attrs: { span: 6 } },
+                [
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Supplier" } },
+                    [
+                      _c(
+                        "el-select",
+                        {
+                          attrs: { placeholder: "Supplier" },
+                          model: {
+                            value: _vm.form.supplier_id,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.form, "supplier_id", $$v)
+                            },
+                            expression: "form.supplier_id",
+                          },
+                        },
+                        _vm._l(_vm.suppliers, function (item) {
+                          return _c("el-option", {
+                            key: item.id,
+                            attrs: { label: item.name, value: item.id },
+                          })
+                        }),
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-row",
+            { attrs: { gutter: 20 } },
+            [
+              _c(
+                "el-col",
+                { attrs: { span: 6 } },
+                [
+                  _c(
+                    "el-form-item",
                     { attrs: { label: "Root" } },
                     [
                       _c("el-input", {
@@ -112899,69 +113020,6 @@ var render = function () {
                         _vm._v(_vm._s(_vm.errors.image[0])),
                       ])
                     : _vm._e(),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-row",
-            { attrs: { gutter: 20 } },
-            [
-              _c(
-                "el-col",
-                { attrs: { span: 6 } },
-                [
-                  _c(
-                    "el-select",
-                    {
-                      attrs: { placeholder: "Category" },
-                      model: {
-                        value: _vm.form.category_id,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "category_id", $$v)
-                        },
-                        expression: "form.category_id",
-                      },
-                    },
-                    _vm._l(_vm.categories, function (item) {
-                      return _c("el-option", {
-                        key: item.id,
-                        attrs: { label: item.title, value: item.id },
-                      })
-                    }),
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-col",
-                { attrs: { span: 6 } },
-                [
-                  _c(
-                    "el-select",
-                    {
-                      attrs: { placeholder: "Supplier" },
-                      model: {
-                        value: _vm.form.supplier_id,
-                        callback: function ($$v) {
-                          _vm.$set(_vm.form, "supplier_id", $$v)
-                        },
-                        expression: "form.supplier_id",
-                      },
-                    },
-                    _vm._l(_vm.suppliers, function (item) {
-                      return _c("el-option", {
-                        key: item.id,
-                        attrs: { label: item.name, value: item.id },
-                      })
-                    }),
-                    1
-                  ),
                 ],
                 1
               ),
@@ -113778,7 +113836,7 @@ var render = function () {
                             },
                           },
                         },
-                        [_vm._v("Edit\n          ")]
+                        [_vm._v("Update\n          ")]
                       ),
                     ],
                     1
@@ -113861,6 +113919,8 @@ var render = function () {
             _c("tr", [
               _c("th", [_vm._v("Id")]),
               _vm._v(" "),
+              _c("th", [_vm._v("Name")]),
+              _vm._v(" "),
               _c("th", [_vm._v("Photo")]),
               _vm._v(" "),
               _c("th", [_vm._v("Email")]),
@@ -113876,6 +113936,8 @@ var render = function () {
             _vm._l(_vm.items, function (item) {
               return _c("tr", { key: item.id }, [
                 _c("td", [_vm._v(_vm._s(item.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.name))]),
                 _vm._v(" "),
                 _c("td", [
                   _c("img", {

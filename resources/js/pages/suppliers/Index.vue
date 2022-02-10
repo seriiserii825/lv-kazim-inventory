@@ -11,6 +11,7 @@
         <thead>
           <tr>
             <th>Id</th>
+            <th>Name</th>
             <th>Photo</th>
             <th>Email</th>
             <th>Phone</th>
@@ -20,6 +21,7 @@
         <tbody>
           <tr v-for="item in items" :key="item.id">
             <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
             <td><img width="100" height="75" :src="item.photo" alt="" /></td>
             <td>{{ item.email }}</td>
             <td>{{ item.phone }}</td>

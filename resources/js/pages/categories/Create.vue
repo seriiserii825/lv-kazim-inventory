@@ -5,7 +5,7 @@
         <el-button type="success">All categories</el-button>
       </router-link>
     </el-row>
-    <h3 class="form__title">Edit category</h3>
+    <h3 class="form__title">Create category</h3>
     <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
         <el-col :span="6">

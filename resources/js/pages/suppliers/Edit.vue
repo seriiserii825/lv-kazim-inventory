@@ -80,7 +80,7 @@
         <el-col :span="6" :offset="18">
           <el-form-item>
             <el-button type="success" @click.prevent="onSubmit"
-              >Edit
+              >Update
             </el-button>
           </el-form-item>
         </el-col>

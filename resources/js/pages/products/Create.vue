@@ -81,6 +81,42 @@
       </el-row>
       <el-row :gutter="20">
         <el-col :span="6">
+          <el-form-item label="Category">
+            <el-select v-model="form.category_id" placeholder="Category">
+              <el-option
+                v-for="item in categories"
+                :key="item.id"
+                :label="item.title"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+
+            <small class="form--error" v-if="errors && errors.category_id">{{
+              errors.category_id[0]
+            }}</small>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
+          <el-form-item label="Supplier">
+            <el-select v-model="form.supplier_id" placeholder="Supplier">
+              <el-option
+                v-for="item in suppliers"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+
+            <small class="form--error" v-if="errors && errors.supplier_id">{{
+              errors.supplier_id[0]
+            }}</small>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="6">
           <el-form-item label="Root">
             <el-input name="salary" v-model="form.root"></el-input>
             <small class="form--error" v-if="errors && errors.root">{{
@@ -98,30 +134,6 @@
           <small class="form--error" v-if="errors && errors.image">{{
             errors.image[0]
           }}</small>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <el-select v-model="form.category_id" placeholder="Category">
-            <el-option
-              v-for="item in categories"
-              :key="item.id"
-              :label="item.title"
-              :value="item.id"
-            >
-            </el-option>
-          </el-select>
-        </el-col>
-        <el-col :span="6">
-          <el-select v-model="form.supplier_id" placeholder="Supplier">
-            <el-option
-              v-for="item in suppliers"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-            >
-            </el-option>
-          </el-select>
         </el-col>
       </el-row>
       <el-row>

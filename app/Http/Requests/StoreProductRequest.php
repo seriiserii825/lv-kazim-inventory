@@ -17,7 +17,7 @@ class StoreProductRequest extends FormRequest
             'category_id' => 'required',
             'supplier_id' => 'required',
             'title' => 'required|unique:products',
-            'code' => 'required',
+            'code' => 'required|max:8',
             'root' => 'nullable',
             'buying_price' => 'nullable',
             'selling_price' => 'nullable',

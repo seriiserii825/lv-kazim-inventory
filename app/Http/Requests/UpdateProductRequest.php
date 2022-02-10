@@ -17,7 +17,7 @@ class UpdateProductRequest extends FormRequest
             'category_id' => 'required',
             'supplier_id' => 'required',
             'title' => 'required|unique:products,title,' . $this->title . ',title',
-            'code' => 'required',
+            'code' => 'required|max:8',
             'root' => 'nullable',
             'buying_price' => 'nullable',
             'selling_price' => 'nullable',

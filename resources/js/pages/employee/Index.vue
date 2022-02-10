@@ -11,22 +11,22 @@
         <thead>
           <tr>
             <th>Id</th>
+            <th>Name</th>
             <th>Photo</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Salary</th>
-            <th>Join Date</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in items" :key="item.id">
             <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
             <td><img width="100" height="75" :src="item.photo" alt="" /></td>
             <td>{{ item.email }}</td>
             <td>{{ item.phone }}</td>
             <td>{{ item.salary }}</td>
-            <td>{{ item.join_date }}</td>
             <td>
               <div class="admin-table__actions">
                 <router-link
