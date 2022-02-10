@@ -88,6 +88,11 @@ export default {
   },
   mounted() {
     this.getItems();
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        this.closeMediaGrid();
+      }
+    });
   },
 };
 </script>
