@@ -2,6 +2,7 @@
 
 use App\Employee;
 use App\Expense;
+use App\Salary;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(SupplierTableSeeder::class);
         // $this->call(CategoryTableSeeder::class);
         // $this->call(ProductTableSeeder::class);
-        factory(Expense::class, 4)->create();
+        // factory(Expense::class, 4)->create();
+        factory(Salary::class, 4)->create();
     }
 }
