@@ -5,6 +5,7 @@ import suppliersRoutes from "./routes/suppliersRoutes";
 import categoriesRoutes from "./routes/categoriesRoutes";
 import mediaRoutes from "./routes/mediaRoutes";
 import productRoutes from "./routes/productsRoutes";
+import expensesRoutes from "./routes/expensesRoutes";
 
 const routes = {
     mode: "history",
@@ -15,6 +16,7 @@ const routes = {
         ...categoriesRoutes,
         ...mediaRoutes,
         ...productRoutes,
+        ...expensesRoutes,
         { path: "/404", name: "404", component: NotFound },
         { path: "*", redirect: "/404" },
     ],

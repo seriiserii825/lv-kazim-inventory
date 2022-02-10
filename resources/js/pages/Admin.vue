@@ -13,7 +13,7 @@
       <div class="admin-cards__item">
         <admin-card
           :url="{ name: 'admin.employee' }"
-          icon="el-icon-s-custom"
+          icon="el-icon-s-check"
           :count="String(employeeCount)"
           title="Employee"
           bg="blue"
@@ -22,7 +22,7 @@
       <div class="admin-cards__item">
         <admin-card
           :url="{ name: 'admin.suppliers' }"
-          icon="el-icon-s-custom"
+          icon="el-icon-s-goods"
           :count="String(suppliersCount)"
           title="Suppliers"
           bg="green"
@@ -31,7 +31,7 @@
       <div class="admin-cards__item">
         <admin-card
           :url="{ name: 'admin.categories' }"
-          icon="el-icon-s-custom"
+          icon="el-icon-s-unfold"
           :count="String(categoriesCount)"
           title="Categories"
           bg="maroon"
@@ -40,10 +40,17 @@
       <div class="admin-cards__item">
         <admin-card
           :url="{ name: 'admin.products' }"
-          icon="el-icon-s-custom"
+          icon="el-icon-s-shop"
           :count="String(productsCount)"
           title="Products"
           bg="#dddd00"
+        ></admin-card>
+        <admin-card
+          :url="{ name: 'admin.expenses' }"
+          icon="el-icon-s-help"
+          :count="String(expensesCount)"
+          title="Expenses"
+          bg="#095C00"
         ></admin-card>
       </div>
     </div>
@@ -61,6 +68,7 @@ export default {
       suppliersCount: 0,
       categoriesCount: 0,
       productsCount: 0,
+      expensesCount: 0,
     };
   },
   components: {
@@ -97,6 +105,11 @@ export default {
       .get("/api/auth/products-count?api_token=" + this.$store.getters.getToken)
       .then((res) => {
         this.productsCount = res.data.count;
+      });
+    axios
+      .get("/api/auth/expenses-count?api_token=" + this.$store.getters.getToken)
+      .then((res) => {
+        this.expensesCount = res.data.count;
       });
   },
 };

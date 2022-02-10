@@ -24,6 +24,7 @@ export default {
 <style lang="scss">
 .admin-card {
   display: block;
+  margin-bottom: 4rem;
   padding: 3rem 5rem 3rem 3rem;
   border-radius: 2rem;
   display: flex;

@@ -17,6 +17,7 @@ Route::group([
         'suppliers' => 'Api\SupplierController',
         'categories' => 'Api\CategoryController',
         'products' => 'Api\ProductController',
+        'expenses' => 'Api\ExpenseController',
     ]);
     Route::get('media-count', 'Api\MediaController@count');
     Route::get('employee-count', 'Api\EmployeeController@count');
@@ -24,4 +25,5 @@ Route::group([
     Route::get('categories-count', 'Api\CategoryController@count');
     Route::get('products-count', 'Api\ProductController@count');
     Route::get('product-create', 'Api\ProductController@productCreate');
+    Route::get('expenses-count', 'Api\ExpenseController@count');
 });
