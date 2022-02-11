@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class SalaryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return SalaryResource::collection(Salary::query()->orderByDesc('created_at')->get());
+        $sort_field = $request->get('sort_field');
+        $sort_direction = $request->get('sort_direction');
+        return SalaryResource::collection(Salary::query()->orderBy($sort_field, $sort_direction)->get());
     }
 
     public function store(StoreSalaryRequest $request)
@@ -70,15 +72,29 @@ class SalaryController extends Controller
         ]);
     }
 
-    public function salaryMonthSingle($month)
+    public function salaryMonthSingle(Request $request, $month)
     {
+        // $query = Post::query()->orderByDesc('created_at');
+        $sort_field = $request->get('sort_field');
+        $sort_direction = $request->get('sort_direction');
+
+        // if (!empty($value = $request->get('category_id'))) {
+        //     $query->where('category_id', $value);
+        // }
+
+        // return PostResource::collection($query->orderBy($sort_field, $sort_direction)->paginate(4));
+
         $salaries = DB::table('salaries')
             ->leftJoin('employees', 'salaries.employee_id', '=', 'employees.id')
             ->select('employees.name', 'salaries.*')
-            ->where('salaries.month', '=', $month)->get();
+            ->where('salaries.month', '=', $month)
+            ->orderBy($sort_field, $sort_direction)
+            ->get();
 
-        //        $salary = Salary::query()->where('month', '=', $month)->first();
-
-        return response()->json(['salaries' => $salaries], 200);
+        return response()->json([
+            'salaries' => $salaries,
+            'sort_field' => $sort_field,
+            'sort_direction' => $sort_direction,
+        ], 200);
     }
 }

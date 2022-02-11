@@ -23,6 +23,10 @@ export default {};
   th {
     color: white;
     background-color: #444;
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
   tr:nth-of-type(even) {
     background-color: #bbb;

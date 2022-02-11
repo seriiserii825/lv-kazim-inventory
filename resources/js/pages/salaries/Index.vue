@@ -14,10 +14,36 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Employee</th>
-            <th>Amount</th>
+            <th>
+              <a href="#" @click.prevent="sortTable('employee_id')">Title</a>
+              <span
+                v-if="sort_field === 'employee_id' && sort_direction === 'asc'"
+                >&uarr;</span
+              >
+              <span
+                v-if="sort_field === 'employee_id' && sort_direction === 'desc'"
+                >&darr;</span
+              >
+            </th>
+            <th>
+              <a href="#" @click.prevent="sortTable('amount')">Amount</a>
+              <span v-if="sort_field === 'amount' && sort_direction === 'asc'"
+                >&uarr;</span
+              >
+              <span v-if="sort_field === 'amount' && sort_direction === 'desc'"
+                >&darr;</span
+              >
+            </th>
             <th>Date</th>
-            <th>Month</th>
+            <th>
+              <a href="#" @click.prevent="sortTable('month')">Month</a>
+              <span v-if="sort_field === 'month' && sort_direction === 'asc'"
+                >&uarr;</span
+              >
+              <span v-if="sort_field === 'month' && sort_direction === 'desc'"
+                >&darr;</span
+              >
+            </th>
             <th>Year</th>
             <th>Actions</th>
           </tr>
@@ -60,6 +86,8 @@ export default {
     return {
       items: [],
       fullscreenLoading: false,
+      sort_field: "created_at",
+      sort_direction: "desc",
     };
   },
   components: {
@@ -67,6 +95,33 @@ export default {
     AdminTable,
   },
   methods: {
+    sortTable(field) {
+      if (this.sort_field === field) {
+        this.sort_direction = this.sort_direction === "asc" ? "desc" : "asc";
+      } else {
+        this.sort_field = field;
+        this.sort_direction = "asc";
+      }
+      this.getResults();
+    },
+    getResults() {
+      axios
+        .get(
+          "/api/auth/salaries/" +
+            "?sort_field=" +
+            this.sort_field +
+            "&sort_direction=" +
+            this.sort_direction +
+            "&api_token=" +
+            this.$store.getters.getToken
+        )
+        .then((res) => {
+          this.items = res.data.data;
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
     getMonth(index) {
       const months = [
         "January",
@@ -129,7 +184,7 @@ export default {
     },
   },
   created() {
-    this.getItems();
+    this.getResults();
   },
 };
 </script>
