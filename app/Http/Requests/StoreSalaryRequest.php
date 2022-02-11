@@ -16,9 +16,9 @@ class StoreSalaryRequest extends FormRequest
         return [
             'employee_id' => 'required|unique:salaries',
             'amount' => 'required',
-            'date' => 'nullable',
-            'month' => 'nullable',
-            'year' => 'nullable',
+            'date' => 'required',
+            'month' => 'required',
+            'year' => 'required',
         ];
     }
 }

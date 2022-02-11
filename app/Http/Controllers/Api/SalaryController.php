@@ -8,6 +8,7 @@ use App\Http\Requests\StoreSalaryRequest;
 use App\Http\Requests\UpdateSalaryRequest;
 use App\Http\Resources\SalaryResource;
 use App\Salary;
+use Illuminate\Support\Facades\DB;
 
 class SalaryController extends Controller
 {
@@ -47,7 +48,12 @@ class SalaryController extends Controller
 
     public function salaryCreate()
     {
-        $employees = Employee::query()->select('id', 'name')->get();
+        // $employees = Employee::query()->select('id', 'name')->get();
+        $employees = DB::table('employees AS emp')
+            ->select('emp.id', 'emp.name')
+            ->leftJoin('salaries AS sal', 'sal.employee_id', '=', 'emp.id')
+            ->whereNull('sal.employee_id')->get();
+
         return response()->json([
             'employees' => $employees
         ]);

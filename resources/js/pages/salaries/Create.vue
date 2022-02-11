@@ -25,8 +25,22 @@
           </el-form-item>
         </el-col>
         <el-col :span="6">
+          <el-form-item label="Amount">
+            <el-input name="selling_price" v-model="form.amount"></el-input>
+            <small class="form--error" v-if="errors && errors.amount">{{
+              errors.amount[0]
+            }}</small>
+          </el-form-item>
+        </el-col>
+        <el-col :span="6">
           <el-form-item label="Date">
-            <el-input name="name" v-model="form.date"></el-input>
+            <el-date-picker
+              v-model="fullDate"
+              type="date"
+              placeholder="Pick a day"
+            >
+            </el-date-picker>
+            <p>{{ form.date }}</p>
             <small class="form--error" v-if="errors && errors.date">{{
               errors.date[0]
             }}</small>
@@ -61,6 +75,7 @@ export default {
       },
       employees: [],
       errors: {},
+      fullDate: null,
     };
   },
   components: {
@@ -86,15 +101,20 @@ export default {
         });
     },
   },
+  watch: {
+    fullDate(value) {
+      const date = new Date(value);
+      this.form.date =
+        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+      this.form.month = date.toLocaleString("en-us", { month: "long" });
+      this.form.year = date.getFullYear();
+    },
+  },
   mounted() {
     axios
       .get("/api/auth/salary-create?api_token=" + this.$store.getters.getToken)
       .then((res) => {
         this.employees = res.data.employees;
-        this.$notify({
-          type: "success",
-          message: "Post was created",
-        });
       })
       .catch((error) => {
         this.errors = error.response.data.errors;
