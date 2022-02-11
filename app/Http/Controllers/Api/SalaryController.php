@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSalaryRequest;
 use App\Http\Requests\UpdateSalaryRequest;
@@ -48,11 +49,12 @@ class SalaryController extends Controller
 
     public function salaryCreate()
     {
-        // $employees = Employee::query()->select('id', 'name')->get();
-        $employees = DB::table('employees AS emp')
-            ->select('emp.id', 'emp.name')
-            ->leftJoin('salaries AS sal', 'sal.employee_id', '=', 'emp.id')
-            ->whereNull('sal.employee_id')->get();
+        $employees = Employee::query()->select('id', 'name')->get();
+
+        // $employees = DB::table('employees AS emp')
+        //     ->select('emp.id', 'emp.name')
+        //     ->leftJoin('salaries AS sal', 'sal.employee_id', '=', 'emp.id')
+        //     ->whereNull('sal.employee_id')->get();
 
         return response()->json([
             'employees' => $employees
@@ -75,7 +77,7 @@ class SalaryController extends Controller
             ->select('employees.name', 'salaries.*')
             ->where('salaries.month', '=', $month)->get();
 
-//        $salary = Salary::query()->where('month', '=', $month)->first();
+        //        $salary = Salary::query()->where('month', '=', $month)->first();
 
         return response()->json(['salaries' => $salaries], 200);
     }
