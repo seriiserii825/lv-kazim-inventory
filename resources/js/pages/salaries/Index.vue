@@ -4,6 +4,9 @@
       <router-link :to="{ name: 'admin.salaries.create' }">
         <el-button type="success">Create</el-button>
       </router-link>
+      <router-link :to="{ name: 'admin.salaries.month' }">
+        <el-button type="primary">View salaries by Month</el-button>
+      </router-link>
     </el-row>
     <h2 class="admin-layout__title">List salaries</h2>
     <admin-table>

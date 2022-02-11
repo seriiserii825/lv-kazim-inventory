@@ -29,4 +29,6 @@ Route::group([
     Route::get('salaries-count', 'Api\SalaryController@count');
     Route::get('product-create', 'Api\ProductController@productCreate');
     Route::get('salary-create', 'Api\SalaryController@salaryCreate');
+    Route::get('salary-month', 'Api\SalaryController@salaryMonth');
+    Route::get('salary-month-single/{month}', 'Api\SalaryController@salaryMonthSingle');
 });

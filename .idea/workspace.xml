@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d971a11-782c-4b1e-82a4-fa701c6d20e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SalaryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateSalaryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateSalaryRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/salaries/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/salaries/Create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/salaries/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/salaries/Edit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/salaries/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/salaries/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/routes/salariesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes/salariesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -8,7 +8,16 @@
     <h3 class="form__title">Create salary</h3>
     <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
-        <el-col :span="6">
+        <el-col :span="4">
+          <el-form-item label="Search Employee">
+            <el-input
+              name="selling_price"
+              @input="SearchEmployee"
+              v-model="search"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="4">
           <el-form-item label="Employee">
             <el-select v-model="form.employee_id" placeholder="Select">
               <el-option
@@ -24,7 +33,7 @@
             }}</small>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="4">
           <el-form-item label="Amount">
             <el-input name="selling_price" v-model="form.amount"></el-input>
             <small class="form--error" v-if="errors && errors.amount">{{
@@ -32,7 +41,7 @@
             }}</small>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="4">
           <el-form-item label="Date">
             <el-date-picker
               v-model="fullDate"
@@ -48,7 +57,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="6" :offset="18">
+        <el-col :span="4" :offset="18">
           <el-form-item>
             <el-button type="success" @click.prevent="onSubmit"
               >Create
@@ -73,6 +82,7 @@ export default {
         month: "",
         year: "",
       },
+      search: "",
       employees: [],
       errors: {},
       fullDate: null,
@@ -83,6 +93,13 @@ export default {
     FormComponent,
   },
   methods: {
+    SearchEmployee() {
+      this.employees.forEach((item) => {
+        if (item.name.toLowerCase().includes(this.search.toLowerCase())) {
+          this.form.employee_id = item.id;
+        }
+      });
+    },
     onSubmit() {
       axios
         .post(
