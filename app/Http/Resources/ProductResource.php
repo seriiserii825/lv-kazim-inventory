@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -17,7 +18,7 @@ class ProductResource extends JsonResource
             'root' => $this->root,
             'buying_price' => $this->buying_price,
             'selling_price' => $this->selling_price,
-            'buying_date' => $this->buying_date,
+            'buying_date' => Carbon::parse($this->buying_date)->format('d-m-Y H:i:s'),
             'image' => $this->image,
             'product_quantity' => $this->product_quantity,
             'category_title' => $this->category->title,

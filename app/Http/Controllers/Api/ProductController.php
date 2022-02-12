@@ -9,12 +9,15 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Product;
 use App\Supplier;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return ProductResource::collection(Product::query()->orderByDesc('created_at')->get());
+        $sort_field = $request->get('sort_field');
+        $sort_direction = $request->get('sort_direction');
+        return ProductResource::collection(Product::query()->orderBy($sort_field, $sort_direction)->get());
     }
 
     public function store(StoreProductRequest $request)
