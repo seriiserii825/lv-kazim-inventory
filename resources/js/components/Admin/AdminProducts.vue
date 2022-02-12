@@ -71,7 +71,7 @@ export default {
     this.getItems();
   },
   mounted() {
-    console.log(this.category_id, "this.category_id");
+    // console.log(this.category_id, "this.category_id");
   },
 };
 </script>
