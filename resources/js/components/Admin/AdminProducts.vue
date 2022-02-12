@@ -46,6 +46,7 @@ export default {
             this.sort_field +
             "&sort_direction=" +
             this.sort_direction +
+            "&product_quantity=in_stock" +
             "&api_token=" +
             this.$store.getters.getToken
         )
