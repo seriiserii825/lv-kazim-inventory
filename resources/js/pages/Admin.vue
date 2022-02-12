@@ -12,12 +12,20 @@
         </admin-block>
       </el-col>
       <el-col :span="16">
-        <admin-block title="Products Sold">
+        <admin-block title="Products To Sold">
           <el-tabs type="card" @tab-click="handleClick">
             <el-tab-pane label="All products">
               <admin-products></admin-products>
             </el-tab-pane>
-            <el-tab-pane label="Profile"> </el-tab-pane>
+            <el-tab-pane
+              v-for="category in categories"
+              :key="category.id"
+              :label="category.title"
+            >
+              <admin-products
+                :category_id="category.id"
+              ></admin-products>
+            </el-tab-pane>
           </el-tabs>
         </admin-block>
       </el-col>
@@ -34,12 +42,29 @@ export default {
   data() {
     return {
       activeName: "first",
+      categories: "",
     };
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
+      // console.log(tab, event);
     },
+    getCategories() {
+      axios
+        .get(
+          "/api/auth/categories-list?api_token=" + this.$store.getters.getToken
+        )
+        .then((res) => {
+          this.categories = res.data.data;
+          console.log(this.categories, 'this.categories')
+        })
+        .catch((error) => {
+          console.log(error, "error");
+        });
+    },
+  },
+  created() {
+    this.getCategories();
   },
   components: {
     AdminLayout,

@@ -20,6 +20,12 @@
 <script>
 import AdminProduct from "./AdminProduct.vue";
 export default {
+  props: {
+    category_id: {
+      type: Number,
+      default: 0
+    },
+  },
   data() {
     return {
       items: [],
@@ -47,6 +53,8 @@ export default {
             "&sort_direction=" +
             this.sort_direction +
             "&product_quantity=in_stock" +
+            "&category_id=" +
+            this.category_id +
             "&api_token=" +
             this.$store.getters.getToken
         )
@@ -61,6 +69,9 @@ export default {
   },
   created() {
     this.getItems();
+  },
+  mounted() {
+    console.log(this.category_id, "this.category_id");
   },
 };
 </script>

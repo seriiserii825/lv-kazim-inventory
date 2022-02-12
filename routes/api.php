@@ -24,6 +24,7 @@ Route::group([
     Route::get('employee-count', 'Api\EmployeeController@count');
     Route::get('suppliers-count', 'Api\SupplierController@count');
     Route::get('categories-count', 'Api\CategoryController@count');
+    Route::get('categories-list', 'Api\CategoryController@list');
     Route::get('products-count', 'Api\ProductController@count');
     Route::get('expenses-count', 'Api\ExpenseController@count');
     Route::get('salaries-count', 'Api\SalaryController@count');

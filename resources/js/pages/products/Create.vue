@@ -217,12 +217,6 @@ export default {
       .then((res) => {
         this.categories = res.data.categories;
         this.suppliers = res.data.suppliers;
-        console.log(this.suppliers, "this.suppliers");
-        // this.$router.push({ name: "admin.products" });
-        this.$notify({
-          type: "success",
-          message: "Post was created",
-        });
       })
       .catch((error) => {
         this.errors = error.response.data.errors;

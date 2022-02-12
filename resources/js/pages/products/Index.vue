@@ -156,7 +156,7 @@ export default {
     getItems() {
       axios
         .get(
-          "/api/auth/products/" +
+          "/api/auth/products" +
             "?sort_field=" +
             this.sort_field +
             "&sort_direction=" +

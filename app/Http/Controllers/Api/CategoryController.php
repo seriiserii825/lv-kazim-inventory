@@ -43,4 +43,10 @@ class CategoryController extends Controller
         $count = Category::query()->get()->count();
         return response()->json(["count" => $count]);
     }
+
+    public function list()
+    {
+        $categories = Category::query()->select('id', 'title')->get();
+        return response()->json(["data" => $categories]);
+    }
 }
