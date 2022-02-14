@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use App\Http\Resources\CartResource;
-use http\Env\Response;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -19,10 +18,8 @@ class CartController extends Controller
 
     public function store(StoreCartRequest $request)
     {
-        if ($request->get('quantity')) {
-        }
-        $employee = Cart::create($request->validated());
-        return new CartResource($employee);
+        $cart = Cart::create($request->validated());
+        return new CartResource($cart);
     }
 
     public function show($id)
@@ -36,7 +33,7 @@ class CartController extends Controller
         $data['product_quantity'] += 1;
         $cart->update();
 
-        return new CartResource($$data);
+        return new CartResource($data);
     }
 
     public function destroy($id)
