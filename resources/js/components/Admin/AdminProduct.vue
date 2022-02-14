@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-product">
+  <a href="#" class="admin-product">
     <div class="admin-product__img">
       <img :src="img" alt="" />
     </div>
@@ -10,7 +10,7 @@
       >
       <span class="admin-product__count--error" v-else>Out of stock</span>
     </div>
-  </div>
+  </a>
 </template>
 <script>
 export default {
@@ -24,9 +24,15 @@ export default {
 <style lang="scss">
 .admin-product {
   padding: 2rem;
+  text-decoration: none;
+  color: inherit;
   border: 1px solid #ccc;
   border-radius: 1rem;
   box-shadow: 0 0 6px -2px rgba(0, 0, 0, 0.4);
+  transition: all .4s;
+  &:hover {
+    box-shadow: 2px 2px 4px 4px rgba(0,0,0,.2);
+  }
   &__img {
     position: relative;
     margin-bottom: 3rem;

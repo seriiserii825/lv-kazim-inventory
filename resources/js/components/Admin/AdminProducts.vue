@@ -13,6 +13,9 @@
         :img="item.image"
         :title="item.title"
         :count="item.product_quantity"
+        @click.prevent.native="
+          addToCart(item.id, item.title, item.selling_price)
+        "
       ></admin-product>
     </div>
   </div>
@@ -23,7 +26,7 @@ export default {
   props: {
     category_id: {
       type: Number,
-      default: 0
+      default: 0,
     },
   },
   data() {
@@ -39,6 +42,28 @@ export default {
     AdminProduct,
   },
   methods: {
+    addToCart(id, title, price) {
+      const sub_total = price;
+      const data = {
+        product_id: id,
+        product_title: title,
+        price: price,
+        quantity: 1,
+        sub_total: sub_total,
+      };
+
+      axios
+        .post("/api/auth/cart?api_token=" + this.$store.getters.getToken, data)
+        .then((res) => {
+          this.$notify({
+            type: "success",
+            message: `Product "${title}" was added to cart`,
+          });
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
     searchProducts() {
       this.filtered = this.items.filter((item) => {
         return item.title.toLowerCase().includes(this.search.toLowerCase());
@@ -60,6 +85,7 @@ export default {
         )
         .then((res) => {
           this.items = res.data.data;
+          // console.log(this.items, "this.items");
           this.filtered = this.items;
         })
         .catch((error) => {

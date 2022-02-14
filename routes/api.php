@@ -20,6 +20,7 @@ Route::group([
         'expenses' => 'Api\ExpenseController',
         'salaries' => 'Api\SalaryController',
         'customers' => 'Api\CustomerController',
+        'cart' => 'Api\CartController',
     ]);
     Route::get('media-count', 'Api\MediaController@count');
     Route::get('employee-count', 'Api\EmployeeController@count');

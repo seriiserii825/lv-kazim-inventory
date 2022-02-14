@@ -6,7 +6,7 @@
           <el-option
             v-for="item in customers"
             :key="item.id"
-            :label="item.title"
+            :label="item.name"
             :value="item.id"
           >
           </el-option>
@@ -68,6 +68,17 @@ export default {
         },
       ],
     };
+  },
+  created() {
+    axios
+      .get("/api/auth/customers?api_token=" + this.$store.getters.getToken)
+      .then((res) => {
+        this.customers = res.data.data;
+        // console.log(this.customers, "this.customers");
+      })
+      .catch((error) => {
+        console.log(error, "error");
+      });
   },
 };
 </script>
