@@ -120,6 +120,25 @@
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+      <el-submenu index="8">
+        <template slot="title"
+          ><i class="el-icon-s-custom"></i>Customers</template
+        >
+        <el-menu-item-group>
+          <el-menu-item index="8-1">
+            <router-link :to="{ name: 'admin.customers.create' }">
+              <i class="el-icon-document-add"></i>
+              <span>Create</span>
+            </router-link>
+          </el-menu-item>
+          <el-menu-item index="8-2">
+            <router-link :to="{ name: 'admin.customers' }" exact>
+              <i class="el-icon-tickets"></i>
+              <span>List</span>
+            </router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
   </el-aside>
 </template>

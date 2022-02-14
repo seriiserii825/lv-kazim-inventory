@@ -1,5 +1,6 @@
 <?php
 
+use App\Customer;
 use App\Employee;
 use App\Expense;
 use App\Salary;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(CategoryTableSeeder::class);
         // $this->call(ProductTableSeeder::class);
         // factory(Expense::class, 4)->create();
-        factory(Salary::class, 4)->create();
+        // factory(Salary::class, 4)->create();
+        factory(Customer::class, 2)->create();
     }
 }

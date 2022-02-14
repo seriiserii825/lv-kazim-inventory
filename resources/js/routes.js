@@ -7,6 +7,7 @@ import mediaRoutes from "./routes/mediaRoutes";
 import productRoutes from "./routes/productsRoutes";
 import expensesRoutes from "./routes/expensesRoutes";
 import salariesRoutes from "./routes/salariesRoutes";
+import customerRoutes from "./routes/customerRoutes";
 
 const routes = {
     mode: "history",
@@ -19,6 +20,7 @@ const routes = {
         ...productRoutes,
         ...expensesRoutes,
         ...salariesRoutes,
+        ...customerRoutes,
         { path: "/404", name: "404", component: NotFound },
         { path: "*", redirect: "/404" },
     ],
