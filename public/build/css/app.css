@@ -135,6 +135,11 @@ input[type=submit]:disabled {
   display: block;
 }
 
+.icon-error {
+  font-size: 2rem;
+  color: red;
+}
+
 .btn {
   font-size: 1.8rem;
 }

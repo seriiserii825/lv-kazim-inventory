@@ -12,7 +12,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        //
+        return CartResource::collection(Cart::query()->orderByDesc('created_at')->get());
     }
 
     public function store(StoreCartRequest $request)
@@ -31,8 +31,9 @@ class CartController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+        return response()->noContent();
     }
 }

@@ -12,7 +12,7 @@
                 </admin-block>
             </el-col>
             <el-col :span="16">
-                <admin-block title="Products To Sold">
+                <admin-block title="Products To Sold(Click to add to cart)">
                     <el-tabs type="card" @tab-click="handleClick">
                         <el-tab-pane label="All products">
                             <admin-products></admin-products>
