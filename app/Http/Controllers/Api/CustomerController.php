@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Customer;
-use App\Employee;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
@@ -29,7 +28,7 @@ class CustomerController extends Controller
         return new CustomerResource($customer);
     }
 
-    public function update(UpdateCustomerRequest $request, Employee $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
 
         $customer->update($request->validated());

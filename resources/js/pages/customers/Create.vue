@@ -5,7 +5,8 @@
         <el-button type="success">All customers</el-button>
       </router-link>
     </el-row>
-    <h3 class="form__title">Edit customers</h3>
+    <h3 class="form__title">Create customers</h3>
+
     <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -66,6 +67,7 @@
         </el-col>
       </el-row>
     </el-form>
+
     <media-grid
       @emit_images="emit_images"
       @handler="showMediaGrid = false"

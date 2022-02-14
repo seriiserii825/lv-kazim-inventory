@@ -1,11 +1,12 @@
 <template>
   <admin-layout>
     <el-row class="mb-3">
-      <router-link :to="{ name: 'admin.employee' }">
-        <el-button type="success">All employee</el-button>
+      <router-link :to="{ name: 'admin.customers' }">
+        <el-button type="success">All customers</el-button>
       </router-link>
     </el-row>
-    <h3 class="form__title">Edit employee</h3>
+    <h3 class="form__title">Edit customers</h3>
+
     <el-form ref="form" :model="form" label-width="120px">
       <el-row :gutter="20">
         <el-col :span="6">
@@ -34,17 +35,6 @@
             }}</small>
           </el-form-item>
         </el-col>
-
-        <el-col :span="6">
-          <el-form-item label="Salary">
-            <el-input name="salary" v-model="form.salary"></el-input>
-            <small class="form--error" v-if="errors && errors.salary">{{
-              errors.salary[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Phone">
             <el-input name="phone" v-model="form.phone"></el-input>
@@ -53,55 +43,23 @@
             }}</small>
           </el-form-item>
         </el-col>
-        <el-col :span="6">
-          <el-form-item label="Nid">
-            <el-input name="nid" v-model="form.nid"></el-input>
-            <small class="form--error" v-if="errors && errors.nid">{{
-              errors.nid[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
       </el-row>
-
       <el-row :gutter="20">
         <el-col :span="6">
           <el-form-item label="Photo">
             <el-button type="primary" @click="showMediaGrid = true"
-              >Add image
-            </el-button>
-            <images-thumbs
-              v-if="form.images && form.images.length"
-              :images="form.images"
-            ></images-thumbs>
-            <img
-              class="mt-1 db"
-              width="100"
-              height="50"
-              v-else
-              :src="form.photo"
-              alt=""
-            />
+              >Add image</el-button
+            >
+            <images-thumbs :images="form.images"></images-thumbs>
+            <img width="250" :src="form.photo" alt="" />
           </el-form-item>
           <small class="form--error" v-if="errors && errors.photo">{{
             errors.photo[0]
           }}</small>
         </el-col>
-        <el-col :span="6">
-          <el-form-item label="Join date">
-            <el-date-picker
-              v-model="form.join_date"
-              type="date"
-              placeholder="Pick a day"
-            >
-            </el-date-picker>
-            <small class="form--error" v-if="errors && errors.join_date">{{
-              errors.join_date[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
       </el-row>
       <el-row>
-        <el-col :span="6">
+        <el-col :span="6" :offset="18">
           <el-form-item>
             <el-button type="success" @click.prevent="onSubmit"
               >Update
@@ -110,6 +68,7 @@
         </el-col>
       </el-row>
     </el-form>
+
     <media-grid
       @emit_images="emit_images"
       @handler="showMediaGrid = false"
@@ -151,20 +110,18 @@ export default {
     emit_images(images) {
       this.form.images = images;
       this.form.photo = images[0];
-      console.log(this.form.images, "this.form.images");
-      console.log(this.form.photo, "this.form.photo");
     },
     onSubmit() {
       axios
         .put(
-          "/api/auth/employee/" +
+          "/api/auth/customers/" +
             this.$route.params.id +
             "?api_token=" +
             this.$store.getters.getToken,
           this.form
         )
         .then((res) => {
-          this.$router.push({ name: "admin.employee" });
+          this.$router.push({ name: "admin.customers" });
           this.$notify({
             type: "success",
             message: "Post was edited",
@@ -178,7 +135,7 @@ export default {
   mounted() {
     axios
       .get(
-        "/api/auth/employee/" +
+        "/api/auth/customers/" +
           this.$route.params.id +
           "?api_token=" +
           this.$store.getters.getToken

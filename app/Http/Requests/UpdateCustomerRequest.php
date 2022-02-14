@@ -18,7 +18,7 @@ class UpdateCustomerRequest extends FormRequest
             'email' => 'required|email|unique:customers,email,' . $this->email . ',email',
             'phone' => 'required',
             'address' => 'required',
-            'photo' => 'nullable',
+            'photo' => 'required',
         ];
     }
 }
