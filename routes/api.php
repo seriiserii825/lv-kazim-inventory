@@ -29,6 +29,7 @@ Route::group([
     Route::get('products-count', 'Api\ProductController@count');
     Route::get('expenses-count', 'Api\ExpenseController@count');
     Route::get('salaries-count', 'Api\SalaryController@count');
+    Route::get('customers-count', 'Api\CustomerController@count');
     Route::get('product-create', 'Api\ProductController@productCreate');
     Route::get('salary-create', 'Api\SalaryController@salaryCreate');
     Route::get('salary-month', 'Api\SalaryController@salaryMonth');

@@ -54,6 +54,15 @@
         bg="#095C00"
       ></admin-card>
     </div>
+    <div class="admin-cards__item">
+      <admin-card
+        :url="{ name: 'admin.customers' }"
+        icon="el-icon-s-help"
+        :count="String(customersCount)"
+        title="Customers"
+        bg="#00D3F0"
+      ></admin-card>
+    </div>
   </div>
 </template>
 <script>
@@ -68,6 +77,7 @@ export default {
       categoriesCount: 0,
       productsCount: 0,
       expensesCount: 0,
+      customersCount: 0,
     };
   },
   components: {
@@ -109,6 +119,13 @@ export default {
       .then((res) => {
         this.expensesCount = res.data.count;
       });
+    axios
+      .get(
+        "/api/auth/customers-count?api_token=" + this.$store.getters.getToken
+      )
+      .then((res) => {
+        this.customersCount = res.data.count;
+      });
   },
 };
 </script>
@@ -116,6 +133,7 @@ export default {
 .admin-cards {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   margin-bottom: 4rem;
   width: 100%;
   &__item {

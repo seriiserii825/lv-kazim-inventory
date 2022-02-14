@@ -128,8 +128,10 @@ export default {
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    height: 62vh;
     padding: 3rem;
     background-color: #ddd;
+    overflow: hidden;
   }
   &__item {
     position: relative;
