@@ -7,6 +7,7 @@ import routes from "./routes";
 import User from "./helpers/User";
 
 window.User = User;
+window.Reload = new Vue();
 //support vuex
 import Vuex from "vuex";
 

@@ -35,4 +35,5 @@ Route::group([
     Route::get('salary-create', 'Api\SalaryController@salaryCreate');
     Route::get('salary-month', 'Api\SalaryController@salaryMonth');
     Route::get('salary-month-single/{month}', 'Api\SalaryController@salaryMonthSingle');
+    Route::get('product-exists-in-cart/{product_id}', 'Api\CartController@productExistsInCart');
 });

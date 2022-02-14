@@ -22,6 +22,7 @@
 </template>
 <script>
 import AdminProduct from "./AdminProduct.vue";
+
 export default {
   props: {
     category_id: {
@@ -36,6 +37,8 @@ export default {
       sort_direction: "desc",
       search: "",
       filtered: [],
+      cart_items: [],
+      products_exists_in_cart: false,
     };
   },
   components: {
@@ -43,6 +46,7 @@ export default {
   },
   methods: {
     addToCart(id, title, price) {
+      this.checkProductExists();
       const sub_total = price;
       const data = {
         product_id: id,
@@ -51,18 +55,49 @@ export default {
         quantity: 1,
         sub_total: sub_total,
       };
-
-      axios
-        .post("/api/auth/cart?api_token=" + this.$store.getters.getToken, data)
-        .then((res) => {
-          this.$notify({
-            type: "success",
-            message: `Product "${title}" was added to cart`,
-          });
-        })
-        .catch((error) => {
-          this.errors = error.response.data.errors;
-        });
+      // if (!this.products_exists_in_cart) {
+      //     axios
+      //         .post("/api/auth/cart?quantity=1&api_token=" + this.$store.getters.getToken, data)
+      //         .then((res) => {
+      //             this.$notify({
+      //                 type: "success",
+      //                 message: `Product "${title}" was added to cart`,
+      //             });
+      //             Reload.$emit('AfterAdd');
+      //         })
+      //         .catch((error) => {
+      //                 this.errors = error.response.data.errors;
+      //                 if (this.errors.product_id) {
+      //                     let id_error = this.errors.product_id;
+      //                     this.$notify({
+      //                         type: "error",
+      //                         message: id_error[0]
+      //                     });
+      //                 }
+      //             }
+      //         );
+      // } else {
+      //     axios
+      //         .put("/api/auth/cart?quantity=1&api_token=" + this.$store.getters.getToken, data)
+      //         .then((res) => {
+      //             this.$notify({
+      //                 type: "success",
+      //                 message: `Product "${title}" was added to cart`,
+      //             });
+      //             Reload.$emit('AfterAdd');
+      //         })
+      //         .catch((error) => {
+      //                 this.errors = error.response.data.errors;
+      //                 if (this.errors.product_id) {
+      //                     let id_error = this.errors.product_id;
+      //                     this.$notify({
+      //                         type: "error",
+      //                         message: id_error[0]
+      //                     });
+      //                 }
+      //             }
+      //         );
+      // }
     },
     searchProducts() {
       this.filtered = this.items.filter((item) => {
@@ -90,6 +125,37 @@ export default {
         })
         .catch((error) => {
           console.log(error, "error");
+        });
+    },
+    getCartItems() {
+      axios
+        .get("/api/auth/cart?api_token=" + this.$store.getters.getToken)
+        .then((res) => {
+          this.cart_items = res.data.data;
+        })
+        .catch((error) => {
+          console.log(error, "error");
+        });
+    },
+    checkProductExists() {
+      axios
+        .get(
+          "/api/auth/product-exists-in-cart?quantity=1&api_token=" +
+            this.$store.getters.getToken
+        )
+        .then((res) => {
+          console.log(res, "res");
+          // Reload.$emit('AfterAdd');
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+          if (this.errors.product_id) {
+            let id_error = this.errors.product_id;
+            this.$notify({
+              type: "error",
+              message: id_error[0],
+            });
+          }
         });
     },
   },
