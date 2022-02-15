@@ -1,12 +1,18 @@
 <template>
-  <a href="#" class="admin-product">
+  <a
+    href="#"
+    class="admin-product"
+    @click.prevent="
+      addToCart(item.id, item.title, item.product_quantity, item.selling_price)
+    "
+  >
     <div class="admin-product__img">
-      <img :src="img" alt="" />
+      <img :src="item.image" alt="" />
     </div>
-    <div class="admin-product__title">{{ title }}</div>
+    <div class="admin-product__title">{{ item.title }}</div>
     <div class="admin-product__count">
-      <span class="admin-product__count--success" v-if="count"
-        >Available <strong>{{ count }}</strong></span
+      <span class="admin-product__count--success" v-if="item.product_quantity"
+        >Available <strong>{{ item.product_quantity }}</strong></span
       >
       <span class="admin-product__count--error" v-else>Out of stock</span>
     </div>
@@ -15,9 +21,39 @@
 <script>
 export default {
   props: {
-    img: String,
-    title: String,
-    count: Number,
+    item: {
+      type: Object,
+    },
+  },
+  methods: {
+    async addToCart(id, title, product_quantity, selling_price) {
+      const product_exists_in_cart = await this.$store.dispatch(
+        "exists_in_cart",
+        id
+      );
+
+      if (!product_exists_in_cart) {
+        const current_count = await this.current_count;
+        console.log(current_count, "current_count");
+        const product = {
+          id,
+          title,
+          product_quantity,
+          selling_price,
+          current_count,
+          sub_total: current_count * selling_price,
+        };
+        this.$store.dispatch("add_to_cart", product);
+      }
+    },
+  },
+  computed: {
+    current_count() {
+      return this.$store.dispatch("current_count", this.item.id);
+    },
+  },
+  created() {
+    // console.log(this.item, "this.item");
   },
 };
 </script>
@@ -29,9 +65,9 @@ export default {
   border: 1px solid #ccc;
   border-radius: 1rem;
   box-shadow: 0 0 6px -2px rgba(0, 0, 0, 0.4);
-  transition: all .4s;
+  transition: all 0.4s;
   &:hover {
-    box-shadow: 2px 2px 4px 4px rgba(0,0,0,.2);
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
   }
   &__img {
     position: relative;

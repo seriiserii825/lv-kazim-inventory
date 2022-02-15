@@ -10,17 +10,7 @@
       <admin-product
         v-for="item in filtered"
         :key="item.id"
-        :img="item.image"
-        :title="item.title"
-        :count="item.product_quantity"
-        @click.prevent.native="
-          addToCart(
-            item.id,
-            item.title,
-            item.product_quantity,
-            item.selling_price
-          )
-        "
+        :item="item"
       ></admin-product>
     </div>
   </div>
@@ -43,15 +33,12 @@ export default {
       search: "",
       filtered: [],
       cart_items: [],
-      products_exists_in_cart: false,
     };
   },
   components: {
     AdminProduct,
   },
   methods: {
-    async addToCart(id, title, quantity, price) {
-    },
     searchProducts() {
       this.filtered = this.items.filter((item) => {
         return item.title.toLowerCase().includes(this.search.toLowerCase());

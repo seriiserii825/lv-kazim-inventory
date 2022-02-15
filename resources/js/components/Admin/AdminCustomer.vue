@@ -15,7 +15,7 @@
         <tbody>
           <admin-customer-table-item
             v-for="item in items"
-            :key="item.product_id"
+            :key="item.id"
             :item="item"
             @remove_item="remove"
           >
@@ -36,7 +36,7 @@ import AdminCustomerTableItem from "./AdminCustomerTableItem";
 export default {
   data() {
     return {
-      items: [],
+    //   items: [],
     };
   },
   components: {
@@ -79,13 +79,14 @@ export default {
           });
         });
     },
-    getItems() {
-      return [];
+  },
+  computed: {
+    items() {
+      const elems = this.$store.getters.cart;
+      console.log(elems, "elems");
+      return elems;
     },
-  },
-  created() {
-    this.getItems();
-  },
+  }
 };
 </script>
 <style lang="scss">

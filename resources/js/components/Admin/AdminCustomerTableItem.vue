@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td>{{ item.product_title }}</td>
+    <td>{{ item.title }}</td>
     <td>
       <div class="admin-customer__quantity">
         <el-button class="admin-customer__btn" type="success" @click="dec"
@@ -12,7 +12,7 @@
         >
       </div>
     </td>
-    <td>{{ item.price }}</td>
+    <td>{{ item.selling_price }}</td>
     <td>{{ item.sub_total }}</td>
     <td>
       <div
@@ -49,6 +49,7 @@ export default {
   },
   created() {
     this.quantity = this.item.quantity;
+    console.log(this.iteml, "this.iteml");
   },
 };
 </script>
