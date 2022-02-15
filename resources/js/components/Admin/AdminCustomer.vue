@@ -2,7 +2,7 @@
   <div class="admin-customer">
     <el-button type="success">Add customer</el-button>
     <admin-table class="admin-customer__table">
-      <table>
+      <table v-if="items.length">
         <thead>
           <tr>
             <th>Name</th>
@@ -80,21 +80,11 @@ export default {
         });
     },
     getItems() {
-      axios
-        .get("/api/auth/cart?api_token=" + this.$store.getters.getToken)
-        .then((res) => {
-          this.items = res.data.data;
-        })
-        .catch((error) => {
-          console.log(error, "error");
-        });
+      return [];
     },
   },
   created() {
     this.getItems();
-    Reload.$on("AfterAdd", () => {
-      this.getItems();
-    });
   },
 };
 </script>
