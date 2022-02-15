@@ -43,9 +43,9 @@ export default {
         AdminProduct,
     },
     methods: {
-       async addToCart(id, title, quantity, price) {
+        async addToCart(id, title, quantity, price) {
 
-           await this.checkProductExists(id);
+            await this.checkProductExists(id);
 
             const data = {
                 product_id: id,
