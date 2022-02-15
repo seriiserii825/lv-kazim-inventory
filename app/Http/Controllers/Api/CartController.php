@@ -31,22 +31,17 @@ class CartController extends Controller
     {
         $cart = Cart::query()->where('product_id', $id)->first();
         $data = $request->validated();
-        $data['quantity'] += 1;
-        $data['sub_total'] = $data['quantity'] * $data['price'];
         $cart->update($data);
-
-//        return new CartResource($data);
         return response()->json([
             'cart' => $cart,
-            'data' => $data
+            'data' => $data,
+            'quantity' => $data['quantity']
         ]);
     }
 
     public function destroy($id)
     {
-
         $id = (int)$id;
-
         $cart = Cart::query()->where('product_id', $id)->first();
         $cart->delete();
         return response()->noContent();
@@ -55,7 +50,6 @@ class CartController extends Controller
     public function productExistsInCart(Request $request, $product_id)
     {
         $product_exists = Cart::query()->where('product_id', $product_id)->exists();
-
         return response()->json([
             'product_exists' => $product_exists
         ]);

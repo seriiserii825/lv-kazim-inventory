@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7820e5fa-b48a-4f06-890c-08bf1de7aeeb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Admin/AdminCustomerTableItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lv-kazim-inventory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lv-kazim-inventory.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreCartRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreCartRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateCartRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateCartRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Admin/AdminCustomer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Admin/AdminCustomer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Admin/AdminProducts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Admin/AdminProducts.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,10 +162,13 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
     </include_path>
   </component>
   <component name="ProjectId" id="257EVmow6fqs3ZX8NVprc6fzxXc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -181,7 +195,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="false" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>

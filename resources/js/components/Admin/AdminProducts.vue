@@ -44,9 +44,7 @@ export default {
     },
     methods: {
         async addToCart(id, title, quantity, price) {
-
             await this.checkProductExists(id);
-
             const data = {
                 product_id: id,
                 product_title: title,
@@ -54,9 +52,6 @@ export default {
                 quantity: quantity,
                 sub_total: price,
             };
-
-            console.log(this.products_exists_in_cart, 'this.products_exists_in_cart')
-
             if (!this.products_exists_in_cart) {
                 axios
                     .post("/api/auth/cart?api_token=" + this.$store.getters.getToken, data)
@@ -65,7 +60,6 @@ export default {
                             type: "success",
                             message: `Product "${title}" was updated to cart`,
                         });
-                        console.log(res, 'res post')
                         this.products_exists_in_cart = true;
                         Reload.$emit('AfterAdd');
                     })
@@ -92,7 +86,13 @@ export default {
                         Reload.$emit('AfterAdd');
                     })
                     .catch((error) => {
-                            this.errors = error.response.data;
+                        console.log(error.response.data.message, 'error.response.data.message')
+                            if (error.response.data.message) {
+                                this.$notify({
+                                    type: "error",
+                                    message: error.response.data.message
+                                });
+                            }
                         }
                     );
             }
