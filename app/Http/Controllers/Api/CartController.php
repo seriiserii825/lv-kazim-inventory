@@ -27,13 +27,19 @@ class CartController extends Controller
         //
     }
 
-    public function update(UpdateCartRequest $request, Cart $cart)
+    public function update(UpdateCartRequest $request, $id)
     {
+        $cart = Cart::query()->where('product_id', $id)->first();
         $data = $request->validated();
-        $data['product_quantity'] += 1;
-        $cart->update();
+        $data['quantity'] += 1;
+        $data['sub_total'] = $data['quantity'] * $data['price'];
+        $cart->update($data);
 
-        return new CartResource($data);
+//        return new CartResource($data);
+        return response()->json([
+            'cart' => $cart,
+            'data' => $data
+        ]);
     }
 
     public function destroy($id)
@@ -48,11 +54,10 @@ class CartController extends Controller
 
     public function productExistsInCart(Request $request, $product_id)
     {
-        // $product_exists = Cart::query()->where('product_id', $product_id)->exists();
+        $product_exists = Cart::query()->where('product_id', $product_id)->exists();
 
         return response()->json([
-            'request' => $request->all(),
-            'product_id' => $product_id,
+            'product_exists' => $product_exists
         ]);
     }
 }

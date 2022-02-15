@@ -16,6 +16,8 @@ import storeData from "./store/index";
 Vue.use(VueRouter);
 Vue.use(Element);
 
+window.Reload = new Vue();
+
 Vue.component(
     "example-component",
     require("./components/ExampleComponent.vue").default
