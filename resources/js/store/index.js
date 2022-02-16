@@ -13,18 +13,19 @@ export default {
         },
     },
     actions: {
-        add_to_cart({commit}, payload) {
+        add_to_cart({ commit }, payload) {
             commit("set_cart", payload);
         },
-        exists_in_cart({state}, payload) {
+        exists_in_cart({ state }, payload) {
             return state.cart.some((item) => item.id === payload);
         },
-        increase({state, commit}, payload) {
+        increase({ state, commit }, payload) {
             const cart = state.cart.map((item) => {
                 if (item.id === payload) {
                     if (item.current_count < item.product_quantity) {
                         item.current_count += 1;
-                        item.sub_total = item.selling_price * item.current_count + 1;
+                        item.sub_total =
+                            item.selling_price * item.current_count + 1;
                         return item;
                     }
                     return item;
@@ -33,12 +34,13 @@ export default {
             });
             commit("change_cart", cart);
         },
-        decrease({state, commit}, payload) {
+        decrease({ state, commit }, payload) {
             const cart = state.cart.map((item) => {
                 if (item.id === payload) {
                     if (item.current_count > 1) {
                         item.current_count -= 1;
-                        item.sub_total = item.selling_price * item.current_count - 1;
+                        item.sub_total =
+                            item.selling_price * item.current_count - 1;
                         return item;
                     }
                     return item;
@@ -47,7 +49,17 @@ export default {
             });
             commit("change_cart", cart);
         },
-        count({state}, payload) {
+        set_count({ state, commit }, { id, count }) {
+            const cart = state.cart.map((item) => {
+                if (item.id === id) {
+                    item.current_count = count;
+                    return item;
+                }
+                return item;
+            });
+            commit("change_cart", cart);
+        },
+        count({ state }, payload) {
             const cart_item = state.cart.find((item) => item.id === payload);
             return cart_item.current_count;
         },
