@@ -1,6 +1,6 @@
 <template>
   <div class="admin-customer-form">
-    <el-form label-width="120px">
+    <el-form label-width="120px" @submit.prevent="submit">
       <el-form-item label="Customer name">
         <el-select v-model="customer" placeholder="Customer name">
           <el-option
@@ -15,10 +15,6 @@
 
       <el-form-item label="Pay">
         <el-input v-model="pay"></el-input>
-      </el-form-item>
-
-      <el-form-item label="Due">
-        <el-input v-model="due"></el-input>
       </el-form-item>
 
       <el-form-item label="Pay buy">
@@ -51,7 +47,6 @@ export default {
         },
       ],
       pay: "",
-      due: "",
       pay_by: "",
       pay_bu_items: [
         {
@@ -68,6 +63,20 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    submit() {
+      const data = {
+        name: this.form.customer,
+        phone: "required",
+        address: "required",
+        date: "required",
+        sub_total: "required",
+        vat: "required",
+        total: "required",
+        pay_by: "required",
+      };
+    },
   },
   created() {
     axios

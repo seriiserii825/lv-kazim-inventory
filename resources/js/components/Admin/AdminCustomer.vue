@@ -1,6 +1,8 @@
 <template>
   <div class="admin-customer">
-    <el-button type="success">Add customer</el-button>
+    <router-link :to="{ name: 'admin.customers.create' }"
+      ><el-button type="success">Add customer</el-button></router-link
+    >
     <admin-table class="admin-customer__table">
       <table v-if="items.length">
         <thead>
