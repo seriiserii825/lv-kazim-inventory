@@ -33,7 +33,7 @@ export default {
   props: ["item"],
   methods: {
     removeItem(id) {
-      this.$emit("remove_item", id);
+      this.$store.dispatch("delete_cart_item", this.item.id);
     },
     async inc() {
       if (this.item.current_count < this.item.product_quantity) {
@@ -46,7 +46,6 @@ export default {
       }
     },
     current_count_on_change() {
-      console.log(this.item.current_count, "item.current_count");
       if (this.item.current_count < 1) {
         this.item.current_count = 1;
       } else if (this.item.current_count > this.item.product_quantity) {
@@ -55,11 +54,6 @@ export default {
       this.$store.dispatch("set_count", {
         id: this.item.id,
         count: this.item.current_count,
-      });
-
-      this.$store.getters.cart.forEach((element) => {
-        console.log(element.current_count, "element.current_count");
-        console.log(element.product_quantity, "element.product_quantity");
       });
     },
   },

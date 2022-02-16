@@ -63,6 +63,10 @@ export default {
             const cart_item = state.cart.find((item) => item.id === payload);
             return cart_item.current_count;
         },
+        delete_cart_item({ state, commit }, id) {
+            const cart = state.cart.filter((item) => item.id !== id);
+            commit("change_cart", cart);
+        },
     },
     getters: {
         getToken(state) {
@@ -76,10 +80,10 @@ export default {
                 return sum + item.current_count;
             }, 0);
         },
-        sub_total(state){
+        sub_total(state) {
             return state.cart.reduce((sum, item) => {
                 return sum + item.sub_total;
             }, 0);
-        }
+        },
     },
 };

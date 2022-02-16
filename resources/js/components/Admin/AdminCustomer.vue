@@ -17,7 +17,6 @@
             v-for="item in items"
             :key="item.id"
             :item="item"
-            @remove_item="remove"
           >
           </admin-customer-table-item>
         </tbody>
@@ -34,51 +33,11 @@ import AdminTotal from "./AdminTotal";
 import AdminCustomerTableItem from "./AdminCustomerTableItem";
 
 export default {
-  data() {
-    return {
-      //   items: [],
-    };
-  },
   components: {
     AdminCustomerTableItem,
     AdminTotal,
     AdminTable,
     AdminCustomerForm,
-  },
-  methods: {
-    remove(id) {
-      console.log(id, "id");
-      this.$confirm("This will permanently delete. Continue?", "Warning", {
-        confirmButtonText: "OK",
-        cancelButtonText: "Cancel",
-        type: "warning",
-      })
-        .then(() => {
-          axios
-            .delete(
-              "/api/auth/cart/" +
-                id +
-                "?api_token=" +
-                this.$store.getters.getToken
-            )
-            .then((res) => {
-              this.getItems();
-              this.$notify({
-                type: "success",
-                message: "Delete completed",
-              });
-            })
-            .catch((error) => {
-              this.errors = error.response.data.errors;
-            });
-        })
-        .catch(() => {
-          this.$notify({
-            type: "info",
-            message: "Delete canceled",
-          });
-        });
-    },
   },
   computed: {
     items() {

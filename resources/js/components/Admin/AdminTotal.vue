@@ -10,7 +10,7 @@
     </div>
     <div class="admin-total__row">
       <div class="admin-total__column">Vat</div>
-      <div class="admin-total__column">35%</div>
+      <div class="admin-total__column">{{ vat }}%</div>
     </div>
     <div class="admin-total__row">
       <div class="admin-total__column">Total</div>
@@ -21,6 +21,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      vat: 5,
+    };
+  },
   computed: {
     total_count() {
       return this.$store.getters.total_count;
@@ -34,7 +39,8 @@ export default {
     },
     total() {
       let sum = this.$store.getters.sub_total;
-      sum = sum * 0.35;
+      const percent = this.vat / 100;
+      sum = sum - sum * percent;
       return new Intl.NumberFormat("ru-Ru", {
         currency: "usd",
         style: "currency",
