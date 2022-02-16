@@ -71,5 +71,15 @@ export default {
         cart(state) {
             return state.cart;
         },
+        total_count(state) {
+            return state.cart.reduce((sum, item) => {
+                return sum + item.current_count;
+            }, 0);
+        },
+        sub_total(state){
+            return state.cart.reduce((sum, item) => {
+                return sum + item.sub_total;
+            }, 0);
+        }
     },
 };
