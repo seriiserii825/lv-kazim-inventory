@@ -36,7 +36,7 @@ import AdminCustomerTableItem from "./AdminCustomerTableItem";
 export default {
   data() {
     return {
-    //   items: [],
+      //   items: [],
     };
   },
   components: {
@@ -82,11 +82,9 @@ export default {
   },
   computed: {
     items() {
-      const elems = this.$store.getters.cart;
-      console.log(elems, "elems");
-      return elems;
+      return this.$store.getters.cart;
     },
-  }
+  },
 };
 </script>
 <style lang="scss">

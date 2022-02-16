@@ -5,20 +5,51 @@ export default {
         cart: [],
     },
     mutations: {
-        set_cart(store, payload) {
-            store.cart.push(payload);
+        set_cart(state, payload) {
+            state.cart.push(payload);
+        },
+        change_cart(state, payload) {
+            state.cart = payload;
         },
     },
     actions: {
-        add_to_cart({ commit }, payload) {
+        add_to_cart({commit}, payload) {
             commit("set_cart", payload);
         },
-        exists_in_cart({ state }, payload) {
+        exists_in_cart({state}, payload) {
             return state.cart.some((item) => item.id === payload);
         },
-        current_count({ state }, payload) {
-            const cart_item = state.cart.filter((item) => item.id === payload);
-            return cart_item;
+        increase({state, commit}, payload) {
+            const cart = state.cart.map((item) => {
+                if (item.id === payload) {
+                    if (item.current_count < item.product_quantity) {
+                        item.current_count += 1;
+                        item.sub_total = item.selling_price * item.current_count + 1;
+                        return item;
+                    }
+                    return item;
+                }
+                return item;
+            });
+            commit("change_cart", cart);
+        },
+        decrease({state, commit}, payload) {
+            const cart = state.cart.map((item) => {
+                if (item.id === payload) {
+                    if (item.current_count > 1) {
+                        item.current_count -= 1;
+                        item.sub_total = item.selling_price * item.current_count - 1;
+                        return item;
+                    }
+                    return item;
+                }
+                return item;
+            });
+            commit("change_cart", cart);
+        },
+        count({state}, payload) {
+            const cart_item = state.cart.find((item) => item.id === payload);
+            return cart_item.current_count;
         },
     },
     getters: {
