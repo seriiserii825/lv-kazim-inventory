@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7820e5fa-b48a-4f06-890c-08bf1de7aeeb" name="Changes" comment="" />
+    <list default="true" id="7820e5fa-b48a-4f06-890c-08bf1de7aeeb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Exports/TypologyExport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/excel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CsvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CsvController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tipology.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tipology.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/php/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/csv/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/csv/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,6 +164,13 @@
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/filp/whoops" />
       <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
     </include_path>
   </component>
   <component name="ProjectId" id="257EVmow6fqs3ZX8NVprc6fzxXc" />
@@ -164,6 +185,7 @@
     <option name="sortByType" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -187,6 +209,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="Dockerfile" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,5 +222,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

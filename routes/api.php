@@ -21,7 +21,6 @@ Route::group([
         'salaries' => 'Api\SalaryController',
         'customers' => 'Api\CustomerController',
         'orders' => 'Api\OrderController',
-        'cart' => 'Api\CartController',
         'csv' => 'Api\CsvController',
     ]);
     Route::get('media-count', 'Api\MediaController@count');

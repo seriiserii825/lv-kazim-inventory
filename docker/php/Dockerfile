@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
+RUN docker-php-ext-install gd
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
