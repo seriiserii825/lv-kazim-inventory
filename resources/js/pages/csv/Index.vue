@@ -34,7 +34,8 @@ export default {
                 });
         },
         downloadCSVData() {
-            let csv = 'id,title_it,title_en,title_fr,title_de,title_esp,title_ru,\n';
+            console.log(this.csv, 'this.csv')
+            let csv = 'id,title,\n';
             this.csv.forEach((row) => {
                 let values = Object.values(row);
                 // values = values.filter(Boolean);

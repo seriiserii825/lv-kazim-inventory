@@ -14,7 +14,7 @@ class CsvController extends Controller
     public function index()
     {
 //        return Excel::download(new TypologyExport, 'disney.csv');
-        return DB::table('tipologia')->get();
+        return DB::table('diametro')->get();
     }
 
     /**
