@@ -12,6 +12,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
+
         return EmployeeResource::collection(Employee::query()->orderByDesc('created_at')->get());
     }
 

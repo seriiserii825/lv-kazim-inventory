@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
     libfreetype6 \
+    php-zip \
+    php-dg \
     libfreetype6-dev \
     locales \
     zip \

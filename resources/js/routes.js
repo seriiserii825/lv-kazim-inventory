@@ -10,6 +10,7 @@ import salariesRoutes from "./routes/salariesRoutes";
 import customerRoutes from "./routes/customerRoutes";
 import ordersRoutes from "./routes/ordersRoutes";
 import salesRoutes from "./routes/saleRoutes";
+import csvRoutes from "./routes/csvRoutes";
 
 const routes = {
     mode: "history",
@@ -25,6 +26,7 @@ const routes = {
         ...customerRoutes,
         ...ordersRoutes,
         ...salesRoutes,
+        ...csvRoutes,
         { path: "/404", name: "404", component: NotFound },
         { path: "*", redirect: "/404" },
     ],

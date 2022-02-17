@@ -19,7 +19,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="items.length">
           <tr v-for="item in items" :key="item.id">
             <td>{{ item.id }}</td>
             <td>{{ item.name }}</td>
@@ -98,7 +98,9 @@ export default {
       axios
         .get("/api/auth/employee?api_token=" + this.$store.getters.getToken)
         .then((res) => {
-          this.items = res.data.data;
+          console.log(res.data, "res.data");
+          // this.items = res.data.data;
+          this.items = [];
         })
         .catch((error) => {
           console.log(error, "error");
