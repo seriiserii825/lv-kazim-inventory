@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7820e5fa-b48a-4f06-890c-08bf1de7aeeb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Exports/TypologyExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/excel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CsvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CsvController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tipology.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tipology.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/php/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/js/app.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/csv/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/csv/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

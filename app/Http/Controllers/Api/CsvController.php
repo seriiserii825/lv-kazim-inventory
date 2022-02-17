@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Exports\TypologyExport;
 use App\Http\Controllers\Controller;
 use App\Tipology;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class CsvController extends Controller
     public function index()
     {
 //        return Excel::download(new TypologyExport, 'disney.csv');
-        return Tipology::all();
+        return DB::table('tipologia')->get();
     }
 
     /**

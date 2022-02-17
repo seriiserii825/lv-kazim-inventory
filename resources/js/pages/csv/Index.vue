@@ -34,10 +34,10 @@ export default {
                 });
         },
         downloadCSVData() {
-            let csv = 'id,nometipologia,nometipologia1,nometipologia2,nometipologia3,nometipologia5,\n';
+            let csv = 'id,title_it,title_en,title_fr,title_de,title_esp,title_ru,\n';
             this.csv.forEach((row) => {
                 let values = Object.values(row);
-                values = values.filter(Boolean);
+                // values = values.filter(Boolean);
                 csv += values.join(',');
                 csv += "\n";
             });
