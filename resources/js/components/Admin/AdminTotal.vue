@@ -31,15 +31,21 @@ export default {
       return this.$store.getters.total_count;
     },
     sub_total() {
-      let sum = this.$store.getters.sub_total;
-      return new Intl.NumberFormat("ru-Ru", {
-        currency: "usd",
-        style: "currency",
-      }).format(sum);
+      return this.$store.getters.sub_total;
     },
     total() {
-      let sum = this.$store.getters.sub_total;
-      const percent = this.vat / 100;
+      return this.formatTotal(this.sub_total);
+    },
+  },
+  methods: {
+    parseSum(sum) {
+      const result = sum.replace(/\s/gi, "");
+      return parseInt(result);
+    },
+    formatTotal(total) {
+      let sum = this.parseSum(total);
+
+      const percent = parseInt(this.vat) / 100;
       sum = sum - sum * percent;
       return new Intl.NumberFormat("ru-Ru", {
         currency: "usd",

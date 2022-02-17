@@ -156,6 +156,17 @@
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+      <el-submenu index="10">
+        <template slot="title"><i class="el-icon-s-custom"></i>Sale</template>
+        <el-menu-item-group>
+          <el-menu-item index="10-2">
+            <router-link :to="{ name: 'admin.sales' }" exact>
+              <i class="el-icon-tickets"></i>
+              <span>List</span>
+            </router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
   </el-aside>
 </template>

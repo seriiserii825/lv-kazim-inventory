@@ -81,9 +81,20 @@ export default {
             }, 0);
         },
         sub_total(state) {
-            return state.cart.reduce((sum, item) => {
+            const sum = state.cart.reduce((sum, item) => {
                 return sum + item.sub_total;
             }, 0);
+            return new Intl.NumberFormat("ru-Ru", {
+                currency: "usd",
+                style: "currency",
+            }).format(sum);
+        },
+        products(state) {
+            return state.cart.reduce((result, item) => {
+                const result2 = [...result];
+                result2.push(item);
+                return result2;
+            }, []);
         },
     },
 };

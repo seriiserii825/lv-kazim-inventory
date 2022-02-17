@@ -22,6 +22,7 @@ class StoreOrderRequest extends FormRequest
             'vat' => 'required',
             'total' => 'required',
             'pay_by' => 'required',
+            'products' => 'required'
         ];
     }
 }

@@ -15,5 +15,10 @@ class Order extends Model
         'vat',
         'total',
         'pay_by',
+        'products'
+    ];
+
+    protected $casts = [
+        'products' => 'array',
     ];
 }

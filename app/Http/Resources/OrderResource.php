@@ -18,6 +18,7 @@ class OrderResource extends JsonResource
             'vat' => $this->vat,
             'total' => $this->total,
             'pay_by' => $this->pay_by,
+            'products' => $this->products
         ];
     }
 }
