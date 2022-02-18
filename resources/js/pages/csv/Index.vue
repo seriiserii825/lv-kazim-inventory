@@ -106,25 +106,24 @@ export default {
 
           this.csv_items.forEach((item, index) => {
             item.title = this.setupProductTitle(item);
-            if (index < 3) {
-              item.diametro_id = this.getValueFromObject(
-                item.diametro_id,
-                item,
-                diametro
-              );
-              item.larghezza_id = this.getValueFromObject(
-                item.larghezza_id,
-                item,
-                larghezza
-              );
-              item.tipo = this.getValueFromObject(item.tipo, item, tipo);
-              item.tipologia = this.getValueFromObject(
-                item.tipologia,
-                item,
-                tipologia
-              );
-            }
+            item.diametro_id = this.getValueFromObject(
+              item.diametro_id,
+              item,
+              diametro
+            );
+            item.larghezza_id = this.getValueFromObject(
+              item.larghezza_id,
+              item,
+              larghezza
+            );
+            item.tipo = this.getValueFromObject(item.tipo, item, tipo);
+            item.tipologia = this.getValueFromObject(
+              item.tipologia,
+              item,
+              tipologia
+            );
           });
+          console.log(this.csv_items, "this.csv_items");
           //   this.csv_items.forEach((item, index) => {
           //     if (index < 3) {
           //       console.log(item.diametro_id, "item.diametro_id");
