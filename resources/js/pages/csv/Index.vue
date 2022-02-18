@@ -125,14 +125,14 @@ export default {
               );
             }
           });
-        //   this.csv_items.forEach((item, index) => {
-        //     if (index < 3) {
-        //       console.log(item.diametro_id, "item.diametro_id");
-        //       console.log(item.larghezza_id, "item.larghezza_id");
-        //       console.log(item.tipo, "item.tipo");
-        //       console.log(item.tipologia, "item.tipologia");
-        //     }
-        //   });
+          //   this.csv_items.forEach((item, index) => {
+          //     if (index < 3) {
+          //       console.log(item.diametro_id, "item.diametro_id");
+          //       console.log(item.larghezza_id, "item.larghezza_id");
+          //       console.log(item.tipo, "item.tipo");
+          //       console.log(item.tipologia, "item.tipologia");
+          //     }
+          //   });
         })
         .catch((error) => {
           console.log(error, "error");
@@ -171,12 +171,12 @@ export default {
       let csv =
         "id,codice,diametro,larghezza_id,tipo,tipologia,mozzo,img_1,img_2,img_3,title,\n"; //prodotti
       this.csv_items.forEach((row, index) => {
-        if (index < 2) {
-          let values = Object.values(row);
-          // values = values.filter(Boolean);
-          csv += values.join(",");
-          csv += "\n";
-        }
+        // if (index < 2) {
+        let values = Object.values(row);
+        // values = values.filter(Boolean);
+        csv += values.join(",");
+        csv += "\n";
+        // }
       });
 
       const anchor = document.createElement("a");
