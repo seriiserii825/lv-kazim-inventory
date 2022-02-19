@@ -98,9 +98,8 @@ export default {
       axios
         .get("/api/auth/employee?api_token=" + this.$store.getters.getToken)
         .then((res) => {
-          console.log(res.data, "res.data");
-          // this.items = res.data.data;
-          this.items = [];
+          // console.log(res.data.data, "res.data.data");
+          this.items = res.data.data;
         })
         .catch((error) => {
           console.log(error, "error");
