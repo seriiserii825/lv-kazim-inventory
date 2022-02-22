@@ -144,14 +144,11 @@ export default {
             data
           )
           .then((res) => {
-            const response = res.data.data;
-            console.log(response, "response");
-            const products = JSON.parse(response.products);
-            console.log(products, "products");
             this.$notify({
               type: "success",
               message: "Order was created",
             });
+            this.$router.push({name: "admin.orders"});
           })
           .catch((error) => {
             console.log(error, "error");
@@ -182,7 +179,6 @@ export default {
       .get("/api/auth/customers?api_token=" + this.$store.getters.getToken)
       .then((res) => {
         this.customers = res.data.data;
-        // console.log(this.customers, "this.customers");
       })
       .catch((error) => {
         console.log(error, "error");

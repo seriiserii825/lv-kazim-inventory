@@ -29,6 +29,7 @@ export default {
       });
       this.$router.push({ name: "home" });
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   },
 };
 </script>

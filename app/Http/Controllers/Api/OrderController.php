@@ -20,7 +20,6 @@ class OrderController extends Controller
 
         $order = Order::create($request->validated());
         return new OrderResource($order);
-        // return response()->json($request->all());
     }
 
     public function show(Order $order)

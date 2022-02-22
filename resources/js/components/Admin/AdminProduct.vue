@@ -3,7 +3,7 @@
     href="#"
     class="admin-product"
     @click.prevent="
-      addToCart(item.id, item.title, item.product_quantity, item.selling_price)
+      addToCart(item.id, item.title, item.product_quantity, item.selling_price, item.image)
     "
   >
     <div class="admin-product__img">
@@ -26,7 +26,7 @@ export default {
     },
   },
   methods: {
-    async addToCart(id, title, product_quantity, selling_price) {
+    async addToCart(id, title, product_quantity, selling_price, image) {
       const product_exists_in_cart = await this.$store.dispatch(
         "exists_in_cart",
         id
@@ -40,6 +40,7 @@ export default {
           selling_price,
           current_count,
           sub_total: current_count * selling_price,
+          image: image
         };
         await this.$store.dispatch("add_to_cart", product);
       } else {

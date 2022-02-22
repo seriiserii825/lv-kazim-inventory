@@ -1,130 +1,127 @@
 <template>
   <admin-layout>
-    <el-row class="mb-3">
-      <router-link :to="{ name: 'admin.customers' }">
-        <el-button type="success">All customers</el-button>
-      </router-link>
-    </el-row>
-    <h3 class="form__title">Edit customers</h3>
-
-    <el-form ref="form" :model="form" label-width="120px">
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <el-form-item label="Full name">
-            <el-input name="name" v-model="form.name"></el-input>
-            <small class="form--error" v-if="errors && errors.name">{{
-              errors.name[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item label="Email">
-            <el-input name="email" v-model="form.email"></el-input>
-            <small class="form--error" v-if="errors && errors.email">{{
-              errors.email[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <el-form-item label="Address">
-            <el-input name="address" v-model="form.address"></el-input>
-            <small class="form--error" v-if="errors && errors.address">{{
-              errors.address[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
-        <el-col :span="6">
-          <el-form-item label="Phone">
-            <el-input name="phone" v-model="form.phone"></el-input>
-            <small class="form--error" v-if="errors && errors.phone">{{
-              errors.phone[0]
-            }}</small>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <el-form-item label="Photo">
-            <el-button type="primary" @click="showMediaGrid = true"
-              >Add image</el-button
-            >
-            <images-thumbs :images="form.images"></images-thumbs>
-            <img width="250" :src="form.photo" alt="" />
-          </el-form-item>
-          <small class="form--error" v-if="errors && errors.photo">{{
-            errors.photo[0]
-          }}</small>
-        </el-col>
-      </el-row>
-      <el-row>
-        <el-col :span="6" :offset="18">
-          <el-form-item>
-            <el-button type="success" @click.prevent="onSubmit"
-              >Update
-            </el-button>
-          </el-form-item>
-        </el-col>
-      </el-row>
-    </el-form>
-
-    <media-grid
-      @emit_images="emit_images"
-      @handler="showMediaGrid = false"
-      v-if="showMediaGrid"
-    />
+    <div class="orders">
+      <div class="orders__item">
+        <admin-block title="Customer details">
+          <ul>
+            <li>
+              <span class="orders__label">Name:</span>
+              <strong class="orders__value">{{ item.name }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Phone:</span>
+              <strong class="orders__value">{{ item.phone }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Address:</span>
+              <strong class="orders__value">{{ item.address }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Email:</span>
+              <strong class="orders__value">{{ item.email }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Date:</span>
+              <strong class="orders__value">{{ item.date }}</strong>
+            </li>
+          </ul>
+        </admin-block>
+      </div>
+      <div class="orders__item">
+        <admin-block title="Order details">
+          <ul>
+            <li>
+              <span class="orders__label">Pay by:</span>
+              <strong class="orders__value">{{ item.pay_by }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Sub total:</span>
+              <strong class="orders__value">{{ item.sub_total }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Vat:</span>
+              <strong class="orders__value">{{ item.vat }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Total:</span>
+              <strong class="orders__value">{{ item.total }}</strong>
+            </li>
+            <li>
+              <span class="orders__label">Products:</span>
+              <strong
+                class="orders__value"
+                v-if="item.products && item.products.length"
+                >{{ item.products.length }}</strong
+              >
+            </li>
+          </ul>
+        </admin-block>
+      </div>
+    </div>
+    <admin-block title="Products">
+      <admin-table>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in item.products" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td><img :src="item.image" :width="100" alt=""></td>
+              <td>{{ item.title }}</td>
+              <td>{{ formatTotal(item.selling_price) }}</td>
+              <td>{{ item.current_count }}</td>
+              <td>{{ formatTotal(item.sub_total) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </admin-table>
+    </admin-block>
   </admin-layout>
 </template>
 <script>
+import AdminBlock from "../../components/Admin/AdminBlock.vue";
+import AdminTable from "../../components/Admin/AdminTable.vue";
 import AdminLayout from "../../layouts/AdminLayout.vue";
-import FormComponent from "../../components/FormComponent.vue";
-import MediaGrid from "../../components/MediaGrid.vue";
-import ImagesThumbs from "../../components/ImagesThumbs.vue";
 
 export default {
   data() {
     return {
-      form: {
-        name: "",
-        email: "",
-        address: "",
-        salary: "",
-        join_date: "",
-        nid: "",
-        phone: "",
-        photo: null,
-        images: [],
-      },
-      errors: {},
-      showMediaGrid: false,
+      item: {},
     };
   },
   components: {
     AdminLayout,
-    FormComponent,
-    MediaGrid,
-    ImagesThumbs,
+    AdminBlock,
+    AdminTable,
   },
   methods: {
-    emit_images(images) {
-      this.form.images = images;
-      this.form.photo = images[0];
+    formatTotal(total) {
+      return new Intl.NumberFormat("ru-Ru", {
+        currency: "usd",
+        style: "currency",
+      }).format(total);
     },
-    onSubmit() {
+    getOrder() {
       axios
-        .put(
-          "/api/auth/customers/" +
+        .get(
+          "/api/auth/orders/" +
             this.$route.params.id +
             "?api_token=" +
-            this.$store.getters.getToken,
-          this.form
+            this.$store.getters.getToken
         )
         .then((res) => {
-          this.$router.push({ name: "admin.customers" });
-          this.$notify({
-            type: "success",
-            message: "Post was edited",
+          this.item = res.data.data;
+          this.item.products = JSON.parse(this.item.products);
+          this.item.products.forEach((element) => {
+            console.log(element, "element");
           });
         })
         .catch((error) => {
@@ -133,20 +130,27 @@ export default {
     },
   },
   mounted() {
-    axios
-      .get(
-        "/api/auth/customers/" +
-          this.$route.params.id +
-          "?api_token=" +
-          this.$store.getters.getToken
-      )
-      .then((res) => {
-        console.log(res.data.data, "res.data.data");
-        this.form = res.data.data;
-      })
-      .catch((error) => {
-        this.errors = error.response.data.errors;
-      });
+    this.getOrder();
   },
 };
 </script>
+<style lang="scss">
+.orders {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+  &__item {
+    width: 48%;
+  }
+  ul {
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+</style>

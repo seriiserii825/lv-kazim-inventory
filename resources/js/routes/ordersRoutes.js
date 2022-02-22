@@ -8,7 +8,7 @@ const ordersRoutes = [
         name: "admin.orders",
     },
     {
-        path: "/admin/orders/single/:id",
+        path: "/admin/orders/:id",
         component: OrderSingle,
         name: "admin.orders.single",
     },

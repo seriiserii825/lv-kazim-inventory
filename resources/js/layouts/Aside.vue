@@ -179,6 +179,17 @@
                     </el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
+            <el-submenu index="12">
+                <template slot="title"><i class="el-icon-s-custom"></i>Orders</template>
+                <el-menu-item-group>
+                    <el-menu-item index="12-2">
+                        <router-link :to="{ name: 'admin.orders' }" exact>
+                            <i class="el-icon-tickets"></i>
+                            <span>List</span>
+                        </router-link>
+                    </el-menu-item>
+                </el-menu-item-group>
+            </el-submenu>
         </el-menu>
     </el-aside>
 </template>

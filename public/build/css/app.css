@@ -140,6 +140,12 @@ input[type=submit]:disabled {
   color: red;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 .btn {
   font-size: 1.8rem;
 }
@@ -169,6 +175,24 @@ input[type=submit]:disabled {
 
 .app {
   min-height: 120vh;
+}
+
+.table-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+.table-badge.success {
+  background-color: #04B439;
+}
+.table-badge.error {
+  background-color: #F07E00;
+}
+.table-badge.primary {
+  background-color: #0096F0;
 }
 
 /*# sourceMappingURL=app.css.map*/

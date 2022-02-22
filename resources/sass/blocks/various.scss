@@ -22,3 +22,20 @@
 .app {
     min-height: 120vh;
 }
+.table-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: white;
+    &.success {
+    background-color: #04B439;
+    }
+    &.error {
+    background-color: #F07E00;
+    }
+    &.primary {
+    background-color: #0096F0;
+    }
+}
